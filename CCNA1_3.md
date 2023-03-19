@@ -176,7 +176,19 @@ TCP/IP'nin Çalışmasını Denetleyen Organizasyonlar:
 
 - ITU-T (International Telecommunications Union - Telecommunication Standardization Sector): Video sıkıştırma, IPTV (İnternet üzerinden televizyon yayını yapılması teknolojisi) ve dijital abone hattı **(DSL)** gibi iletim yöntemlerinde bant genişliği standartlarını tanımlar.
 
-**
+***
+
+## Referans Modeller
+
+Şekil 1_3_4
+
+*Paket bir cihazdan diğer cihaza giderken tüm katmanlardan geçer.*
+
+
+![aasd](./Diagrams/1_3_5.png)
+
+Şekil 1_3_5
+
 
 
 
