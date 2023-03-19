@@ -185,7 +185,7 @@ TCP/IP'nin Çalışmasını Denetleyen Organizasyonlar:
 *Paket bir cihazdan diğer cihaza giderken tüm katmanlardan geçer.*
 
 
-![TCP/IP Diagram](./Diagrams/1_3_5.png)
+![TCP/IP Diagram](./Diagrams/1_3_5_2.png)
 
 Şekil 1_3_5
 
