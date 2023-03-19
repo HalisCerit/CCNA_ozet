@@ -147,7 +147,7 @@ Açık standartlar birlikte çalışma, rekabet ve yenilik teşvik eder.
 
 - Internet Architecture Board (IAB): Standart yönetiminden sorumlulardır. İnternet mimarisnin bozulmasını engeller.
 
-- Internet Engineerring Task Froce (IETF): Internet ve TCP/IP teknolojilerini geliştiren, bakımını yapan ve güncelleyen kurumdur. Çalışma gruplarında **RFC** denilen çalışma dökümanları üretilir.
+- **Internet Engineerring Task Froce (IETF)**: Internet ve TCP/IP teknolojilerini geliştiren, bakımını yapan ve güncelleyen kurumdur. Çalışma gruplarında **RFC** denilen çalışma dökümanları üretilir.
 
 *Mesela HTTP'nin RFC dökümanı açılıp okunabilir, RFC'ler herkese açıktır.*
 
@@ -157,12 +157,26 @@ TCP/IP'nin Çalışmasını Denetleyen Organizasyonlar:
 
 - ICANN: IP adresi tahsisi, domain adres yönetimi ve diğer bilgilerin atanmasını kontol ederler. Görevlerinin bir kısmını IANA'ya devretmiştir.
 
-- IANA: IP Adres dağtımı (74.89.162.4), domain names (www.google.com), TCP/UDP port numaraları dağıtımı (HTTP:80, HTTPS:443, DNS:53) yapar.
+- IANA: IP Adres dağtımı (74.89.162.4), domain names (www.google.com), TCP/UDP port numaraları dağıtımı **(HTTP:80, HTTPS:443, DNS:53)** yapar.
 
 *www.ripe.net Avrupa'da ip dağıtımı yapmaktadır.*
 
 Şekil 1_3_3
 ***
+## Elektronik İletişim Standartları 
+- **IEEE (Institute of Electrical and Electronics Engineers):** Ağ oluşturma standartlarını belirler.
+
+*IEEE 802.3: Ethernet protokolüdür. NIC'leri ve NIC'ler üzerinden haberleşmenin standartlaştırıldığı protokoldür.*
+
+*IEEE 802.11: Wireless LAN protokolüdür.*
+
+- EIA (Electronic Industries Alliance): UTP kabloları başta olmak üzere, kabloların ve bağlantı cihazlarının standartlarını belirler.
+
+- TIA (Telecommunication Industries Association): Radyo ekipmanları, hücresel kuleler, VoIP cihazları, uydu iletişimleri gibi cihazların protokollerini geliştirir.
+
+- ITU-T (International Telecommunications Union - Telecommunication Standardization Sector): Video sıkıştırma, IPTV (İnternet üzerinden televizyon yayını yapılması teknolojisi) ve dijital abone hattı **(DSL)** gibi iletim yöntemlerinde bant genişliği standartlarını tanımlar.
+
+**
 
 
 
