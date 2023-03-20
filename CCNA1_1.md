@@ -1,4 +1,4 @@
-# **1-GEÇMİŞTEN GÜNÜMÜZE İNTERNET**
+## **1-GEÇMİŞTEN GÜNÜMÜZE İNTERNET**
 |“Fixed” Computing   |Bring Your Own Device   |Internet Of Things   |Internet Of Everything   |
 |---|---|---|---|
 |Eskiden cihazlara kullanıcının fiziksel olarak gitmesi gerekirdir.”Sabit” bilgisayarlar vardı.   |Cihazların kullanıcının yanında kolayca taşınabilir hale gelmesidir. Şirketlerde ve kurumsal ofislerde kişisel cihazların kullanılması teknolojisidir. <br />**-Güvenlik riskleri artmıştır.** <br />**-Ağ yöneticilerine yeni yük binmiştir** </span>|Age of devices olarak bilinen teknolojik gelişmedir. Fiziksel objelerin, toplu olarak ve internet yoluyla iletişimini gerçekleştirme teknolojisidir.	   |İnsanların, işlemlerin, dataların ve cisimlerin dâhil olduğu birçok nesnenin internet aracılıyla iletişim kurması teknolojisi.   |
@@ -11,15 +11,17 @@
 
 ### **Local Area Networks-LAN (Yerel Alan Ağları)**
 -	İki ya da daha fazla cihazın haberleştiği ortama **Network** denir.
-- 	Aynı coğrafyada/bölgede bulunan ağlara **LAN** adı verilir. "Same location" olarak ifade edilir.
+- 	Aynı coğrafyada/bölgede bulunan ağlara **LAN** adı verilir, "Same location" olarak ifade edilir.
 ### **Çeşitli Boyutlu Ağlar:**
 - SOHO (Small Home Office) ağları
 - Şirket ağları
 - Global ağlar
 
+***
+
 ## **Ağ Bileşenleri: Client-Server İlişkisi | Host Kavramı | Intermediary Devices | Network Media**
 
-- 	Ağda bulunan bütün son kullanıcı cihazlarını **host** olarak ifade edilir. Namı diğer **end devices’tır**. IP üzerinden iletişim yapan bazı cihazlar: pcler, ağa bağlı yazıcılar, VOIP’ler, telefonlar vb. End devicelar **NIC (Network Interface Card)** ile networke bağlanırlar. NIC’in diğer bir adı da **Ethernet Card**’dır.
+- 	Ağda bulunan bütün son kullanıcı cihazları **host** ya da **end devices** olarak ifade edilir. Pcler, ağa bağlı yazıcılar, VOIP’ler, telefonlar vb. gibi ip üzerinden haberleşme yapan end devicelar **NIC (Network Interface Card)** ile networke bağlanırlar. NIC’in diğer bir adı da **Ethernet Card**’dır.
 
 
 *Neredeyse her cihazda NIC yani Ethernet kartı bulunur, NIC'ler bazen anakartın içerisine gömülü olarak bulunabilir.*
@@ -28,38 +30,43 @@
 
 *Server bir cihaz değildir, işlemdir.*
 
-- Cihazların server işlemini yapmak için özel bir server bilgisayarı olma zorunluluğu yoktur, günlük kullanımdaki host/end user cihazları da server işlemlerini kısıtlı kapasitede olsa yapabilir. Bu duruma **Peer-to-Peer (P2P)** denir. Cihaz **hem server hemde client** olarak davranır. Torent bağlanrılarında kullanılan teknoloji P2P'dır. Ayrıca kripto para benzeri teknolıjilerde de P2P'den yararlanılır.
+- Cihazların server işlemini yapmak için özel bir server bilgisayarı olma zorunluluğu yoktur, günlük kullanımdaki host/end user cihazları da server işlemlerini kısıtlı kapasitede olsa yapabilir. Bu duruma **Peer-to-Peer (P2P)** denir. Cihaz **hem server hem de client** olarak davranır. Torent bağlantılarında kullanılan teknoloji P2P'dır. Ayrıca kripto para benzeri teknolıjilerde de P2P'den yararlanılır.
 
 *Ancak Peer-to-Peer sorumluluk almaktır:*<br />*+: Kolaydır, az karmaşıktır, az maliyetlidir ve basit görevler için kullanışlıdır.*<br />*-:Merkezi yönetimi yoktur, güvenli ve ölçeklenebilir değildir ve performans düşüklüğü yaratır.*<br />*Serverların 7/24 açık olması ve cevap verebilir olması beklenir.*
 
-- Firewall, Switch, Router, Wireless Router, ve Firewall etc. gibi ağ cihazlarına **intermediary devices** denir. 2 adet temel cihaz vardır: Bunlar router ve switch'tir.
+- Firewall, Switch, Router, Wireless Router, ve Firewall etc. gibi ağ cihazlarına **intermediary devices** denir. Temelinde 2  cihaz vardır, bunlar router ve switch'tir.
 
 -  **Switch:** Hostları kablolu şekilde local networke dahil eden cihazdır. 
 
 *Access Point (Kablosuz Erişim Noktası) switch felsefesi ile çalışır.*
 
-- **Router:** Network'ün en temel taşı bu cihazdır bu olmadan hiç bir cihaz çalışmaz. Farklı networkleri birbirine bağlayan cihazdır. Ağdaki mesajların takip etmesi gereken yolu belirler.
+- **Router:** Network'ün en temel taşı bu cihazdır. Farklı networkleri birbirine bağlayan cihazdır. Ağdaki mesajların takip etmesi gereken yolu belirler.
+
+*Hatırlatma: BGP protokolü ağ hattında kısa yolu bulmaya yarayan protokoldür.*
 
 - **Firewall:** Güvenlik özellikleri arttırılmış routerlar olarak özetlenebilir.
 
+*Burada bahsettiğimiz device olan Firewalldır, ağdaki cihazların içersinde bulunan yazılımsal Firewall faklıdır.*
+
 - Ağlarda iletişimin gerçekleştiği ortama **Media** ya da **Network Media** denir. Bazı media tipleri şunlardır: <br /> *I. **Copper Wire**, elektirik ile veri iletmi yapar, **UTP (Untwisted Shielded Pair)** kablo kullanır.* <br /> *II. **Fiber Optic**, ışıkla veri iletim yapar. Single Mode ve Multi Mode gibi alternatifleri vardır.* <br /> *III. **Wireless İletim**,hava yoluyla iletim yapar. Elektromanyetik dalgalar kullanır.*
+***
 
-## **Sınava Özel Notlar:**
+### **Sınava Özel Notlar:**
    
-- ###  Kamusal alanda kablo çekmek yasaktır. Yalnızca **ISP (Internet Service Provider)** kablo çekme/ kablolama hakkına sahiptir.
+- Kamusal alanda kablo çekmek yasaktır. Yalnızca **ISP (Internet Service Provider)** kablo çekme/ kablolama hakkına sahiptir.
 
-- ###  Router farklı networkleri birbirine bağlar.
+-   Router farklı networkleri birbirine bağlar.
 
-- ###  Modem dediğimiz cihazlar temelinde routerdır.
+-   Modem dediğimiz cihazlar temelinde routerdır.
 
-- ### Routerların genelde bir yüzü ISP'ye bir yüzü ise LAN a bağlanır.
+-  Routerların genelde bir yüzü ISP'ye bir yüzü ise LAN a bağlanır.
 
-- ### Özel, fiziksel ağa bağlanma portlarına  **Interaface** denir.
+-  Özel, fiziksel ağa bağlanma portlarına  **Interaface** denir.
 
-- ### End device'ları networke bağlayan fiziksel porta **NIC** denir.
+-  End device'ları networke bağlayan fiziksel porta **NIC** denir.
 
-- ### İki farklı ağı birbirine bağlamayacaksan router alınmamlıdır.
-
+-  İki farklı ağı birbirine bağlamayacaksan router alınmamlıdır.
+***
 ## **Ağ Tipleri:** 
 - Internet: Worldwide connection of networks. 
 
@@ -80,17 +87,19 @@
 
 Unutulmamalıdır ki her ağ internete bağı olmak zorunda değildir. Askeri hatlar, devlet kurumlarına bağlı özel ağların internete bağı yoktur.
 
+***
+
 ## **Reliable networks:**
 ### 1 - Fault Tolerance 
-- Router ve Switchler çökse bile sistemin çalışmaya devam etmesi.
+- Routerlar ve Switchler çökse bile sistemin çalışmaya devam etmesi.
 - **Redundant** sistemler (yedek cihazı olan sistemler).
 ### 2 - Scalability
-- Ağın yarın büyümeyede sorun çıkarmyacak şekilde hazırlanması.
+- Ağın, gelecekte büyüme işleminde sorun çıkarmyacak şekilde hazırlanması.
 ### 3 - Quality of Service (QoS)
-- Düşük ping.
-- Bazı durumlarda bazı cihazlara öncelik verilmesi.
-- Reliable delivery.
-- Low latency.
+- Düşük ping olmalıdır.
+- Bazı durumlarda bazı cihazlara öncelik verilmelidir.
+- Reliable delivery gerçekleştirilmelidir.
+- Low latency olmalıdır.
 ### 4 - Network Security
 - Confidentialty: Ağ gizliliğinin korunması.
 - Integrity: Ağ bütünlüğünün korunması.

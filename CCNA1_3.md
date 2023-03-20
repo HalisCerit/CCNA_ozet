@@ -164,7 +164,7 @@ TCP/IP'nin Çalışmasını Denetleyen Organizasyonlar:
 Şekil 1_3_3
 ***
 ## Elektronik İletişim Standartları 
-- **IEEE (Institute of Electrical and Electronics Engineers):** Ağ oluşturma standartlarını belirler.
+- **IEEE (Institute of Electrical and Electronics Engineers):** Ağ oluşturma standartlarını belirler. Cihazlarda bulunan NIC'lerin üzerindeki benzersiz MAC adreslerinin dağıtımı yapar.
 
 *IEEE 802.3: Ethernet protokolüdür. NIC'leri ve NIC'ler üzerinden haberleşmenin standartlaştırıldığı protokoldür.*
 
@@ -184,10 +184,36 @@ TCP/IP'nin Çalışmasını Denetleyen Organizasyonlar:
 
 *Paket bir cihazdan diğer cihaza giderken tüm katmanlardan geçer.*
 
+![TCP/IP Diagram](./Diagrams/1_3_5.png)
 
-![TCP/IP Diagram](./Diagrams/1_3_5_2.png)
+*OSI modeli "All People Seems To Need Data Processing" olarak şifrelenebilir.*
 
-Şekil 1_3_5
+## TCP/IP'de bulunan bazı application katmanı protokollerinin özellikleri:
+
+HTTP/HTTPS: Hyper Text Transfer Protocol network üzerinden Web sayfasını görüntülemeye yarar. Port: 80'i kullanır. HTTP Secure ise SSL ya da TSL protokolü ile şifrelenmiş versiyondur. HTTPS port olarak 443'ü kullanırken HTTP port 80'i kullanır.
+
+FTP (File Transfer Protocol): Clientlarla sunucular arasında kullanılan bir dosya aktarma protokülüdür. İndirme, yükleme, paylaşım, depolama gibi işlemleri denetler. Port: 21'de çalışır. TCP kullanır, connection oriented'tir.
+
+SFTP (Secure FTP): FTP'de doğrulama ve şifreleme olmamasından dolayı kaynaklanan güvenlik sorununu gideren protokoldür. TCP kullanır, connection oriented'tir.
+
+TFTP (Trivial File Transfer Protocol): Basit, hızlı ancak düşük güvenlikli dosya transferi protokolüdür. FTP ya da SFTP'nin aksine dı ağda kullanılnaz . FTP'den farkı TFTP'nin basit olmasıdır. Güvensiz olmasının sebebi FTP gibi authentication ve bütünlük koruma özelliklerinin olmamasıdır.SFTP ve FTP aksine TCP yerine UDP protokolü üzerinden çalışır ve Port: 69'u kullanır.  Cisco switch ve ya router cihazlarında ön yükleme ya da "TFTP Boot" bu protokolle gerçekleştirilebilir, zaten genelde de bu işlemden dolayı kullanılır.
+
+SMTP (Simple Mail Transfer Protokol): Sending message to people olarak akılda kalması için kodlanabilir. SMTP, mail server'ına mail gönderme işleminde kullanılann protokoldür. Mail server'ına SMTP server'ı da denir. TCP protokolü kullanarak mesajların iletilmesi gerçekleştirilir. Mesajın server'dan çekilmesini ise POP3 ya da IMAP protokolü gerekleştirir. Port numarası **25**, 465, 587, ve 2525'dir.
+
+POP3 ve IMAP: POP3 protokolü serverdan mail görüntüldeği anda malin çekilip ardından silnmesiyle çalışır. Tek cihaz serverdan maile ulaşır. Ek ayarlardan bu düzenleneblir. IMAP ise serverdan görüntülemeye izin veren cihazların senkronize çalıştğı bir mail indirme protokoldür.
+
+
+![TCP/IP Diagram2](./Diagrams/1_3_6.png)
+
+
+
+![TCP/IP Diagram](./Diagrams/1_3_7.png)
+
+
+
+
+
+
 
 
 
