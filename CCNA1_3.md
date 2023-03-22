@@ -1,10 +1,12 @@
 # 3- Protokoller ve Modeller
 **TCP/IP**: Günümüzdeki internette kulanılan, 4 katmandan oluşan, protokol kümesidir.
-**OSI**: Data haberleşmesini standartlaştırmatası için tasarlanmış 7 katmandan oluşan protokol kümesi.
+
+**OSI**: Data haberleşmesini standartlaştırılması için tasarlanmış 7 katmandan oluşan protokol kümesi.
 
 
 ## MAC Adresleri ve IP Adresleri
-- MAC ve IP adreslerini cihazların aralarında haberleşme yaparken kullanırlar.
+- MAC ve IP adreslerini cihazların aralarında haberleşme yaparken kullanırlar*************.
+
 #### MAC Adresleri:
 - **48 bitten** oluşurlar.
 - NIC üzerinde bulunurlar, fiziksel adres olarak da geçerler, eşsizdirler.
@@ -45,7 +47,7 @@
 ### 1- Encoding:
 
 - Fiziksel ortamda mesajın iletime uygun hale getirilme işlemidir.
-- Kodun yorumlanması için çözülmesine, yani, bu işin tersine **decoding** denir.
+- Kodun yorumlanması için çözümlenmesine, yani, bu işin tersine **decoding** denir.
 - Hostlar arası kodlama ortama uygun olmalıdır.
 - Ağ üzerinden yollanan mesajlar bitlere dönüştürülür.
 - Bitler ışık, ses veya elektriksel darbe modeline dönüştürülür, hedef (destination) bunu çözümler.
