@@ -42,9 +42,9 @@
 
 - **Router:** Network'ün en temel taşı bu cihazdır. Farklı networkleri birbirine bağlayan cihazdır. Ağdaki mesajların takip etmesi gereken yolu belirler.
 
-NIC'in neredeyse her host cihazında olduğundan bahsetmiştik, intermediary devices'da ise router ve firewall'da NIC bulunurken switch'de NIC bulunmaz. Switchler bağlanmak için etheret kartı kullanır. Yani switchlerin NIC kartı yoktur ancak NICler bağlanmak için swicthleri kullanır.
-
 *Foreshadowing: BGP protokolü ağ hattında kısa yolu bulmaya yarayan protokoldür.*
+
+NIC'in neredeyse her host cihazında olduğundan bahsetmiştik, intermediary devices'da ise router ve firewall'da NIC bulunurken switch'de NIC bulunmaz. Switchler bağlanmak için etheret kartı kullanır. Yani switchlerin NIC kartı yoktur ancak NIC'ler bağlanmak için swicthleri kullanır.
 
 - **Firewall:** Güvenlik özellikleri arttırılmış router cihazları olarak özetlenebilir.
 

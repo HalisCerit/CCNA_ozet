@@ -1,42 +1,46 @@
 # 3- Protokoller ve Modeller
+
 **TCP/IP**: Günümüzdeki internette kulanılan, 4 katmandan oluşan, protokol kümesidir.
 
-**OSI**: Data haberleşmesini standartlaştırılması için tasarlanmış 7 katmandan oluşan protokol kümesi.
+**OSI**: Data haberleşmesinin anlatılması ve açıklanması için tasarlanmış 7 katmandan oluşan modeldir.
 
 
-## MAC Adresleri ve IP Adresleri
-- MAC ve IP adreslerini cihazların aralarında haberleşme yaparken kullanırlar*************.
+## MAC Adresleri ve IPv4 Adresleri
+- MAC ve IP, cihazların, aralarındaki iletişimi gerçekleştirmelerinde kullandıkları adreslerdir.
 
-#### MAC Adresleri:
+#### **MAC Adresleri:**
 - **48 bitten** oluşurlar.
 - NIC üzerinde bulunurlar, fiziksel adres olarak da geçerler, eşsizdirler.
-- MAC adresleri *9C-35-5B-5F-AA-BB* tazrındadırlar.
+- MAC adresleri *9C-35-5B-5F-AA-BB* tazrındadırlar (*0000=0, 0001=1, 0010=2, ..., 1110=E, 1111=F*).
 - Ethernet Kartı üzerinde **Bured-in adres**lerdir.
-- NIC'de protokoller yüklü gelir ama istenirse değiştirilebilir, bunlar TCP/IPv4 veya TCP/IPv6'dır.
+- NIC üzerinde çalışan internet protokolleri cihaz içerisine yüklü gelir ancak istenirse değiştirilebilir, bunlar TCP/IPv4 veya TCP/IPv6'dır.
+
 *Wifi kartı da bir NIC kartıdır.*
-#### IPv4 Adresleri:
+#### **IPv4 Adresleri:**
 - **32 bit** / 4 kısımdan oluşurlar.
-- IP adresleri 192.168.1.5 tazrındadır, bölümler (0-255) aralığında olmalıdır, yani 0 yada 255 alamazlar. 
-- IP adresleri MAC adreslerindeki kalıcı adreslerin tersine **mantıksal** adreslerdir.
+- IP adresleri 192.168.1.5 tazrındadır, alabileceği sayılar (0-255) aralığında olmalıdır, 0 ya da 255 alamazlar. 
+- IP adresleri, MAC adreslerindeki kalıcı adreslerin tersine **mantıksal** adreslerdir. "Dynamic addresses" yani dinamik adresler olarak tanımlanırlar.
 - IP adresi "192.168.5.1" olan bir cihazın "192.168.5" kısmı "Network" bilgilerini ifade ederken, ".1"  kısmı ise yerel ağdaki "Host" numarasıdır.
 
 ### Hatırlatma:
-*Router networkleri birbirine bağlar, router uçları farklı ağlara bakar.*
-*Switch son kullnıcıları ağa dahil eder.*
+*Router networkleri birbirine bağlayan  ağ cihazıdır, router uçları (interfaceleri) farklı ağlara bakar. Yani bir port 192.168.5 ağına bakıyorsa diğer port 192.168.6 ağına bakar.*
+*Switch ise son kullnıcıları ağa dahil eden  cihazdır.*
 
 ## ŞEKİL 1_3_1
 
 ***
 
-## İletişim Temelleri:
+### İletişim Temelleri Oluşturan Temel Unsurları:
 - Source (Kaynak).
 - Destination (Hedef).
 - Media (Ortam).
 
 *Ağlar "scale" ve "complexity" olarak değişebilir, yalnızca bağlantı olması yetmez.*
+***
+### Mesajların Ağ'daki Hareketi:
 
-*Message Source > Transmitter > Transmission Medium > Reciver > Message Destination*
-
+*Message Source > Transmitter > Transmission Medium > Reciever > Message Destination*
+***
 ## İletişim Protokolleri:
 - Tüm iletişim protokoller çerçevesinde gerçekleşir.
 - Protokoller iletişimin izleyeceği kurallardır.
@@ -46,37 +50,38 @@
 
 ### 1- Encoding:
 
-- Fiziksel ortamda mesajın iletime uygun hale getirilme işlemidir.
-- Kodun yorumlanması için çözümlenmesine, yani, bu işin tersine **decoding** denir.
-- Hostlar arası kodlama ortama uygun olmalıdır.
-- Ağ üzerinden yollanan mesajlar bitlere dönüştürülür.
-- Bitler ışık, ses veya elektriksel darbe modeline dönüştürülür, hedef (destination) bunu çözümler.
+- Mesajın fiziksel ortamda iletilmesi için uygun hale getirilme işlemidir.
+- Encoding işleminin tersi **decoding**'tir, mesajın yorumlanması için çözümlenmesidir.
+- Hostlar arası kodlama ortama uygun olmalıdır. Bitler ışık, ses veya elektriksel darbe modeline dönüştürülür, hedef (destination) bunu decoding yardımıyla çözümler.
 
 ### 2- Formatting and Encapsulation:
 
-- Bir mesajın gönderilirken belli bir formatta ya da yapıda olması gerekmektedir.
-- Bu format mesajın türüne ve mesaj iletmek için kullanan kaynaklara bağlıdır.
+- Bir mesajın gönderilirken belli bir formatta ya da yapıda olması gerekmektedir. Bu format mesajın türüne ve mesaj iletmek için kullanan kaynaklara bağlıdır.
 
 *Data'nın içerisinde version, traffic class, flow control, payload lenght etc. olması bir formatlamdır.*
 
+*Foreshadowing: Encoding fiziksel katmana özgü bir durumken, encapsulation bütün katmanları kapsar.*
+
 ### 3- Message Size:
 
-- 500 MB'lık bir dosyayı istersek tek parça halinde gönderebiliriz, ancak iletim sırasında bir sorun sonucu yalnızca bir bit bile yanlış aktarılırsa bütün veri kullanılmaz olur. Bu ölçeklendirilebilir ve kullanışlı değildir. 
-- Datayı küçük parçalar halinde yollamak istersek bu parçaların doğru aktarılması için bir takım kontrol bilgileri gerekmektedir. Adres bilgisi burada devreye girer, bu adres bilgisi verinin kaçıncı dosya olduğunun çözümlenmesinde kullanılır.
+- 500 MB'lık bir dosyayı istersek tek parça halinde gönderebiliriz, ancak iletim sırasında bir sorun sonucu yalnızca bir bit bile yanlış aktarılırsa bütün veri kullanılmaz hale gelir. Bu ölçeklendirilebilir ve kullanışlı değildir. 
+- Datayı, küçük parçalar halinde yollamak istersek bu parçaların doğru aktarılması için bir takım kontrol bilgileri gerekmektedir. Adres bilgisi burada devreye girer, bu adres bilgisi verinin kaçıncı dosya olduğunun çözümlenmesinde kullanılır.
 
 ### 4- Message Timing:
 
 - Akış kontrolü iletim hızının yönetimini sağlar.
 - Ağdaki cihazların birbirinden yanıt almaması durumunda ne kadar bekleyeceklerini "connection timeout" yoluyla belirlenir.
-- **Flow control** dataların çarpışmamasını, yani **collision** oluşmaması sağlar.
-- Collision durumu ağda iletilerin çarpışmasdır.
+- **Flow control** dataların çarpışmamasını, yani **collision** durumunun oluşmasını engeller.
+- Collision durumu, ağda iletilerin çarpışmasdır. 
+
+*Foreshadowing: İletim sırasında ağ içerisinde +5V olarak iletilen bitlerin üst üst gelmesiyle collision oluşur.*
 
 ### 5- Message Delivery Options:
-- **Unicast:** Bir cihazın, tek bir cihazla iletişimdir. (One-to-One)
-- **Multidcast:** Bir cihazın birden çok cihaza yaptığı iletişimdir. Multicast MAC adresiyle çalışır, iletiyle ilgilnen cihazlar paketi alır. (One-to-Many)
-- **Broadcast:** Bir cihazın ağdaki her kullanıcıya iletim yapmasıdır.
+- **Unicast:** Tek bir kaynak cihazının, tek bir hedef cihazla doğrudan iletişim kurduğu bir iletişim türüdür. (One-to-One)
+- **Multidcast:** Bir cihazın birden fazla cihazla yaptığı iletişimdir. Multicast MAC adresiyle çalışır, iletiyle ilgilnen cihazlar paketi alır. (One-to-Many)
+- **Broadcast:** Bir cihazın ağdaki her cihaza iletim yapmasıdır. Broadcast IPv4'e özel bir iletim seçeneğidir. (One-to-All)
 
-*Anycast IPv6'ya özel bir iletim seçeneğidir*
+*Anycast IPv6'ya özel bir iletim seçeneğidir.*
 
 ***
 
@@ -84,7 +89,7 @@
 
 ### 1- Ağ İletişim Protokolleri: 
 
-İki ya da daha fazla cihazın bir veya birden çok ağ üzerinden iletişim kurmasını sağlarlar, bu protokollerden bazıları:
+Ağ İletişim Protokolleri, iki ya da daha fazla cihazın bir veya birden çok ağ üzerinden iletişim kurmasını sağlarlar, bu protokollerden bazıları şunları:
 
 - Ethernet: MAC'lerin kullanıldığı yerel iletişim protokolüdür. 
 
