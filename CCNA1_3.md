@@ -69,19 +69,19 @@
 
 ### 4- Message Timing:
 
-- Akış kontrolü iletim hızının yönetimini sağlar.
-- Ağdaki cihazların birbirinden yanıt almaması durumunda ne kadar bekleyeceklerini "connection timeout" yoluyla belirlenir.
-- **Flow control** dataların çarpışmamasını, yani **collision** durumunun oluşmasını engeller.
-- Collision durumu, ağda iletilerin çarpışmasdır. 
+- Akış kontrolü, iletim hızının yönetiminden sorumludur.
+- Connection Timeout, ağdaki cihazların birbirinden yanıt almaması durumunda cihazların ne kadar bekleyecekleri belirler.
+- **Flow control** dataların çarpışmaması durumunu İngilizcesiyle **collision** durumunun oluşmasını engeller.
+- Collision durumu, ağdaki iletilerin elektiriksel olarak üst üste binmesidir. 
 
 *Foreshadowing: İletim sırasında ağ içerisinde +5V olarak iletilen bitlerin üst üst gelmesiyle collision oluşur.*
 
 ### 5- Message Delivery Options:
-- **Unicast:** Tek bir kaynak cihazının, tek bir hedef cihazla doğrudan iletişim kurduğu bir iletişim türüdür. (One-to-One)
-- **Multidcast:** Bir cihazın birden fazla cihazla yaptığı iletişimdir. Multicast MAC adresiyle çalışır, iletiyle ilgilnen cihazlar paketi alır. (One-to-Many)
-- **Broadcast:** Bir cihazın ağdaki her cihaza iletim yapmasıdır. Broadcast IPv4'e özel bir iletim seçeneğidir. (One-to-All)
+- **Unicast:** Tek bir kaynak cihazının, tek bir hedef cihazla doğrudan iletişim kurduğu bir mesaj teslimat türüdür. (One-to-One)
+- **Multicast:** Bir cihazın birden fazla cihazla yaptığı iletişimdir. Multicast MAC adresiyle çalışır, iletiyle **ilgilenen** cihazlar paketi alır. (One-to-Many)
+- **Broadcast:** Bir cihazın ağdaki her cihaza teslimat yapmasıdır. Broadcast IPv4'e özel bir teslimat seçeneğidir. (One-to-All)
 
-*Anycast IPv6'ya özel bir iletim seçeneğidir.*
+*Foreshadowing: Anycast IPv6'ya özel bir teslimat seçeneğidir.*
 
 ***
 
@@ -89,34 +89,35 @@
 
 ### 1- Ağ İletişim Protokolleri: 
 
-Ağ İletişim Protokolleri, iki ya da daha fazla cihazın bir veya birden çok ağ üzerinden iletişim kurmasını sağlarlar, bu protokollerden bazıları şunları:
+Ağ İletişim Protokolleri, iki ya da daha fazla cihazın bir veya birden çok ağ üzerinden iletişim kurmasını sağlar, bu protokollerden bazıları şunlardır:
 
-- Ethernet: MAC'lerin kullanıldığı yerel iletişim protokolüdür. 
+- Ethernet: MAC'lerin kullanıldığı yerel iletişim protokolüdür. 802.3 IEEE protokolü ile temsil edilir.
 
-- IP: Global olarak mesajların iletilmesini sağlayan protokoldür. Adresleme işlemini IPv4 prtokolü tarafından yapılır.
+- IP (Internet Protocol): Global olarak mesajların iletilmesini sağlayan protokoldür. Adresleme işlemini IPv4 ya da IPv6 protokolü tarafından yapılır.
 
-- TCP: Ağda iletilen mesajların güvenli, eksiksiz, akış hızının kontrollü bir şekilde iletilmesini sağlayan protokoldür. Paket sırasını kontrol eder, oluşan hataları tespit eder ve sıkıntılı paketi tekrar ister. TCP **connection oriented** bir protokoldür. Bu sebepten dolayı eksiksiz iletimi sağlar.
+- TCP: Ağda iletilen mesajların güvenli, eksiksiz, akış hızının kontrollü bir şekilde iletilmesini sağlayan protokoldür. Paket sırasını kontrol eder, oluşan hataları tespit eder ve iletiminde sorun çıkan, hatalı paketi göndericiden tekrar ister. TCP **connection oriented** (bağlantı esaslı) bir protokoldür. Bu sebepten dolayı eksiksiz iletim sağlar.
 
+- UDP: UDP, TCP'nin aksine bağlantı gerektirmeyen, kaybolan paketleri geri istemeyen, hata toleransı olmayan, yani kaybolan paketin yok olduğu **connectionless** (bağlantısız) bir iletim protokolüdür. 
 
-- HTTP (Hyper Text Transfer Protocol): Web sayfalarının görüntülenmesinde kullanılan protokoldür. İçeriği ve biçimi tanımlar. Web sunucusu ile Web istemcisi arasında iletişimi sağlar. 
+- HTTP (Hyper Text Transfer Protocol): Web sayfalarının görüntülenmesinde kullanılan protokoldür. Web sayfalarının içeriğini ve biçimini tanımlar. Web sunucusu ile Web istemcisi arasında iletişimi sağlar. 
 
-### 2- Ağ güvenlik Protokolleri:
+### 2- Ağ Güvenlik Protokolleri:
 
-Ağ güvenlik protokolleri kimlik doğrulama (authentication), veri bütünlüğünün korunması (integrity) ve veri şifrelenmesini sağlamak için verileri güvenli hale getirme prokolleridir, bu protokollerden bazıları:
+Ağ güvenlik protokolleri kimlik doğrulama (authentication), veri bütünlüğünün korunması (integrity) ve veri şifrelenmesini (data encryption) sağlamak için verileri güvenli hale getirme protokolleridir, bu protokollerden bazıları:
 
-- SSH: Orta adam saldılarının mümkün olduğu internet ağı üzerinden mesajların güvenli ve şifreli geçmesini sağlayan, public key kullanan güvenlik protokolü. 
-- SSL: TSL'in çıkmasıyla kullanımı azalan, internet güvenlik protokolüdür. Genellikle bankacılık, transaction işlemlerinde kullanılan bir protokoldür. Client ile server asında, serverın sertifika yollması ile çalışır.
-- TSL: SSL'in gelişritilmiş halidir. Temel olarak SSL ile aynı özellikleri taşır.
+- SSH: Orta adam saldılarının (man-in-the-middle-attack) mümkün olduğu internet ağı üzerinden mesajların güvenli ve şifreli geçmesini sağlayan, bunu da public key kullanarak yapan güvenlik protokolüdür. 
+- SSL: TSL'in çıkmasıyla kullanımı azalan, internet güvenlik protokolüdür. Genellikle bankacılık, transaction işlemlerinde kullanılan bir protokoldür. Client ile server arasında, serverın **sertifika** yollaması ile çalışır.
+- TSL: SSL'in geliştirilmiş halidir. Temel olarak SSL ile aynı özellikleri taşır.
 
-*Google, HTTPS yani içerisinde SSL ya da TSL bulundurmayan siteleri "Güvenli değil." olarak adlanırmaktadır.*
+*Extra: Google, HTTPS yani içerisinde SSL ya da TSL bulundurmayan siteleri "Güvenli değil." olarak adlanırmaktadır.*
 
 ### 3- Yönlendirme Protokolleri:
 
-Yönlendiricilerin rota bilgilerini değiş tokuş etmesini, yol bilgilerinin karşılaştırılmasını ve ağ bağlantısı için en iyi yolun seçilmesini sağlayan protokollerdir. Bu protokollerin bazıları:
+Yönlendiricilerin, rota bilgilerini değiş tokuş etmesini, yol bilgilerinin karşılaştırılmasını ve ağ bağlantısı için en iyi yolun seçilmesini sağlayan protokollerdir. Bu protokollerin bazıları:
 
-- OSPF: Networkteki bütün routerların ve subnetlerin öğrenildiği protokoldür.
+- OSPF (Open Shortest Path First):
 
-- BGP: Autonomus Systemler'e bakılarak, en kısa yolun bulmaya çalışıldığı protokoldür
+- BGP: Autonomus Systemler'e bakılarak, en kısa yolun bulunmaya çalışıldığı protokoldür
 
 *BGP protokolünde bulunan kısa yolun, "En kısa yol bulunmuştur." garantisi yoktur. BGP nin bulduğu yolun geçtiği A.S. (Autonomus Systems), içerisinde yolu uzatan karmaşıklıkta olabilir.*
 
