@@ -231,7 +231,7 @@ POP3 ve IMAP: POP3 protokolü serverdan mail görüntüldeği anda malin çekili
 
 
 ![TCP/IP Diagram](./Diagrams/1_3_7.png)
-
+Ben beyza.
 
 
 
