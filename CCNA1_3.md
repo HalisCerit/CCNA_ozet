@@ -115,37 +115,52 @@ Ağ güvenlik protokolleri kimlik doğrulama (authentication), veri bütünlüğ
 
 Yönlendiricilerin, rota bilgilerini değiş tokuş etmesini, yol bilgilerinin karşılaştırılmasını ve ağ bağlantısı için en iyi yolun seçilmesini sağlayan protokollerdir. Bu protokollerin bazıları:
 
-- OSPF (Open Shortest Path First):
+- OSPF (Open Shortest Path First): Networkte farklı bölgelerde (area'larda) bulunan ve  komşu olan routerların, birbirlerine ağı öğrettiği protokoldür. Bu protokolü routerlar, komşusu olduğu, farklı bölgede bulunan,komşu routerın fiziksel olarak görmediği ancak kendisinin gördüğü  ağların bilgisini vererek **komuşusunun da ağı öğrenmesini** sağlayan ve bu sayede networkteki bütün routerların birbirlerinden haberdar olmasını sağlayan protokoldür.
 
-- BGP: Autonomus Systemler'e bakılarak, en kısa yolun bulunmaya çalışıldığı protokoldür
+- BGP (Border Gateway Protocol): Internet ağı içerisindeki Autonomus Systemler üzerinden bakılarak, ağ üzerindeki hedefe giden, en kısa yolun bulunmaya çalışıldığı protokoldür.
 
-*BGP protokolünde bulunan kısa yolun, "En kısa yol bulunmuştur." garantisi yoktur. BGP nin bulduğu yolun geçtiği A.S. (Autonomus Systems), içerisinde yolu uzatan karmaşıklıkta olabilir.*
+*BGP protokolünde bulunan kısa ağ yolu, "En kısa yol olacaktır." garantisi yoktur. BGP nin bulduğu yolun geçtiği A.S. (Autonomus Systems), içerisinde yolu uzatan, karmaşık bir ağ yapısına sahip olabilir.*
 
 ### 4- Servis Bulma Protokolleri: 
 
-Cihazların veya servislerin kolayca algılanması için kullanılır. Bazı servis bulma protokolleri:
+Cihazların veya servislerin kolayca algılanması için kullanılır. Bu protokollerin bazıları:
 
-- DHCP (Dynamic Host Configiration Protocol):  Cihazlara dinamik IP adresleri verir, bunun dışında subnet mask, default gateway.
+- DHCP (Dynamic Host Configiration Protocol):  Cihazlara dinamik IP adresleri, subnet maskeleri, default gateway numaraları verir. Elle teker teker girilmesi gerken ağ üzerindeki bu dinamik adresleri otontike eden protokoldür. Genelde ağ üzerinde bu işlemleri yapmak için bir DHCP sunucusu bulunur.
 
-- DNS (Domain Name Systems): IP adreslerini insanların okuyabileceği formata çevrir. 74.125.44.25'in yahoo.com olarak okunması DNS sayesinde gerçekleşir.
+*Foreshadowing: Evlerde bulunan ADSL modemin içerisinde DHCP server bulunur.*
+
+- DNS (Domain Name Systems): Internette bulunan statik IP adreslerini insanların okuyabileceği formata çevrir. 74.125.44.25'in yahoo.com olarak okunması DNS sayesinde gerçekleşir.
+
+*Foreshadowing: Dinamik IP'lerde ise DDNS (Dynamic Domain Name Systems) kullanılır.*
 
 ***
 
 ## Protokol Kümelerinin Evrimi
 
-- TCP/IP: Amerikan Savunma Bakanlığı tarafından geliştirilmiş en yaygın protokol paketidir. IETF tarafından geliştirilir korunur.
+- TCP/IP: Amerikan Savunma Bakanlığı tarafından geliştirilmiş en yaygın protokol paketidir. Günümüzde IETF tarafından geliştirilir ve korunur.
 
-- OSI (Open Systems Interconnection): Geliştiricisi ISO (International Organization for Standardization) ve ITU (International Telecommunication Union)'dır.
+
+  
+
+
+- OSI (Open Systems Interconnection): Geliştiricisi ISO (International Standardization Organization) ve ITU (International Telecommunication Union)'dır.
 
 - Apple Talk.
 
 - Nowell Network.
 
+
+| **Layer Name** 	|       TCP/IP 1980s      	|         ISO         	| Apple Talk 1985-95 	| Nowell Networks 1983 	|
+|:--------------:	|:-----------------------:	|:-------------------:	|:------------------:	|:--------------------:	|
+|   Application  	|    HTTP DNS DHCP FTP    	|   ACSE ROSE TRSE    	|         AFP        	|          NDS         	|
+|    Transport   	|         TCP UDP         	| TP0 TP1 TP2 TP3 TP4 	|  ATP AEP NBP RTMP  	|          SPX         	|
+|    Internet    	| IPv4 IPv6 ICMPv4 ICMPv6 	| CONP CMNS CLNP CLNS 	|        AARP        	|          IPX         	|
+| Network Access 	|    Ethernet ARP WLAN    	|  Ethernet ARP WLAN  	|  Ethernet ARP WLAN 	|   Ethernet ARP WLAN  	|
+
+
 *Apple sistemler yalnızca diğer Apple sistemlerle, Nowell sistemler ise yalnızca nowell sistemlerle haberleşebilmiştir.*
 
-**TCP/IP esnek yapısı sayesinde kazanmıştır.**
-
-## Şekil 1_3_2
+***Evrensel protokol mücadelesini TCP/IP esnek yapısı sayesinde kazanmıştır.***
 
 ***
 ## Standart Organizasyonları:
