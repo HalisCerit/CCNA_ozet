@@ -26,7 +26,10 @@
 *Router networkleri birbirine bağlayan  ağ cihazıdır, router uçları (interfaceleri) farklı ağlara bakar. Yani bir port 192.168.5 ağına bakıyorsa diğer port 192.168.6 ağına bakar.*
 *Switch ise son kullnıcıları ağa dahil eden  cihazdır.*
 
-## ŞEKİL 1_3_1
+![Diagram](./Diagrams/1_3_1.png)
+
+Bu şekilde **10 adet NIC** bulunmaktadır. 
+
 
 ***
 
@@ -139,10 +142,6 @@ Cihazların veya servislerin kolayca algılanması için kullanılır. Bu protok
 
 - TCP/IP: Amerikan Savunma Bakanlığı tarafından geliştirilmiş en yaygın protokol paketidir. Günümüzde IETF tarafından geliştirilir ve korunur.
 
-
-  
-
-
 - OSI (Open Systems Interconnection): Geliştiricisi ISO (International Standardization Organization) ve ITU (International Telecommunication Union)'dır.
 
 - Apple Talk.
@@ -164,30 +163,31 @@ Cihazların veya servislerin kolayca algılanması için kullanılır. Bu protok
 
 ***
 ## Standart Organizasyonları:
-Açık standartlar birlikte çalışma, rekabet ve yenilik teşvik eder.
+Açık standartların olması birlikte çalışma, rekabet ve yenilik teşvik eder.
 
-- Internet Society (ISOC): Internetin açık gelişimini ve evrimini destekler.
+- Internet Society (ISOC): İnternetin açık gelişimini ve evrimini destekler.
 
-- Internet Architecture Board (IAB): Standart yönetiminden sorumlulardır. İnternet mimarisnin bozulmasını engeller.
+- Internet Architecture Board (IAB): Standart yönetiminden sorumlulardır. İnternet mimarisnin korunmasını sağlarlar.
 
-- **Internet Engineerring Task Froce (IETF)**: Internet ve TCP/IP teknolojilerini geliştiren, bakımını yapan ve güncelleyen kurumdur. Çalışma gruplarında **RFC** denilen çalışma dökümanları üretilir.
+- **Internet Engineerring Task Froce (IETF)**: Internet ve TCP/IP protokollerini geliştiren, bu protokollerin bakımını yapan ve güncelleyen kurumdur. Çalışma gruplarında **RFC (Request for Comments)** denilen çalışma dökümanları üretilir.
 
 *Mesela HTTP'nin RFC dökümanı açılıp okunabilir, RFC'ler herkese açıktır.*
 
 - Internet Research Task Force (IRTF): Internetin geleceği ile çalışmalara odaklanırlar.
 
-TCP/IP'nin Çalışmasını Denetleyen Organizasyonlar:
+ ### TCP/IP'nin Çalışmasını Denetleyen Organizasyonlar:
 
 - ICANN: IP adresi tahsisi, domain adres yönetimi ve diğer bilgilerin atanmasını kontol ederler. Görevlerinin bir kısmını IANA'ya devretmiştir.
 
-- IANA: IP Adres dağtımı (74.89.162.4), domain names (www.google.com), TCP/UDP port numaraları dağıtımı **(HTTP:80, HTTPS:443, DNS:53)** yapar.
+- IANA: IP adreslerini, domain isimlerini  (www.google.com) ve TCP/UDP port numaralarının dağıtımını **(HTTP:80, HTTPS:443, DNS:53)** yapar.
 
 *www.ripe.net Avrupa'da ip dağıtımı yapmaktadır.*
 
-Şekil 1_3_3
+![TCP/IP Diagram](./Diagrams/1_3_3.png)
+
 ***
 ## Elektronik İletişim Standartları 
-- **IEEE (Institute of Electrical and Electronics Engineers):** Ağ oluşturma standartlarını belirler. Cihazlarda bulunan NIC'lerin üzerindeki benzersiz MAC adreslerinin dağıtımı yapar.
+- **IEEE (Institute of Electrical and Electronics Engineers):** Ağ oluşturma standartlarını belirler. Cihazlarda bulunan NIC'lerin üzerinde bulunan benzersiz MAC adreslerinin dağıtımı yapar.
 
 *IEEE 802.3: Ethernet protokolüdür. NIC'leri ve NIC'ler üzerinden haberleşmenin standartlaştırıldığı protokoldür.*
 
@@ -197,13 +197,22 @@ TCP/IP'nin Çalışmasını Denetleyen Organizasyonlar:
 
 - TIA (Telecommunication Industries Association): Radyo ekipmanları, hücresel kuleler, VoIP cihazları, uydu iletişimleri gibi cihazların protokollerini geliştirir.
 
-- ITU-T (International Telecommunications Union - Telecommunication Standardization Sector): Video sıkıştırma, IPTV (İnternet üzerinden televizyon yayını yapılması teknolojisi) ve dijital abone hattı **(DSL)** gibi iletim yöntemlerinde bant genişliği standartlarını tanımlar.
+- ⚠️ **ITU-T (International Telecommunications Union - Telecommunication Standardization Sector):** Video sıkıştırma, IPTV (İnternet üzerinden televizyon yayını yapılması teknolojisi) ve dijital abone hattı **(DSL)** gibi iletim yöntemlerinde bant genişliği standartlarını tanımlar.
 
 ***
 
 ## Referans Modeller
 
-Şekil 1_3_4
+|  Yukarıdan Aşağıya </br> Encapsulation 	|                                                                      	| Aşağıdan Yukarı </br> Decapsulation 	|
+|:--------------------------------:	|:--------------------------------------------------------------------:	|:-----------------------------:	|
+|             **Layer**            	|                     **PDU (Protocol Data Unit)**                     	|           **Layer**           	|
+|           7 Application          	|                                 Data                                 	|         7 Application         	|
+|          6 Presentation          	|                                 Data                                 	|         6 Presentation        	|
+|             5 Session            	|                                 Data                                 	|           5 Session           	|
+|            4 Transport           	|                         Segment Header + Data                        	|          4 Transport          	|
+|             3 Network            	|                 Packet Header + Segment Header + Data                	|           3 Network           	|
+|            2 Data Link           	| Frame Header + Packet Header + Segment Header + Data + Frame Trailer 	|          2 Data Link          	|
+|            1 Physical            	|       110110101010100101100101011111000110101010101101010101010      	|           1 Physical          	|
 
 *Paket bir cihazdan diğer cihaza giderken tüm katmanlardan geçer.*
 
