@@ -26,9 +26,17 @@
 *Router networkleri birbirine bağlayan  ağ cihazıdır, router uçları (interfaceleri) farklı ağlara bakar. Yani bir port 192.168.5 ağına bakıyorsa diğer port 192.168.6 ağına bakar.*
 *Switch ise son kullnıcıları ağa dahil eden  cihazdır.*
 
-![Diagram](./Diagrams/1_3_1.png)
+<img src="./Diagrams/1_3_1.png" alt="image" width="70%" height="70%">
 
-Bu şekilde **10 adet NIC** bulunmaktadır. 
+Bu şekilde **10 adet NIC** ve **8 adet ağ** bulunmaktadır. Bu ağlar:
+1- 1.5 & switch
+2- 1.6 & switch
+3- Switch & 1.1 portlu router 
+4- 2.1 portlu router & 2.2 portlu router
+5- 3.2 portlu router & 3.1 portlu router
+6- Switch & 4.1 portlu router
+7- 4.3 & switch
+8- 4.2 & switch
 
 
 ***
@@ -118,7 +126,7 @@ Ağ güvenlik protokolleri kimlik doğrulama (authentication), veri bütünlüğ
 
 Yönlendiricilerin, rota bilgilerini değiş tokuş etmesini, yol bilgilerinin karşılaştırılmasını ve ağ bağlantısı için en iyi yolun seçilmesini sağlayan protokollerdir. Bu protokollerin bazıları:
 
-- OSPF (Open Shortest Path First): Networkte farklı bölgelerde (area'larda) bulunan ve  komşu olan routerların, birbirlerine ağı öğrettiği protokoldür. Bu protokolü routerlar, komşusu olduğu, farklı bölgede bulunan,komşu routerın fiziksel olarak görmediği ancak kendisinin gördüğü  ağların bilgisini vererek **komuşusunun da ağı öğrenmesini** sağlayan ve bu sayede networkteki bütün routerların birbirlerinden haberdar olmasını sağlayan protokoldür.
+- OSPF (Open Shortest Path First): Networkte farklı bölgelerde (area'larda) bulunan ve  komşu olan routerların, birbirlerine ağı öğrettiği protokoldür. Bu protokolü routerlar, komşusu olduğu, farklı bölgede bulunan,komşu routerın fiziksel olarak görmediği ancak kendisinin gördüğü  ağların bilgisini vererek **komuşusunun da ağı öğrenmesini** sağlayan ve bu sayede networkteki bütün routerların birbirlerinden haberdar olduğu protokoldür.
 
 - BGP (Border Gateway Protocol): Internet ağı içerisindeki Autonomus Systemler üzerinden bakılarak, ağ üzerindeki hedefe giden, en kısa yolun bulunmaya çalışıldığı protokoldür.
 
@@ -171,7 +179,7 @@ Açık standartların olması birlikte çalışma, rekabet ve yenilik teşvik ed
 
 - **Internet Engineerring Task Froce (IETF)**: Internet ve TCP/IP protokollerini geliştiren, bu protokollerin bakımını yapan ve güncelleyen kurumdur. Çalışma gruplarında **RFC (Request for Comments)** denilen çalışma dökümanları üretilir.
 
-*Mesela HTTP'nin RFC dökümanı açılıp okunabilir, RFC'ler herkese açıktır.*
+*HTTP'nin RFC dökümanı açılıp okunabilir, RFC'ler herkese açıktır.*
 
 - Internet Research Task Force (IRTF): Internetin geleceği ile çalışmalara odaklanırlar.
 
@@ -183,11 +191,11 @@ Açık standartların olması birlikte çalışma, rekabet ve yenilik teşvik ed
 
 *www.ripe.net Avrupa'da ip dağıtımı yapmaktadır.*
 
-![TCP/IP Diagram](./Diagrams/1_3_3.png)
+<img src="./Diagrams/1_3_3.png" alt="image" width="70%" height="70%">
 
 ***
 ## Elektronik İletişim Standartları 
-- **IEEE (Institute of Electrical and Electronics Engineers):** Ağ oluşturma standartlarını belirler. Cihazlarda bulunan NIC'lerin üzerinde bulunan benzersiz MAC adreslerinin dağıtımı yapar.
+- **⚠️ IEEE (Institute of Electrical and Electronics Engineers):** Ağ oluşturma standartlarını belirler. Cihazlarda bulunan NIC'lerin üzerinde bulunan benzersiz MAC adreslerinin dağıtımı yapar.
 
 *IEEE 802.3: Ethernet protokolüdür. NIC'leri ve NIC'ler üzerinden haberleşmenin standartlaştırıldığı protokoldür.*
 
@@ -201,7 +209,8 @@ Açık standartların olması birlikte çalışma, rekabet ve yenilik teşvik ed
 
 ***
 
-## Referans Modeller
+## Referans Modelleri
+### ⚠️OSI Referans Modeli:
 
 |  Yukarıdan Aşağıya </br> Encapsulation 	|                                                                      	| Aşağıdan Yukarı </br> Decapsulation 	|
 |:--------------------------------:	|:--------------------------------------------------------------------:	|:-----------------------------:	|
@@ -214,34 +223,50 @@ Açık standartların olması birlikte çalışma, rekabet ve yenilik teşvik ed
 |            2 Data Link           	| Frame Header + Packet Header + Segment Header + Data + Frame Trailer 	|          2 Data Link          	|
 |            1 Physical            	|       110110101010100101100101011111000110101010101101010101010      	|           1 Physical          	|
 
-*Paket bir cihazdan diğer cihaza giderken tüm katmanlardan geçer.*
 
-![TCP/IP Diagram](./Diagrams/1_3_5.png)
+- OSI modeli "All People Seems To Need Data Processing" olarak şifrelenebilir.
+- Paket bir cihazdan diğer cihaza giderken tüm katmanlardan geçer.
+- OSI modeli kısaca şu şekilde özeltlenebilir:
 
-*OSI modeli "All People Seems To Need Data Processing" olarak şifrelenebilir.*
+7-Application: Son kullanıcı katmanıdır, kullanıcı ara yüzleri bu katmanda oluşturulur. Uygulamaların ağ üzerinden çalışması sağlanır.
+6-Presentation: Verilerin formatının ve yapısının belirlendiği katmandır. Gönderilen verilerin anlaşılabilmesini bu katman sağlar.
+5-Session: Uygulamalar arası bağlantının kurulması, yönetilmesi ve sonlandırılmasını yönetir.
+4-Transport: Üst katmandan gelen "data"nın segmentlere bölünerek alt katmanlara iletiminden ya da alt katmandan gelen segmentelere ayrılmış datanın birleştirilmesinden sorumludur. Alt ve üst katmanlar arasındaki mantıksal geçişten sorumludur.
+3-Network: Segmentlere adres bilgisinin eklendiği katmandır. Verilerin takip edeceği yol belirlenir.
+2-Data Link: Fiziksel katmanla iletişimin kurulmasını sağlar. Akış kontrolünü ve pakette oluşacak hata durumunda bozulan paketlerin erkenden, yani yukarı katmana çıkmadan kontrolünü sağlar.
+1-Physical: Donanım katmanıdır. 1 ve 0 bitlerinin iletilmesini kontrol edilidği katmandır.
 
-## TCP/IP'de bulunan bazı application katmanı protokollerinin özellikleri:
 
-HTTP/HTTPS: Hyper Text Transfer Protocol network üzerinden Web sayfasını görüntülemeye yarar. Port: 80'i kullanır. HTTP Secure ise SSL ya da TSL protokolü ile şifrelenmiş versiyondur. HTTPS port olarak 443'ü kullanırken HTTP port 80'i kullanır.
 
-FTP (File Transfer Protocol): Clientlarla sunucular arasında kullanılan bir dosya aktarma protokülüdür. İndirme, yükleme, paylaşım, depolama gibi işlemleri denetler. Port: 21'de çalışır. TCP kullanır, connection oriented'tir.
+<img src="./Diagrams/1_3_5.png" alt="image" width="90%" height="90%">
 
-SFTP (Secure FTP): FTP'de doğrulama ve şifreleme olmamasından dolayı kaynaklanan güvenlik sorununu gideren protokoldür. TCP kullanır, connection oriented'tir.
+***
 
-TFTP (Trivial File Transfer Protocol): Basit, hızlı ancak düşük güvenlikli dosya transferi protokolüdür. FTP ya da SFTP'nin aksine dı ağda kullanılnaz . FTP'den farkı TFTP'nin basit olmasıdır. Güvensiz olmasının sebebi FTP gibi authentication ve bütünlük koruma özelliklerinin olmamasıdır.SFTP ve FTP aksine TCP yerine UDP protokolü üzerinden çalışır ve Port: 69'u kullanır.  Cisco switch ve ya router cihazlarında ön yükleme ya da "TFTP Boot" bu protokolle gerçekleştirilebilir, zaten genelde de bu işlemden dolayı kullanılır.
+### TCP/IP katmanında bulunan bazı application protokollerinin özellikleri:
 
-SMTP (Simple Mail Transfer Protokol): Sending message to people olarak akılda kalması için kodlanabilir. SMTP, mail server'ına mail gönderme işleminde kullanılann protokoldür. Mail server'ına SMTP server'ı da denir. TCP protokolü kullanarak mesajların iletilmesi gerçekleştirilir. Mesajın server'dan çekilmesini ise POP3 ya da IMAP protokolü gerekleştirir. Port numarası **25**, 465, 587, ve 2525'dir.
+- HTTP/HTTPS: Hyper Text Transfer Protocol network üzerinden Web sayfalarının görüntülenmesinde kullanılır. Port: 80'i kullanır. HTTP Secure ise SSL ya da TSL protokolü ile şifrelenmiş versiyondur. HTTPS port olarak 443'ü kullanır.
 
-POP3 ve IMAP: POP3 protokolü serverdan mail görüntüldeği anda malin çekilip ardından silnmesiyle çalışır. Tek cihaz serverdan maile ulaşır. Ek ayarlardan bu düzenleneblir. IMAP ise serverdan görüntülemeye izin veren cihazların senkronize çalıştğı bir mail indirme protokoldür.
+- FTP (File Transfer Protocol): Clientlarla sunucular arasında kullanılan bir dosya aktarma protokülüdür. İndirme, yükleme, dosya paylaşımı, depolama gibi işlemleri denetler. Port: 21'de çalışır. TCP kullanır, connection oriented'tir.
 
+- SFTP (Secure FTP): FTP'de doğrulama ve şifreleme olmamasından dolayı kaynaklanan güvenlik sorununu gideren protokoldür. TCP kullanır, connection oriented'tir.
+
+- TFTP (Trivial File Transfer Protocol): Basit, hızlı ancak düşük güvenlikli dosya transferi protokolüdür. FTP ya da SFTP'nin aksine dış ağlarda kullanılnaz. FTP'den farkı TFTP'nin basit olmasıdır. Güvensiz olmasının sebebi SFTP gibi authentication ve bütünlük koruma özelliklerinin olmamasıdır. Ayrıca SFTP ve FTP'nin aksine TCP yerine UDP protokolü üzerinden çalışır. Port: 69'u kullanır.  Cisco switch ve ya router cihazlarında ön yükleme ya da "TFTP Boot" bu protokolle gerçekleştirilir, zaten genelde de bu işlemden dolayı kullanılır.
+
+- SMTP (Simple Mail Transfer Protokol): Sending message to people olarak akılda kalması için kodlanabilir. SMTP, mail server'ına mail gönderme işleminde kullanılann protokoldür. Mail server'ına SMTP server'ı da denir. TCP protokolü kullanarak mesajların iletilmesi gerçekleştirilir. Mesajın server'dan çekilmesini ise POP3 ya da IMAP protokolü gerekleştirir. Port numarası **25**, 465, 587, ve 2525'dir.
+
+- POP3 ve IMAP: POP3 protokolü serverdan mail görüntüldeği anda mailin çekilip ardından silinmesiyle çalışır,bu sayede yalnızca tek cihaz serverdan maile ulaşır, ancak ek ayarlardan bu düzenleneblir. IMAP ise serverdan görüntülemeye izin veren cihazların senkronize çalıştğı bir mail indirme protokoldür.
+
+***
 
 ![TCP/IP Diagram2](./Diagrams/1_3_6.png)
 
+***
 
 
-![TCP/IP Diagram](./Diagrams/1_3_7.png)
+<img src="./Diagrams/1_3_7.png" alt="image" width="90%" height="90%">
 
 
+***
 
 
 
