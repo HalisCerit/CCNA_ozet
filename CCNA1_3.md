@@ -219,15 +219,16 @@ Açık standartların olması birlikte çalışma, rekabet ve yenilik teşvik ed
 |           7 Application          	|                                 Data                                 	|         7 Application         	|
 |          6 Presentation          	|                                 Data                                 	|         6 Presentation        	|
 |             5 Session            	|                                 Data                                 	|           5 Session           	|
-|            4 Transport           	|                         Segment Header + Data                        	|          4 Transport          	|
-|             3 Network            	|                 Packet Header + Segment Header + Data                	|           3 Network           	|
-|            2 Data Link           	| Frame Header + Packet Header + Segment Header + Data + Frame Trailer 	|          2 Data Link          	|
+|            4 Transport          	|                      (Segment)    Segment Header + Data                        	|          4 Transport          	|
+|             3 Network           	|               (Packet)   Packet Header + Segment Header + Data                	|           3 Network           	|
+|            2 Data Link         	|  (Frame) Frame Header + Packet Header + Segment Header + Data + Frame Trailer 	|          2 Data Link          	|
 |            1 Physical            	|       110110101010100101100101011111000110101010101101010101010      	|           1 Physical          	|
 
 
 - OSI modeli "All People Seems To Need Data Processing" olarak şifrelenebilir.
 - Paket bir cihazdan diğer cihaza giderken tüm katmanlardan geçer.
-- OSI modeli kısaca şu şekilde özeltlenebilir:
+ 
+OSI modeli kısaca şu şekilde özeltlenebilir:
 
 7-Application: Son kullanıcı katmanıdır, kullanıcı ara yüzleri bu katmanda oluşturulur. Uygulamaların ağ üzerinden çalışması sağlanır.
 6-Presentation: Verilerin formatının ve yapısının belirlendiği katmandır. Gönderilen verilerin anlaşılabilmesini bu katman sağlar.
@@ -237,9 +238,7 @@ Açık standartların olması birlikte çalışma, rekabet ve yenilik teşvik ed
 2-Data Link: İç networkte datanın taşınmasını sağlayan katmandır. Fiziksel katmanla iletişimin kurulmasını sağlar. Akış kontrolünü ve pakette oluşacak hata durumunda bozulan paketlerin erkenden, yani yukarı katmana çıkmadan kontrolünü sağlar.
 1-Physical: Donanım katmanıdır. 1 ve 0 bitlerinin iletilmesini kontrol edilidği katmandır.
 
-
-
-<img src="./Diagrams/1_3_5.png" alt="image" width="90%" height="90%">
+<img src="./Diagrams/1_3_5.png" alt="image" width="70%" height="70%">
 
 ***
 
@@ -265,13 +264,12 @@ Data network üzerinden tek parça halinde iletilmez, küçük parçalara ayrıl
 - Data Link katmanında ise packetin ön ve arka kısmına ethernet header ve trailerın eklenmesiyle **frame** oluşturulmuş olur.
 ***
 
-<img src="./Diagrams/1_3_7.png" alt="image" width="80%" height="80%">
+<img src="./Diagrams/1_3_7.png" alt="image" width="70%" height="70%">
 
-Paket bir cihazdan diğer cihaza giderken tüm katmanlardan geçer demiştik, peki bu durum nasıl gerçekleşir? 
+### Paket bir cihazdan diğer cihaza giderken tüm katmanlardan geçer demiştik, peki bu durum nasıl gerçekleşir? 
 
-Örneğin Youtube'da kullanılan bir data, application, presentation ve session katmanlarından geçerek transport katmanına ulaşır. Ardından segment sırasıyla packete dönüşerek Network katmanına, frame'e dönüşerek data link katmanına, ve bitlere dönüşerekek physical katmana ulaşır.
-
-İç ağda cihazların MAC adresleri ile iletişim kurduklarını söylemiştik. Bu durumda, yani iç ağ cihazlarında yönlendirme MAC adresi ile yapıldığından ağdan çıkmak için ulaşmamız gereken son yerel adres router MAC'i dir. Bu yüzden wireshark'da dinlediğimiz google.com'a, yahoo.com'a ya da cisco.com'a giden tüm paketlerin MAC adresinde aynı MAC adresi yazar.
+Örneğin Youtube'da kullanılan bir data, application, presentation ve session katmanlarından geçerek transport katmanına ulaşır. Ardından Trasnsport katmanında segment'e dönüşen data, sırasıyla,Network katmanında packete, data link katmanında frame'e, Physical katmanda ise ve bitlere dönüştürülür.
+İç ağda cihazların MAC adresleri ile iletişim kurduklarını söylemiştik. Bu durumda, yani iç ağ cihazlarında yönlendirme MAC adresi ile yapıldığından ağdan çıkmak için ulaşmamız gereken son yerel adres router MAC'i dir. Bu yüzden wireshark'da dinlediğimiz google.com'a, yahoo.com'a ya da cisco.com'a giden tüm paketlerin MAC adresinde aynı MAC adresi, yani router cihazın MAC adresi yazar.
 
     Review the captured data in Wireshark, examine the IP and MAC addresses of the three locations that you pinged. List the destination IP and MAC addresses for all three locations in the space provided.
     Answers:
@@ -280,14 +278,37 @@ Paket bir cihazdan diğer cihaza giderken tüm katmanlardan geçer demiştik, pe
     google: Ip: 142.250.203.196 MAC: 00 18 b9 b1 4f 
 
 
-**Verinin router'a gelmesiyle network katmanına kadar çıkılmış olunur, önce hedef IP güncellenir, yani gidilecek servera bağlı olan router'ın IP'si yazılır. Ardından Data Link katmanında ISP networkündeki local ağda bulunan bir sonraki cihazının MAC aderesi yazılır.**
+Verinin router'a gelmesiyle network katmanına kadar çıkılmış olunur, önce hedef IP güncellenir, yani gidilecek servera bağlı olan router'ın IP'si yazılır. Ardından Data Link katmanında ISP networkündeki local ağda bulunan bir sonraki cihazının MAC aderesi yazılır.
+***
+### Kısaca TCP/IP Protokol Paketleri
+
+|                                             TCP/IP                                             	|                                                            Name of Protocols                                                           	|
+|:----------------------------------------------------------------------------------------------:	|:--------------------------------------------------------------------------------------------------------------------------------------:	|
+| Application Layer: <br>Kullanıcı verilerinin kodlanmasını,<br> denetiminin yapılmasını sağlar. 	| DNS: İsim Çözümlenesi<br> SLAAC/DHCPv4: IP adresleme<br> STMP/POP/IMAP: E-mail<br> FTP/SFTP/TFTP: File Transfer<br>HTTP/HTTPS/REST: Web 	|
+|        Transport Layer:<br>Farklı ağlar arasındaki <br>cihazların iletişimini destekler.       	|                                             TCP: Connection Oriented<br>UDP: Connectionless                                            	|
+|                         Internet Layer:<br>Ağdaki en iyi yolu belirler.                        	|                  IPv4/IPv6/NAT: Internet Protokolleri<br>ICMPv4/ICMPv6: Mesajlaşma<br>OSPF/EIGRP/BGP: Router Protocols                 	|
+|   Network Access Layer:<br>Ağı oluşturan donanım <br>aygıtlarını ve medyayı<br> kontrol eder.  	|                                       ARP: Adres Resolution<br>Ethernet/WLAN: Data Link Protocols                                      	|
 
 
 
 ***
+### PDU (Protocol Data Unit): 
+Data'nın bulunduğu katmanda aldığı isime PDU denir. 4. katman için segment 3. katman için frame ve 2. katman içn frame denmesi gibi.
+- Datagram Transport katmanında görülür eklenti kısmı 8 bytedır. Datanın UDP başlığı alması durumunda oluşur.
+- Segment  Transport katmanında görülür eklenti kısmı 20 bytedır. Datanın TCP başlığı alması sonucu oluşur.
+- Packet Network katmanında görülür eklenti kısmı 20 bytedır. IP bilgileri taşınır.
+- Frame Data Link katmanında görülür eklenti kısmının başı 18 bytedır. Ethernet bilgileri taşınır. Kuyruğunda CRC adında kontrol kısmı bulunur.
 
 
+***
+### **Sınava Özel Notlar:**
 
+- MAC adresleri aynı ağda iletişim yaparken kullanılır.
+- IP adresleri farklı ağlar arasında iletişim yaparken kullanılır.
+- Source IP adresiyle destination IP adresleri değişmez.
+- Günümüzde IP adresleri yetersiz olduğundan NAT yapılır. 
+- Switchlerin IP yazılımı yoktur.
+- Default Gateway (DGW) farklı networklere çıkışı sağlayan routerın IP adresidir.
 
 
 
