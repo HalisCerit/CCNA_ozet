@@ -24,7 +24,8 @@
 
 ### Hatırlatma:
 *Router networkleri birbirine bağlayan  ağ cihazıdır, router uçları (interfaceleri) farklı ağlara bakar. Yani bir port 192.168.5 ağına bakıyorsa diğer port 192.168.6 ağına bakar.*
-*Switch ise son kullnıcıları ağa dahil eden  cihazdır.*
+
+*Switch ise son kullnıcıları ağa dahil eden cihazdır. NIC'leri bulunmaz, bu sebepten MAC'leri de yoktur.*
 
 <img src="./Diagrams/1_3_1.png" alt="image" width="70%" height="70%">
 
@@ -195,13 +196,13 @@ Açık standartların olması birlikte çalışma, rekabet ve yenilik teşvik ed
 
 ***
 ## Elektronik İletişim Standartları 
-- **⚠️ IEEE (Institute of Electrical and Electronics Engineers):** Ağ oluşturma standartlarını belirler. Cihazlarda bulunan NIC'lerin üzerinde bulunan benzersiz MAC adreslerinin dağıtımı yapar.
+- **⚠️ IEEE (Institute of Electrical and Electronics Engineers):** Ağ oluşturma standartlarını belirler. Cihazlarda bulunan NIC'lerin üzerindeki MAC adreslerinin dağıtımı yapar.
 
 *IEEE 802.3: Ethernet protokolüdür. NIC'leri ve NIC'ler üzerinden haberleşmenin standartlaştırıldığı protokoldür.*
 
 *IEEE 802.11: Wireless LAN protokolüdür.*
 
-- EIA (Electronic Industries Alliance): UTP kabloları başta olmak üzere, kabloların ve bağlantı cihazlarının standartlarını belirler.
+- EIA (Electronic Industries Alliance): **UTP kabloları** başta olmak üzere, kabloların ve bağlantı cihazlarının standartlarını belirler.
 
 - TIA (Telecommunication Industries Association): Radyo ekipmanları, hücresel kuleler, VoIP cihazları, uydu iletişimleri gibi cihazların protokollerini geliştirir.
 
@@ -214,7 +215,7 @@ Açık standartların olması birlikte çalışma, rekabet ve yenilik teşvik ed
 
 |  Yukarıdan Aşağıya </br> Encapsulation 	|                                                                      	| Aşağıdan Yukarı </br> Decapsulation 	|
 |:--------------------------------:	|:--------------------------------------------------------------------:	|:-----------------------------:	|
-|             **Layer**            	|                     **PDU (Protocol Data Unit)**                     	|           **Layer**           	|
+|             **Layer**            	|                     **Data Capsulation/Decapsulation**                     	|           **Layer**           	|
 |           7 Application          	|                                 Data                                 	|         7 Application         	|
 |          6 Presentation          	|                                 Data                                 	|         6 Presentation        	|
 |             5 Session            	|                                 Data                                 	|           5 Session           	|
@@ -232,8 +233,8 @@ Açık standartların olması birlikte çalışma, rekabet ve yenilik teşvik ed
 6-Presentation: Verilerin formatının ve yapısının belirlendiği katmandır. Gönderilen verilerin anlaşılabilmesini bu katman sağlar.
 5-Session: Uygulamalar arası bağlantının kurulması, yönetilmesi ve sonlandırılmasını yönetir.
 4-Transport: Üst katmandan gelen "data"nın segmentlere bölünerek alt katmanlara iletiminden ya da alt katmandan gelen segmentelere ayrılmış datanın birleştirilmesinden sorumludur. Alt ve üst katmanlar arasındaki mantıksal geçişten sorumludur.
-3-Network: Segmentlere adres bilgisinin eklendiği katmandır. Verilerin takip edeceği yol belirlenir.
-2-Data Link: Fiziksel katmanla iletişimin kurulmasını sağlar. Akış kontrolünü ve pakette oluşacak hata durumunda bozulan paketlerin erkenden, yani yukarı katmana çıkmadan kontrolünü sağlar.
+3-Network: Ağlar arasında iletişimin sağlandığı katmandır. Segmentlere adres bilgisinin eklendiği katmandır. Verilerin takip edeceği yol belirlenir.
+2-Data Link: İç networkte datanın taşınmasını sağlayan katmandır. Fiziksel katmanla iletişimin kurulmasını sağlar. Akış kontrolünü ve pakette oluşacak hata durumunda bozulan paketlerin erkenden, yani yukarı katmana çıkmadan kontrolünü sağlar.
 1-Physical: Donanım katmanıdır. 1 ve 0 bitlerinin iletilmesini kontrol edilidği katmandır.
 
 
@@ -254,19 +255,37 @@ Açık standartların olması birlikte çalışma, rekabet ve yenilik teşvik ed
 
 - SMTP (Simple Mail Transfer Protokol): Sending message to people olarak akılda kalması için kodlanabilir. SMTP, mail server'ına mail gönderme işleminde kullanılann protokoldür. Mail server'ına SMTP server'ı da denir. TCP protokolü kullanarak mesajların iletilmesi gerçekleştirilir. Mesajın server'dan çekilmesini ise POP3 ya da IMAP protokolü gerekleştirir. Port numarası **25**, 465, 587, ve 2525'dir.
 
-- POP3 ve IMAP: POP3 protokolü serverdan mail görüntüldeği anda mailin çekilip ardından silinmesiyle çalışır,bu sayede yalnızca tek cihaz serverdan maile ulaşır, ancak ek ayarlardan bu düzenleneblir. IMAP ise serverdan görüntülemeye izin veren cihazların senkronize çalıştğı bir mail indirme protokoldür.
+- POP3 ve IMAP: POP3 protokolü serverdan mailin görüntülenmesiyle  mailin serverdan çekilip ardından silinmesiyle çalışır,bu sayede yalnızca tek cihaz serverdan maile ulaşır, ancak ek ayarlardan bu düzenleneblir. IMAP ise serverdan görüntülemeye izin veren cihazların senkronize çalıştğı bir mail indirme protokoldür.
+
+***
+### Segmentation (Bölümleme): 
+Data network üzerinden tek parça halinde iletilmez, küçük parçalara ayrılır. Bu ayırma işlemine **segmentasyon** denir.
+- Transport katmanında data, dataya eklenecek header kısmında TCP kullanılacaksa **segment**'e, UDP kullanılacaksa **datagram**'a dönüşür.
+- Network katmanında segmentin ya da datagramın başına IP başlığı eklenerek **packet** oluşturulur.
+- Data Link katmanında ise packetin ön ve arka kısmına ethernet header ve trailerın eklenmesiyle **frame** oluşturulmuş olur.
+***
+
+<img src="./Diagrams/1_3_7.png" alt="image" width="80%" height="80%">
+
+Paket bir cihazdan diğer cihaza giderken tüm katmanlardan geçer demiştik, peki bu durum nasıl gerçekleşir? 
+
+Örneğin Youtube'da kullanılan bir data, application, presentation ve session katmanlarından geçerek transport katmanına ulaşır. Ardından segment sırasıyla packete dönüşerek Network katmanına, frame'e dönüşerek data link katmanına, ve bitlere dönüşerekek physical katmana ulaşır.
+
+İç ağda cihazların MAC adresleri ile iletişim kurduklarını söylemiştik. Bu durumda, yani iç ağ cihazlarında yönlendirme MAC adresi ile yapıldığından ağdan çıkmak için ulaşmamız gereken son yerel adres router MAC'i dir. Bu yüzden wireshark'da dinlediğimiz google.com'a, yahoo.com'a ya da cisco.com'a giden tüm paketlerin MAC adresinde aynı MAC adresi yazar.
+
+    Review the captured data in Wireshark, examine the IP and MAC addresses of the three locations that you pinged. List the destination IP and MAC addresses for all three locations in the space provided.
+    Answers:
+    yahoo:  IP: 87.248.100.216  MAC: 00 18 b9 b1 4f 
+    cisco:  IP: 23.0.88.25      MAC: 00 18 b9 b1 4f 
+    google: Ip: 142.250.203.196 MAC: 00 18 b9 b1 4f 
+
+
+**Verinin router'a gelmesiyle network katmanına kadar çıkılmış olunur, önce hedef IP güncellenir, yani gidilecek servera bağlı olan router'ın IP'si yazılır. Ardından Data Link katmanında ISP networkündeki local ağda bulunan bir sonraki cihazının MAC aderesi yazılır.**
+
+
 
 ***
 
-![TCP/IP Diagram2](./Diagrams/1_3_6.png)
-
-***
-
-
-<img src="./Diagrams/1_3_7.png" alt="image" width="90%" height="90%">
-
-
-***
 
 
 
