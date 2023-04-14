@@ -1,26 +1,25 @@
-## **1-GEÇMİŞTEN GÜNÜMÜZE İNTERNET**
+## 1-GEÇMİŞTEN GÜNÜMÜZE İNTERNET
 |“Fixed” Computing   |Bring Your Own Device   |Internet Of Things   |Internet Of Everything   |
 |---|---|---|---|
-|Eskiden cihazlara kullanıcının fiziksel olarak gitmesi gerekirdi.”Sabit” bilgisayarlar vardı.   |Cihazların, kullanıcının yanında kolayca taşınabilir hale gelmesidir. Şirketlerde ve kurumsal ofislerde kişisel cihazların kullanılması teknolojisidir. <br />**-Güvenlik riskleri artmıştır.** <br />**-Ağ yöneticilerine yeni yük binmiştir** </span>|Age of devices olarak bilinen teknolojik gelişmedir. Fiziksel objelerin, toplu olarak ve internet yoluyla iletişimini gerçekleştirme teknolojisidir.	   |İnsanların, işlemlerin, dataların ve cisimlerin dâhil olduğu birçok nesnenin internet aracılıyla iletişim kurması teknolojisi.   |
+|Eskiden cihazlara kullanıcının fiziksel olarak gitmesi gerekirdi.”Sabit” bilgisayarlar vardı.   |Cihazların kolayca taşınabilir hale gelmesidir. Şirketlerde ve kurumsal ofislerde kişisel cihazların kullanılması trendidir. <br />**-Güvenlik risklerini artmıştır.** <br />**-Ağ yöneticilerine yeni yük binmiştir** </span>|Age of devices olarak bilinen teknolojik gelişmedir. Fiziksel objelerin, toplu olarak ve internet yoluyla iletişimini gerçekleştirme teknolojisidir.	   |İnsanların, işlemlerin, verilerin ve cisimlerin gibi birçok  nesnenin dâhil olduğu internet aracılıyla iletişim kurması teknolojisidir.   |
 
-### **İnternetin Temel Gelişim Aşamaları**
+### İnternetin Temel Gelişim Aşamaları
+- HTTP (Hypertext-Transport-Protocol) Dönemi: Statik text bazlı sitelerin olduğu dönem olarak tarif edilir.
+-  WEB 2.0 Dönemi: Interaktif, dinamik Web sitelerinin yaygın olmasıyla oratya çıkan dönemdir.
+-  IoT (Internet of Things) Dönemi: Yalnızca insanlarla değil birbirliyle konuşan cihazların oluşturduğu (Machine-to-Machine, M2M), insan kaynağına gerek duymayan otomasyonla çalışan sistemlerin olacağı dönemdir.
 
-- [HTTP](C:\Users\Halis\Desktop\CCNA_Ozet\Images\httpweb.jpg "Title") (Hypertext-Transport-Protocol): Statik text bazlı sitelerin olduğu dönem olarak tarif edilir.
--  WEB 2.0: Interaktif, dinamik Web sitelerinin yaygın olmasıyla oratya çıkan dönemdir.
--  IoT (Internet of Things): Yalnızca insanlarla değil birbirliyle konuşan cihazların oluşturduğu (Machine-to-Machine, M2M), insan kaynağına gerek duymayan otomasyonla çalışan sistemlerin olacağı dönemdir.
-
-### **Local Area Networks-LAN (Yerel Alan Ağları)**
+### Local Area Networks-LAN (Yerel Alan Ağları)
 -	İki ya da daha fazla cihazın haberleştiği ortama **Network** denir.
 ##### *Foreshadowing: Aynı tip cihazlar cross-over kablolama ile bağlanır.*
 - 	Aynı coğrafyada/bölgede bulunan ağlara **LAN** adı verilir, "Same location" olarak ifade edilir.
-### **Çeşitli Boyutlu Ağlar:**
+### Çeşitli Boyutlu Ağlar:
 - SOHO (Small Home Office) ağları
 - Şirket ağları
 - Global ağlar
 
 ***
 
-### **Ağ Bileşenleri: Client-Server İlişkisi | Host Kavramı | Intermediary Devices | Network Media**
+### Ağ Bileşenleri: Client-Server İlişkisi | Host Kavramı | Intermediary Devices | Network Media
 
 - 	Ağda bulunan bütün son kullanıcı cihazları **host** ya da **end devices** olarak ifade edilir. Pcler, ağa bağlı yazıcılar, VOIP’ler, telefonlar vb. gibi ip üzerinden haberleşme yapan end device'lar **NIC (Network Interface Card)** ile networke bağlanırlar. NIC’in diğer bir adı da **Ethernet Card**’dır.
 
@@ -34,7 +33,7 @@
 
 *Ancak Peer-to-Peer sorumluluk almaktır:*<br />*+: Kolaydır, az karmaşıktır, az maliyetlidir ve basit görevler için kullanışlıdır.*<br />*-:Merkezi yönetimi yoktur, güvenli ve ölçeklenebilir değildir ve performans düşüklüğü yaratır.*<br />*Serverların 7/24 açık olması ve cevap verebilir olması beklenir.*
 
-- Switch, Router, Wireless Router, ve Firewall etc. gibi ağ cihazlarına **intermediary devices** denir. Temelinde 2  cihaz vardır, bunlar router ve switch'tir.
+- Switch, Router, Wireless Router, ve Firewall etc. gibi ağ cihazlarına **intermediary devices** (ara cihazlar) denir. Temelinde 2 intermediary cihaz vardır, bunlar router ve switch'tir.
 
 -  **Switch:** Hostları **kablolu** şekilde yerel (local) networke dahil eden cihazdır. Kablosuz cihazlar ise önce **Access Point** adlı cihaza kablosuz şekilde hava aracılığıyla bağlanır, bağlantıdan sonra access point bu bağlantıyı switche kablolu şekilde aktarır.
 
@@ -44,7 +43,7 @@
 
 *Foreshadowing: BGP protokolü ağ hattında kısa yolu bulmaya yarayan protokoldür.*
 
-NIC'in neredeyse her host cihazında olduğundan bahsetmiştik, intermediary devices'da ise router ve firewall'da NIC bulunurken switch'de NIC bulunmaz. Switchler bağlanmak için etheret kartı kullanır. Yani switchlerin NIC kartı yoktur ancak NIC'ler bağlanmak için swicthleri kullanır.
+NIC'in neredeyse her host cihazında bulunur. NIC intermediary device'lardan router ve firewall'da bulunurken switch'de bulunmaz. Switchler bağlanmak için ethernet kartı kullanır. Yani switchlerin NIC kartı yoktur ancak NIC'ler bağlanmak için swicthleri kullanır.
 
 - **Firewall:** Güvenlik özellikleri arttırılmış router cihazları olarak özetlenebilir.
 
@@ -55,41 +54,25 @@ NIC'in neredeyse her host cihazında olduğundan bahsetmiştik, intermediary dev
 *I. **Copper Wire**, elektirik ile veri iletmi yapar, **UTP (Untwisted Shielded Pair)** kablo kullanır.* <br /> *II. **Fiber Optic**, ışıkla veri iletim yapar. Single Mode ve Multi Mode gibi alternatifleri vardır.* <br /> *III. **Wireless İletim**,hava yoluyla iletim yapar. Elektromanyetik dalgalar kullanır.*
 ***
 
-### **Sınava Özel Notlar:**
-   
+### **Sınava Özel Notlar:**   
 - Kamusal alanda kablo çekmek yasaktır. Yalnızca **ISP (Internet Service Provider)** kablo çekme/ kablolama hakkına sahiptir. ISP'lerin çektiği özel ağlara **leased lines** denir. Leased Lines (private line), kurumların telekominikasyon şirketleri aracılığıyla kiraladığı hususi, özel ağlardır.
-
 -   Router farklı networkleri birbirine bağlar. Yani router'ın farklı interfaceleri farklı ağlara bakar, genelde bir interface ISP'ye diğer intrface ise yerel ağa bağlıdır. 
-
 -   Modem dediğimiz cihazlar temelinde routerdır. Içerisinde access point, switch, router ve DHCP server bulunur.
-
 -  Özel, fiziksel ağa bağlanma portlarına  **Interaface** denir.
-
 *Foreshadowing: Port ve Interface birbirinin yerine kullanılan terimlerdir ancak TCP/UDP protokollerindeki portlarla karıştırılmamalıdır.*
-
 -  End device'ları networke bağlayan fiziksel porta **NIC** denir.
-
 -  İki farklı ağı birbirine bağlanmayacaksa router alınmamalıdır.
 ***
 ## **Ağ Tipleri:** 
 
-
 - LAN (Local Area Network): Yerel ağlardır.
-
 - WAN (Wide Area Network): Uzak ağları birbirine bağlamak için kullanılır. LAN'ların ISP kullanılarak bağlanmasıyla WAN oluşur.
-
 - Internet: Temelinde bir WAN'dır. Dünya üzerindeki WAN'ların birleşmesiyle oluşan bir ağdır. 
-
 - Intranet: Kurum içi ağdır. Kurumun bütün içi LAN'lar WAN kullanılarak bağlanmıştır.
-
 - Extranet: Kurum içerisindeki özel ağların diğer kurumların ağlarına bağlanmasıyla oluşturulmuş kısıtlı, kontrollü ağdır.
-
 - MAN (Metropolitan Area Network): LAN'lardan küçük, WAN'lardan büyük. Kentlerde ya da Universitelerde bulunan hatlara verilen genel isimdir.
-
 - WLAN (Wireless LAN).
-
 - SAN (Storage Area Network): Sunucuların, hard disk sunucusu ile olan ağı. Ancak artık günümüzde hard diskler sunucuların içerisinde (Hyperconversion). 
-
 
 Unutulmamalıdır ki her ağ internete bağı olmak zorunda değildir. Askeri hatlar, devlet kurumlarına bağlı özel ağların internete bağı yoktur.
 
@@ -126,31 +109,23 @@ Eskiden telefon ve internet ağları ayrıydı. Günümüzde bu ağlar birleşik
 
 ## **İnternet Erişim Teknolojileri**
 - ISP (Internet Sevice Provider): Internet Servis Sağlayıcı olarak çevrilir. 
-
 - **Homeplug**: Bakır (copper) elektrik kablolar kullanan, evdeki priz üzerinden ağ sağlanması teknolojisidir. Kablo kalabalığını engeller. Veriyi evdeki bütün pluglara yollar.
-
 - **WISP** (Wireless Internet Service Provider): **Rural** (kırsal), alanlarda kullanılması daha uygun olan, DSL veya kablo internetin olmadığı yerlerde kullanılan, kablolama gerektirmeyen bir bağlantı teknolojisidir, **802.11 Wireless LAN** standartını kullanır.
-
-- Broadband **Cable**: **TV** hatlarında kullanılan coaxiel kablo ile internet bağlantısının sağlanması teknolojisidir.
-
+- Broadband **Cable**: **TV** hatlarında kullanılan coaxiel TV kablosu ile internet bağlantısının sağlanması teknolojisidir.
 - Broadband **Digital Subscriber Line** (DSL): **Telefon** hatlarından aktarılan, elektiriksel yolla iletilen, yüksek hızlı çalışan bağlantı teknolojisi. Bazen "Business DSL" olarak da geçer. Bazı çeşitleri vardır, bunlar:
 1 - **Asymmetrical** Digital Subscriber Line (A-DSL): Genelde daha popüler olan, evlerde kullanılan, yükleme hızı indirme hızından çok daha düşük olan cinsteki DSL aboneliğidir.
-2 - **Symmetrical** Digital Subscriber Line (S-DSL): Genelde kurumlarda kullanılan hem yüksek indirme hem yüksek yükleme hızına sahip olan DSL aboneliğidir. 
-
+2 - **Symmetrical** Digital Subscriber Line (S-DSL): Genelde kurumlarda kullanılan hem yüksek indirme hem yüksek yükleme hızına sahip olan DSL aboneliğidir.
 - Wireless WANS: Mobile Broadcast olarak da bilinir. 3G, 4G, LTE, 5G gibi teknolojileri içerir.
-
 - Leased Lines (private line): Kurumların, telekominikasyon şirketleri aracılığıyla kiraladığı hususi, özel ağlardır.
-
 - Metro Ethernet: Metropolitan Area Network (MAN) olarak da bilinir.
-
 - Dail Up Telephone: Türkiyede 146 nuamralı hattın aranıp bağlanmasıyla çalışan eski bir telefon teknolojisi.
 ***
 ### Kullanıcıları İnternete Bağlanma Sırası:
 
-1- Home User: SOHO, Teleworker.
+1- Home User: SOHO, Teleworker
 2- DSL: Cable Cellular (Hücresel veri bandı)  Satelitte Dail-Up Telephone (146 hattının aranıp bağlanma)  
-3- ISP.
-4- Internet.
+3- ISP
+4- Internet
 ### Kurumların İnternete Bağlanma Sırası:
 1-Organizasyon
 2-Dedicated Leased Lines: Metro Ethnernet, DSL ,Satelitte, IP-MPLS 4G
@@ -160,12 +135,9 @@ Eskiden telefon ve internet ağları ayrıydı. Günümüzde bu ağlar birleşik
 ## Yeni Trendler:
 - BYOD (Bring Your Own Device): Cihazların, kullanıcının yanında kolayca taşınabilir hale gelmesidir. Şirketlerde ve kurumsal ofislerde kişisel cihazların kullanılması teknolojisidir.
 -Güvenlik riskleri artmıştır.
--Ağ yöneticilerine yeni yük binmiştir
-
+-Ağ yöneticilerine yeni yük binmiştir.
 - Collabration: Online iş birliği aplikasyonları ve teknolojilerinin geneli collabration uygulamlarını oluşturur. Toplantıların artık online gerçekleşmesi bu trendin gelişmesinde etkili olmuştur.
-
 - Video İletişim: Video dosya tipler günümüzde networklere yüklenen yüklerin büyük bir kısmını oluşturmaktadır. 
-
 - Cloud Computing: Sunucu kurma ve işletmenin yüksek maliyeti olduğundan kullanıcılar sunucuları kiralama yoluna gitmektedir. (Google Drive, Gmail, AWS, etc...) 
 
 ***
