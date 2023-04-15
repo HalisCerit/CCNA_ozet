@@ -57,15 +57,13 @@ Manchester kodlamada aktarılan veriyi 5 Volt ve 0 Volt değerlerinin hareketler
 ## 3- Media Bileşenleri
 ### **Bakır Kablolalar:**
 Bakır Kablo Çeşitleri:
-- UTP (Unshielded Twisted Pair): 4x2 bükümlü kablodur.
-- STP (Shielded Twisted Pair): UTP kablonun korumalı halidir. 
 - Coaxial Cable: Koaksiyel kablo.
-- SFTP (Shielded Foiled Twisted Pair): UTP ve STP arasındadır. Folyolanmış bükümlü kablolaların kendi aralarında da bükümlenmesiyle oluşur. 
-
+- UTP (Unshielded Twisted Pair): İçi bükümlü dışı korunasız bakır kablodur.
+- STP (Shielded Twisted Pair): UTP kablonun korumalı halidir. 
+- SFTP (Shielded Foiled Twisted Pair): STP kablonun daha korumalı halidir. Folyolanmış bükümlü kablolaların kendi aralarında da bükümlenmesiyle oluşur.
 *Önemli: Shield kullanılan kablolarda topraklama yapılması gereklidir. SFTP'de ve STP'de topraklama yapılmalıdır.* 
-
 - Bakır kablolama düşük üretim maliyeti, yaygınlık ve güvenilirliği nedeniyle en yaygın olarak kullanılan kablo türüdür.
-- Bakır kablo kullanılan ağlarda görünen sinyal zayıflamasına **Attentuation (Zayıflama)** denir. Genelde bu durum 100m'den sonra oluşur. Attentuation durumunun oluşmasının engellenmesi için kablolamalar 100 meterenin altında tutulmaktadır, bu kuralları TIA/EIA belirlemektedir.Bununla birlikte **flöresan lambalar** EMI (Electro Magnetic Interface) ya da RFI (Radio Frequency Interference) veri sinyalleri bakır kabloda iletimi bozan parazitlenmelere sebep olurlar. Bu pazaritlenmeleri engellemek adına kablo mesafe kurallarına uyulmalıdır, çapraz kablolama yapılmalıdır (**twisted**) ve shielded kablo kullanılmalıdır.
+- Bakır kablo kullanılan ağlarda görünen sinyal zayıflamasına **Attentuation (Zayıflama)** denir. Genelde bu durum 100m'den sonra oluşur. Attentuation durumunun oluşmasının engellenmesi için kablolamalar 100 meterenin altında tutulmaktadır, bu kuralları TIA/EIA belirlemektedir.Bununla birlikte **flöresan lambalar**, E.M.I. (Electro Magnetic Interface) ya da R.F.I. (Radio Frequency Interference), bakır kabloda iletimi bozan parazitlenmelere sebep olurlar. Bu pazaritlenmeleri engellemek adına kablolarda mesafe kurallarına uyulmalıdır, çapraz kablolama yapılmalıdır (**twisted**) ve shielded kablo kullanılmalıdır.
 - İletim sırasında kablo içerisindeki elektiriksel hareketten kaynaklı elektromanyetik dalgalar oluşur.Bu etkiyi azaltmak için kablonun içerisindeki bakır teller birbirine sarılır (**twisted** hale getirilir) bu sayede elektromanyetik dalga oluşması azaltılır.
 - Bu etkiye **cancellation** denmektedir.
     UTP (Unshielded Twisted Pair)-STP (Shielded Twisted Pair) Kabloların içerisinde sırasıyla:
@@ -75,12 +73,13 @@ Bakır Kablo Çeşitleri:
     - Mavi-beyaz,
     - Yeşil,
     - Yeşil-beyaz,
-    - Kırmızı, 
-    - Kırmızı-beyaz kabloları bulunur. 
-
+    - Kahve rengi, 
+    - Kahve rengi-beyaz kabloları bulunur. 
 - UTP ve STP 305 metre olarak satılan, ucundan RJ-45 connector bağlanabilen bakır kablolardır. Bu kablolar **Flöresan** lambalar, diğer kablolar ve  yüksek enerjili kablolar tarafından etkilmemek için"kalkan" kullanılır. **Bu kalkanın kullanılması durumunda topraklama gereklidir**.
 
 Önemli terimler: 
+
+- ***Attentuation**: Bakır kablo kullanan ağlarda gözlemlenen sinyal zayıflamasıdır.*
 
 - ***Cancellation**: Kablo içerisindeki elektiriksel haraketten dolayı bir elektromanyetik dalga oluşur. Kabloların birbirine sarılarak iletim yapması (twisted olması) oluşacak elektro manyetik alanın oluşmasını engeller. Bu etkiye cancellation denmektedir.*
 
@@ -93,17 +92,22 @@ TIA/EIA-568 şu unsurları standartlaştırır:
 - Könektörler
 - Kablo Sonlardırma
 - Test Yöntemleri
+
 IEEE ise UTP kabloları performansa göre derecelendirir:
 - CAT3 (Katagori 3)
 - CAT5 ve 5e
 - CAT6 ve 6e
 
-***
+### Coaxial Cable Özelikleri
+- Anten kablosu olarak bilinen kablodur. 
+- Kablo TV genellikle bu kablo ile ulaştırılır. 
+- BNC, N type, F type gibi tipleri mevcutttur.
 
-### UTP Kablolama
-- Temelinde korumalı bakır kablodur.
+
+### UTP Cable Özellikleri
+- Temelinde korumasız ancak bükümlü bakır kablodur.
 - UTP standartlarını TIA/EIA belirler.
-- Bazı UTP kablo özellikleri şunlardır:
+- Bazı UTP tipi kabloların özellikleri şunlardır:
 
 | Twisted Pair <br> Medium (TIA) 	|    Speed          	|          Bandwidth     	|
 |:-------------------------:	|:------------:	|:-------------:	|
@@ -127,7 +131,7 @@ IEEE ise UTP kabloları performansa göre derecelendirir:
 |     802.3bq    	|    25GBASE-T    	|     30M    	|            CAT8           	|         STP        	|       2016       	|
 |     802.3bq    	|     40BASE-T    	|     30M    	|            CAT8           	|         STP        	|       2016       	|
 
-- 802.15 Wifi standartıdır. Bunu bakır kablolamadan sonra konuşacağız.
+***Foreshadowing: 802.15 Wifi standartıdır.***
 - CAT6a günümüzde en popüler UTP kablo standartıdır. 
 - UTP kabloların isimlendirme standartı şu şekildedir:
 
@@ -139,26 +143,40 @@ IEEE ise UTP kabloları performansa göre derecelendirir:
 - Switch üzerinde 24 x 1000BASET yazıyorsa 24 portlu CAT5e, CAT5 ve CAT3'ü çalıştıran bir cihaz olduğunu gösterir.
 - UTP ve STP kablolamalar RJ-45 Connector ile sonlandırılır.
 
-### Cross ve Straigth Kablolama
-<img src="./Diagrams/1_4_1.png" alt="image">
+### UTP Kablolarda Kablolama 
+
+**Cross Kablolama:**
+- Aynı tipte cihazların birbirleriyle konuşması için cross kablolama kullanılır.
+
+<img src="./Diagrams/1_4_1.png" alt="image" width="70%" height="70%">
+
+**Straight Kablolama:**
+- Farklı cihazları birbirlerine bağlarken bu yöntem kullanılır. Örneğin bir bilgisayar ile switch yada switch ile router birbirlerine bağlanırken straight kablolama kullanılır. 
+- Switch crosslmayı içerisinde yapar bu sayede günlük hayatta straigth kablolama kullanılır.
+
+<img src="./Diagrams/1_4_2.png" alt="image" width="70%" height="70%">
+
+***
+**T568A ve T568B RJ-45 Sonlandırma Standartları:** 
+- İki sonlandırma standartı arasındaki fark tellerin sırasıdır.
+- T568B genelde Birleşik Devletlerde popüler olan bir standartdır, T568A ise Avrupa ve Pasifik kıtalarında daha yaygın kullanılmaktadır.  
+- 10Mbps ve 100Mbps haberleşmede 4 adet tel kullanılır. 
+- İnternet ilk çıktığı zamanlar yalnızca 4 tel kullanılıyrodu daha sonra 1000Mbps'e geçilince 8 telin de 8'i kullanılır hale gelmiştir.
+
+<img src="./Diagrams/1_4_3.png" alt="image" width="40%" height="40%">
+
+**T568A ve T568B Standartlarıyla Straight ve Cross Kablolama:**
+
+<img src="./Diagrams/1_4_4.png" alt="image" width="90%" height="90%">
+
+- Son 10-15 yıldır cihazlar arasında straight kablolama kullanılmaktadır. Bu **AUTO-MDIX** teknolojisi sayesinde mümkün olmuştur. AUTO-MDIX cihazları otomatik crosslar.
+
+### Extra: Rollover Cable
+- Rollover Cable (Konsol Kablosu) İlk configirasyon yapmada kullanılan DB9 seri portlu connector kullanan bir kablo çeşitidir.
+- Bir ucu RJ-45 iken diğer ucu DB9 portundadır.
+- Hızı 9.6 Kbps kadardır.
 
 ***
 
-### Coaxial Cable
-Anten kablosu olarak bilinen kablodur. Kablo TV genellikle bu kablo ile ulaştırılır. BNC, N type, F type gibi tipleri mevcutttur.
-
-
-***
-| T568A<br>Kablo yapısı 	| T568B<br>Kablo yapısı 	|
-|:---------------------:	|:---------------------:	|
-|      Yeşil-Beyaz      	|     Turuncu-Beyaz     	|
-|         Yeşil         	|        Turuncu        	|
-|     Turuncu-Beyaz     	|      Yeşil-Beyaz      	|
-|          Mavi         	|          Mavi         	|
-|       Mavi-Beyaz      	|       Mavi-Beyaz      	|
-|        Turuncu        	|         Yeşil         	|
-|     Kırmızı-Beyaz     	|     Kırmızı-Beyaz     	|
-|        Kırmızı        	|        Kırmızı        	|
-
-
+Data kablolaması
 
