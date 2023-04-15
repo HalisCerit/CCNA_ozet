@@ -58,7 +58,7 @@ NIC'in neredeyse her host cihazında bulunur. NIC intermediary device'lardan rou
 - Kamusal alanda kablo çekmek yasaktır. Yalnızca **ISP (Internet Service Provider)** kablo çekme/ kablolama hakkına sahiptir. ISP'lerin çektiği özel ağlara **leased lines** denir. Leased Lines (private line), kurumların telekominikasyon şirketleri aracılığıyla kiraladığı hususi, özel ağlardır.
 -   Router farklı networkleri birbirine bağlar. Yani router'ın farklı interfaceleri farklı ağlara bakar, genelde bir interface ISP'ye diğer intrface ise yerel ağa bağlıdır. 
 -   Modem dediğimiz cihazlar temelinde routerdır. Içerisinde access point, switch, router ve DHCP server bulunur.
--  Özel, fiziksel ağa bağlanma portlarına  **Interaface** denir.
+-  Özel, fiziksel ağa bağlanma portlarına  **Interface** denir.
 *Foreshadowing: Port ve Interface birbirinin yerine kullanılan terimlerdir ancak TCP/UDP protokollerindeki portlarla karıştırılmamalıdır.*
 -  End device'ları networke bağlayan fiziksel porta **NIC** denir.
 -  İki farklı ağı birbirine bağlanmayacaksa router alınmamalıdır.
