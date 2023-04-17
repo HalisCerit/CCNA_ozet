@@ -161,7 +161,7 @@ IEEE ise UTP kabloları performansa göre derecelendirir:
 - İki sonlandırma standartı arasındaki fark tellerin sırasıdır.
 - T568B genelde Birleşik Devletlerde popüler olan bir standartdır, T568A ise Avrupa ve Pasifik kıtalarında daha yaygın kullanılmaktadır.  
 - 10Mbps ve 100Mbps haberleşmede 4 adet tel kullanılır. 
-- İnternet ilk çıktığı zamanlar yalnızca 4 tel kullanılıyrodu daha sonra 1000Mbps'e geçilince 8 telin de 8'i kullanılır hale gelmiştir.
+- İnternet ilk çıktığı zamanlar yalnızca 4 tel kullanılıyordu daha sonra 1000Mbps'e geçilince 8 telin de 8'i kullanılır hale gelmiştir.
 
 <img src="./Diagrams/1_4_3.png" alt="image" width="40%" height="40%">
 
@@ -178,5 +178,80 @@ IEEE ise UTP kabloları performansa göre derecelendirir:
 
 ***
 
-Data kablolaması
+### Data Kablolaması
+- Bir şirketin ofisinde ya da bina genelinde kullanılmak için ağ sisteminin tasarlanıp döşenmesine **data kablolaması** denir. 
+- Bu kurulan ağın gelecekte büyütülebilir olup olmamasına scalablity denir.
+- İyi tasarlanmış data kablomaları scalabledır, kolayca büyütülebilir.
+- Bunun dışında kaliteli data kablolama güvenliği, yönetilebilirliği arttır; bakım malieyletini düşürür.
 
+<img src="./Diagrams/1_4_5.png" alt="image" width="70%" height="70%">
+
+***
+
+### Fiber-Optik Kablo 
+- Bakır kablolara göre fiyatları çok yüksektir.
+- Ancak bakır kabloların aksine mesafesi çok yüksektir, EMI ve RFI gibi frekanslardan çok az etkilenirler.
+- Bakır kablolarda veri iletimi elektirik sayesinde sağlanırken Fiber-Optik kablolarda bu iletim **lazer** ya da **LED ışıkla** gerçekleştirilir.
+
+Multimode vs Singlemode:
+
+<img src="./Diagrams/1_4_6.png" alt="image" width="70%" height="70%">
+
+- Multimode Fiber (MMF) ve Singlemode Fiber (SMF)  **clading** denen teknolojiyi kullanarak veri iletimini gerçekleştirirler.
+- **Clading** iletim sinyalinin yani ışığın kablonun içerisinde kalması anlamında gelmektedir.
+- MMF ve SMF arası farklar şu şekilde sıralanbilir:
+
+|                        Multimode Fiber (MMF)                       	|                        Singlemode Fiber (SMF)                        	|
+|:------------------------------------------------------------------:	|:--------------------------------------------------------------------:	|
+|                        Ucuz LED kullanılır.                        	|                           Lazer kullanılır.                          	|
+| LEDler farklı açılarda iletilir.                                   	| Saf cam elyaf kullanılır, <br>lazer düz bir çizgi gibi hareket eder. 	|
+| 550 metrede 10Gbps'e kadar iletim sağlar.                          	| Bant genişliği sınırı yoktur.                                        	|
+| 125 μm cladding kullanılır, <br>sinyalin içeride kalmasını sağlar. 	| 125 μm cladding kullanılır, <br>sinyalin içeride kalmasını sağlar    	|
+| 62.5 ya da 50 μm merkezi çapı vardır.                              	| 9 μm merkezi çapı vardır,<br>MMF'e göre çapı çok daha incedir        	|
+
+- **Dispersion** (Dağılım): Işığın kablo içerisinde zaman içersinde yayılmasıdır. Bu ışığı oluşturan frekansların hızlarının farklı olmasından kaynaklanır.
+- Fiber kablolar genellikle okullarda, fakülteler arasında, deniz altı kablolamalarda (SMF) ve  evlere fiber getirilmesi (FTTH Fiber To The Home) gibi birçok yerde kullanılır.
+
+### Fiber Patch Paneli ve Fiber Sonlandırma
+
+- İki bina arasına fiber kablolama çekilirken en az 2 core'lu kablo gerekmektedir. Core fiber kablo içerisinde bulunan tek yönlü fiber tel gibi düşünülebilir. Core'lardan birisi transmit işlemi yaparken diğeri recive işlemi yapmaktadır.
+- Fiber'in çıktığı ilk zamanlarda 2/4/8/16/32/48/72 core seçenekleri vardı.
+- Fiber kablolarda - maliyet yapan kısım kablonun dışındaki koruma kısmıdır. Bu yüzden 2 core'lu kablo almak yerine 8 core'lu ya da 16 core'lu bir kablo almak daha mantıklıdır.
+-  Sarı kablolamalar singlemode kabloları ifade ederken turuncu fiber kablolar mulimode fiberi ifade eder.
+- Switchlerin üzerinde fiber kabloları takmak için port bulunmaz, bunun  yerine **Small For Pluggable** **(SFP)** denilen adaptorler bulunur.
+-  SFP'ler farklı fiber sonlandırma uçlarına göre değişiklik gösterir.
+    Bazı SFP uçları şunlardır:
+    - Straight-Tip
+    - Subscriber Connector (SC)
+    - **Lucent Connector (LC)** 
+    - **Duplex Multimode Lucent Connector (DMLC)**
+
+Bazı SFP özellikleri ise şunlardır:
+
+| Price 	|   SFP Version  	|  Medium 	|  Wavelenght 	| Interface (Port) 	| Max Distance 	|
+|:-----:	|:--------------:	|:-------:	|:-----------:	|:----------------:	|:------------:	|
+|  200$ 	|   1000Base-SX  	|   MMF   	|    850nm    	|     LC Duplex    	|     550m     	|
+|  500$ 	| 1000Base-LX/LH 	| MMF/SMF 	| 1300/1310nm 	|     LC Duplex    	|   550m/10km  	|
+| 2000$ 	|   1000Base-EX  	|   SMF   	| 1310/1550nm 	|     LC Duplex    	|     40km     	|
+| 4000$ 	|   1000Base-ZX  	|   SMF   	|    1350nm   	|     LC Duplex    	|     70km     	|
+
+- Fiber kabloların denetlemesi OTDR (Optical Time Domain Reflectometer) ile gerçekleştirilir.
+
+### Wireles Media  (Kablosuz Medya)
+
+- Kablosuz medyanın mesafesi yani kapsama alanı çok kısıtlıdır.
+- Girişime çok açıktır, bir çok cihaz ağa yük yapabilir.
+- Bu durum güvenlik riskleri yaratabilir.
+- Ayrıca Wireless media **half duplex** çalışır, collision oluşması mümkündür ve oluşur. Girişime açık yapısı bu duruma yardımcı olmaz.
+- Wi-Fi, IEEE 802.11 ile denetlenir, Kablosuz LAN (WLAN) teknolojisi olarak ifade edilir.
+- Bluetooth, IEEE 802.15 ile denetlenir, kablosuz kişisel alan ağı (WPAN) standartıdır.
+- WiMAX IEEE 802.16 ile denetlenir, bu teknoloji 2023 itibariyle Türkiye'de bulunmamaktadır. WiMAX, noktadan çok noktaya geniş kablosuz bant erişimi sağlamak için kullanılır.
+- Zigbee, IEEE 802.15.4 ile denetlenmektedir. Zigbee, IoT uygulamalarında düşük veri kullanımı ve düşük güç tüketimi sebebiyle tercih edilmektedir.
+ 
+Bazı Wi-Fi yani 802.11 standartları şu şekilde verilmiştir:
+
+| **Version** 	| **IEEE Standart** 	|     **Speed**     	| **Frequency** 	|
+|:-----------:	|:-----------------:	|:-----------------:	|:-------------:	|
+|    Wifi 4   	|      802.11n      	|      150Mbps      	|  2.4GHz/5GHz  	|
+|    Wifi 5   	|      802.11ac     	| 433Mbps/6.933Gbps 	|      5GHz     	|
+|   Wifi 6    	|      802.11ax     	| 600.4Mbps/9.6Gbps 	|  2.4GHz/5GHz  	|
