@@ -16,7 +16,7 @@
 - Fiziksel katmana geçiş kontrolü MAC (Media Access Control), ağdaki trafiği kontrol ederek paketlerin çarpışmasını (collision) engeller. Ethernet'te **IEEE 802.3 CSMA/CD** algoritması kullanılırken, WLAN'da **802.11 CSMA/CA** algoritması kullanılır.
 - Katman 2'den katman 1'e frame PDU'su bir anda geçemez, MAC (Media Access Control) gibi geçiş kontrol protokolü vardır.
 
-<img src="./Diagrams/1_6_1.png" alt="image" width="35%" height="35%">
+<img src="./Diagrams/1_6_1.png" alt="image" width="60%" height="60%">
 
 - LLC Sublayer (Logical Link Layer): Encapsulation  sırasında PDU'nun layer 2'den layer 3'e geçerken üst katmandaki IP'yi kontrol eder.
 - MAC Sublayer (Media Access Control): Decapsulation sırasında layer 2'den layer 1'e geçişi kontrol eder, ayrıca:
@@ -28,7 +28,7 @@
 
 ***
 
-<img src="./Diagrams/1_6_3.png" alt="image" width="50%" height="50%">
+<img src="./Diagrams/1_6_3.png" alt="image" width="60%" height="60%">
 
 - Ağlar arasında hangi protokoller varsa başlık bilgisi ona göre değiştirilir.
 - Paket 1.110 IP adresli cihazımızdan R1'e ulaşınca Data Link paketi atılır, frame'in başına ve sonuna  PPP kısımları eklenir.
