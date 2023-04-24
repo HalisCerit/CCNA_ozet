@@ -16,7 +16,7 @@
 - Fiziksel katmana geçiş kontrolü MAC (Media Access Control), ağdaki trafiği kontrol ederek paketlerin çarpışmasını (collision) engeller. Ethernet'te **IEEE 802.3 CSMA/CD** algoritması kullanılırken, WLAN'da **802.11 CSMA/CA** algoritması kullanılır.
 - Katman 2'den katman 1'e frame PDU'su bir anda geçemez, MAC (Media Access Control) gibi geçiş kontrol protokolü vardır.
 
-<img src="./Diagrams/1_6_1.png" alt="image" width="60%" height="60%">
+<img src="./Diagrams/1_6_1.png" alt="image" width="40%" height="40%">
 
 - LLC Sublayer (Logical Link Layer): Encapsulation  sırasında PDU'nun layer 2'den layer 3'e geçerken üst katmandaki IP'yi kontrol eder.
 - MAC Sublayer (Media Access Control): Decapsulation sırasında layer 2'den layer 1'e geçişi kontrol eder, ayrıca:
@@ -50,7 +50,7 @@
 ### Topolojiler
 Topolojiler ağların haritasıdır, bu haritalarla ağlarda oluşan problemlerin çözümü sağlanır. Topolojiler 2'ye ayrılabilir, **fziksel topolojiler** ve **logical (mantıksal) topolojiler**. Fiziksel topolojiler cihazların birbirine nasıl bağlandığı ve fiziksel bağlantıların gösterildiği ağ haritasıdır. Mantıksal topolojiler ise ağdaki IP adres planlamaları, VLAN gibi ağ yöntemleri ile ilgilidir.
 
-<img src="./Diagrams/1_6_4.png" alt="image" width="50%" height="50%">
+<img src="./Diagrams/1_6_4.png" alt="image" width="55%" height="55%">
 
 Mantıksal Topolojiler de içinde 2'ye ayrılabilir:
 - WAN Topolojiler. Bu topoloji PPP, HDLC ve artık kullanılamyan Frame Relay gibi protokollerin kullanıldığı ağlarda kullanılır.
@@ -67,14 +67,14 @@ Mantıksal Topolojiler de içinde 2'ye ayrılabilir:
 - **Hub And Spoke**
    Merkez ve merkezi çevreleyen şubeler tarzında bir yapısı vardır. Ancak bu topolojide merkezin ölmesi durumunda tüm ağ çöker. Bu topoloji Frame Relay yapısında kullanılan bir topolodir.
 
-<img src="./Diagrams/1_6_6.png" alt="image" width="30%" height="30%">
+<img src="./Diagrams/1_6_6.png" alt="image" width="35%" height="35%">
 
 
 
 - **Mesh Topoloji**
    Bu ağ topolojisinde bütün nodelar birbirine bağlıdır, bu sebeple en güvenilir topolojidir denilebilir. Ancak her node'u bağlamak için ISP ye para verilmesi gerekldir, bu da maliyetleri çok yükseltir.
 
-<img src="./Diagrams/1_6_7.png" alt="image" width="30%" height="30%">
+<img src="./Diagrams/1_6_7.png" alt="image" width="35%" height="35%">
 
 ***
 
@@ -82,26 +82,26 @@ Mantıksal Topolojiler de içinde 2'ye ayrılabilir:
 - **Bus Topoloji**
    Ağ üzerinde aynı anda yalnızca tek cihaz veri alışverişi yapabilir, bu özelliğinden dolayı kullanışlı değildir. Günümüzde kullanılmamaktadır. Bus tipi topolojilerde collision olasılığı yüksektir.
    
-<img src="./Diagrams/1_6_8.png" alt="image" width="35%" height="35%">
+<img src="./Diagrams/1_6_8.png" alt="image" width="40%" height="40%">
 
 
 - **Ring Topoloji**
    Ring topolojili iletimi gerçekleştirmek için **Token** adlı bir eklenti kullanılır, datanın önüne eklenen token iletilecek cihaza gelindiğinde iletim işlemi
    tamamlar.
    
-<img src="./Diagrams/1_6_11.png" alt="image" width="20%" height="20%">
+<img src="./Diagrams/1_6_11.png" alt="image" width="25%" height="25%">
 
 
 
 - **Star Topoloji**
    Bu topoloji switchlerden önce çıkmıştır. İlk çıktığı zaman merkezinde Hub kullanılan bir topolojiydi. Switchin çıkmasıyla switch, merkezdeki hub cihazının yerini almıştır.
 
-<img src="./Diagrams/1_6_9.png" alt="image" width="55%" height="55%">
+<img src="./Diagrams/1_6_9.png" alt="image" width="60%" height="60%">
 
 
 - **Extended Star Topoloji**
 
-<img src="./Diagrams/1_6_10.png" alt="image" width="55%" height="55%">
+<img src="./Diagrams/1_6_10.png" alt="image" width="60%" height="60%">
 
 ***
 
@@ -110,11 +110,11 @@ Mantıksal Topolojiler de içinde 2'ye ayrılabilir:
 - Access pointler **half dublex** çalışırlar. Bu yüzden evlerdeki ADSL modemlerde birden fazla Wi-Fi kullanan cihaz iletimi çok etkiler.
 
 
-<img src="./Diagrams/1_6_13.png" alt="image" width="35%" height="35%">
+<img src="./Diagrams/1_6_13.png" alt="image" width="40%" height="40%">
 
 Bu şekilde bir cihaz aynı anda yalnızca veri alma ya da veri verme işlemi gerçekleştirebilir. Hublar hızı da paylaşırlar. Hubların hızı 10Mbps ya da 100Mps olarak değişir bu ağdaki toplam kapasite de yalnızca bu kadardır. Bu çalışma half dublextir.
 
-<img src="./Diagrams/1_6_14.png" alt="image" width="35%" height="35%">
+<img src="./Diagrams/1_6_14.png" alt="image" width="40%" height="40%">
 
 Switchlerde ise aynı anda farklı cihazlarla konuşup veri yollayabilir ve ağda hız düşmesi gerçekleşmez. İletim kablo hızlarında gerçekleşir, collision oluşmaz.Bu tam çift yönlü çalışmaya full dublex denir.
 
@@ -129,7 +129,7 @@ Switchlerde ise aynı anda farklı cihazlarla konuşup veri yollayabilir ve ağd
 
 *Not: Token Ring topolojisinde Token Ring algoritması kullanılır. Bu algortima contention based algortimaların aksine **Contention Free ya da Controlled Based** algoritmadır, controlled based algoritmalarda iletim sırayla gerçekleşir rekabet yoktur.*
 
-<img src="./Diagrams/1_6_16.png" alt="image" width="35%" height="35%">
+<img src="./Diagrams/1_6_16.png" alt="image" width="40%" height="40%">
 
 **CSMA/CD**
 - CSMA/CD, Carrier Sense Multiple Access Collision Detection anlamına gelir. İsimini sırasıyla ele alırsak:
@@ -154,13 +154,13 @@ Switchlerde ise aynı anda farklı cihazlarla konuşup veri yollayabilir ve ağd
    - Access Point bu mesajı alıp onayladıktan sonra diğer cihazlara dur mesajı yollar,
    - 5 saniye sonunda farklı bir cihaz iletim hakkı ister ve bu iletim böyle devam eder.
 
-<img src="./Diagrams/1_6_17.png" alt="image" width="30%" height="30%">
+<img src="./Diagrams/1_6_17.png" alt="image" width="35%" height="35%">
 
 ### Data Link Frame (Çerçeve Alanları)
 
 Genel 2. katman protokol alanları şu şekildedir:
 
-<img src="./Diagrams/1_6_18.png" alt="image" width="60%" height="60%">
+<img src="./Diagrams/1_6_18.png" alt="image" width="65%" height="65%">
 
 Bu protokol alanları o an ağda cihazlar arasındaki iletişimde kullanılan protokol ne ise ona göre doldurulur. Bu protokoller LAN ve WAN protokolleri olarak  şu şekilde ayrılabilir:
 
@@ -172,7 +172,7 @@ Bu protokol alanları o an ağda cihazlar arasındaki iletişimde kullanılan pr
 
 ***
 
-<img src="./Diagrams/1_6_19.png" alt="image" width="80%" height="80%">
+<img src="./Diagrams/1_6_19.png" alt="image" width="85%" height="85%">
 
 - B makinesi A makinesinin, A makinesi B makinesinin MAC adresini bilemez, MAC adresi yalnızca iç networkte kullanır. 
 - PDU'lar dış ağa çıkarken Layer3'e çıkarlar, MAC adresleri çöpe atılır yani MAC adresi mevcut cihazın (genellikle bu routerdır) MAC adresini alır, PDU'nun ulaştırılması planlanan cihazın MAC adresi ise destination MAC olarak yazılır.
@@ -185,4 +185,4 @@ Bu protokol alanları o an ağda cihazlar arasındaki iletişimde kullanılan pr
 - Ethernet framing yapısını oluşturur.
 - Ethernet MAC methodu olarak CSMA/CD kullanır.
 - Ethernet protokolü kablolar, fiber, UTP, STP, sinyalleşme, konnektörler, data iletim hızları gibi bir çok konuyu denetler.
-<img src="./Diagrams/1_6_20.png" alt="image" width="80%" height="80%">
+<img src="./Diagrams/1_6_20.png" alt="image" width="85%" height="85%">
