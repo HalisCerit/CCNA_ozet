@@ -185,4 +185,5 @@ Bu protokol alanları o an ağda cihazlar arasındaki iletişimde kullanılan pr
 - Ethernet framing yapısını oluşturur.
 - Ethernet MAC methodu olarak CSMA/CD kullanır.
 - Ethernet protokolü kablolar, fiber, UTP, STP, sinyalleşme, konnektörler, data iletim hızları gibi bir çok konuyu denetler.
-<img src="./Diagrams/1_6_20.png" alt="image" width="80%" height="80%">
+
+<img src="./Diagrams/1_6_20.png" alt="image" width="35%" height="35%">
