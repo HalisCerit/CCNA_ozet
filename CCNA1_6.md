@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-## 6-Data Link Katmanı
-=======
 ## Data Link Katmanı
->>>>>>> be60f8c3f945caf96630c4241bc63491261d83ae
 - Data Link katmanı denilince akla gelen ilk protokol kuşkusuz **Ethernet** protokolüdür. Ancak Data Link katmanında bulunan tek protokol ethernet protokolü değildir. Wireless LAN, PPP ve HDLC gibi protokoller data link katmanında bulunan diğer protokollerdir.
 - Bu protokollerden bazıları MAC adresi kullanırken bazıları kullanmaz:
 
@@ -183,18 +179,12 @@ Bu protokol alanları o an ağda cihazlar arasındaki iletişimde kullanılan pr
 *Extra: PPP'de adresi boyutu 8 bittir, bunun sebebi adres numarasının 11111111 olmasıdır. Sonuçta PPP protokolünde MAC adresine gerek duyulmaz, PPP protokolü routerları birbirlerine bağlamakta kullanılan bir protokoldür.
 
 ***
-<<<<<<< HEAD
-=======
 ## Ethernet Anahtarlandırma
 
 - Ethernet 1. ve 2. katmanda çalışan bir protokolüdür.
 - Ethernet framing yapısını oluşturur.
 - Ethernet MAC methodu olarak CSMA/CD kullanır.
 - Ethernet protokolü kablolar, fiber, UTP, STP, sinyalleşme, konnektörler, data iletim hızları gibi bir çok konuyu denetler.
-<<<<<<< HEAD
 
-<img src="./Diagrams/1_6_20.png" alt="image" width="35%" height="35%">
-=======
 <img src="./Diagrams/1_6_20.png" alt="image" width="85%" height="85%">
->>>>>>> 7aa9f938a4ca2e6c830a9b7ccacd1e7c0fd75376
->>>>>>> be60f8c3f945caf96630c4241bc63491261d83ae
+

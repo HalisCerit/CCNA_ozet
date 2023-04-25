@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 # 3-Protokoller ve Modeller
-=======
-# 3- Protokoller ve Modeller
->>>>>>> be60f8c3f945caf96630c4241bc63491261d83ae
 
 **TCP/IP**: Günümüzdeki internette kulanılan, 4 katmandan oluşan, protokol kümesidir.
 **OSI**: Data haberleşmesinin anlatılması ve açıklanması için tasarlanmış 7 katmandan oluşan modeldir.
