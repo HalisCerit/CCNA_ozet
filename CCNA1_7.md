@@ -26,3 +26,4 @@ Daha detaylı inceleyecek olursak:
 ### Ethernet II Frame Yapısı
 
 <img src="./Diagrams/1_7_2.png" alt="image" width="70%" height="70%">
+kjsahkfjh
