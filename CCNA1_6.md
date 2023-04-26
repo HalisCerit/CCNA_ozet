@@ -186,5 +186,5 @@ Bu protokol alanları o an ağda cihazlar arasındaki iletişimde kullanılan pr
 - Ethernet MAC methodu olarak CSMA/CD kullanır.
 - Ethernet protokolü kablolar, fiber, UTP, STP, sinyalleşme, konnektörler, data iletim hızları gibi bir çok konuyu denetler.
 
-<img src="./Diagrams/1_6_20.png" alt="image" width="85%" height="85%">
+<img src="./Diagrams/1_6_20.png" alt="image" width="47%" height="47%">
 

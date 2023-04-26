@@ -33,13 +33,28 @@ Daha detaylı inceleyecek olursak:
 - 64 bytetan küçük paketler çöpe atılır, bu durumda pakete **collision frame** ya da **runt frame**. Buradaki fikir bir paket 64'ten küçük gelmişse o paket kesinlikle collision'a uğraşmıştır mantığıdır.
 - Benzer bir durum paketin 1518'den büyük gelmesi durumunda yaşanır. 1518 byte'tan büyük paketler **jumbo** ya da **baby giant fragmnet** olarak adlandırılır ve çöpe atılır. Jumbo özelliğinin açılması durumunda büyük paketler de kabul edilir hale gelir.
 
-### MAC adresleri ve Hexadecimallik
+### MAC Adresleri ve Hexadecimallik
 - MAC adresleri 48 bitlik adreslerdir
 - 12 adet hexadecimallerden oluşurlar.
 - Fiziksel adresler şu şekillerde bulunabilir:
     - 1C-5A-81-65-5C-0F
     - 1C:5A:81:65:5C:0F
     - 1C5A.8165.5C0F
-- Bu adresleri IEEE sağlar.
+- Standart bir laptopun üzerinde 3 veya daha fazla NIC kartı bulunabilir.
+<img src="./Diagrams/1_7_3.png" alt="image" width="25%" height="25%">
+- Bu adresleri **IEEE** sağlar. MAC adreslerini mantığı şı şekildedir:
+<img src="./Diagrams/1_7_4.png" alt="image" width="25%" height="25%">
+- MAC adresleri değiştirilemeyen , burned-in, adreslerdir olarak ifade etsekte bazı cihazlar üzerindeki MAC adreslerini değiştirmek mümkündür.
+- Kali Linux'da MAC adresleri değiştirilebilir, bu değiştirme için MAC changer kullanılır.
+- OUI lookup gibi sitelerden cihazların MAC adreslerine bakarak üretici markalarını bulmak ve cihazların seri numaralarını görmek mümkündür.
+- 3000$ gibi bir parayla 16 milyon MAC adresi alınabilir. Benzer şekilde gizli MAC adreslerini de almak mümkündür.
 
-<img src="./Diagrams/1_7_3.png" alt="image" width="30%" height="30%">
+### MAC Adres Tipleri
+- Tek noktadan tek nokataya yayın yapmaya **Unicast** denir
+- Aynı ağda birlikte bulunan, IPv4 adreslerini bilinen cihazların diğer bir cihaza ping atmasına **Address Resolution Protocol/ARP** denir. ARP yerel ağda MAC adreslerinin öğrenilmesini sağlayan protokoleldir birisidir.
+- IPv6 da ARP protokolü yerine **Neighbour Discovery/ND**  protokolü vardır.
+- İçerisinde ara cihaz bakımından yalnızca Hub olan ağlarda MAC adreslerinin pek işe yaradığını söyleyemeyiz. Bunun sebebi hublar sürekli broadcast yapar, paketler tüm cihazlara sürekli ilerilir, her cihaz gelen her broadcasti okumak zorunda kalır. Cihazlar sürekli gelen paketlerin MAC adreslerine bakıp bana mı gelmiş diye kontrol etmek zorunda kalır.
+- Ağda bulunan bütün cihazlara koşulsuz şartsız paket yollanmasına **broadcast**  denir. 
+- **Broadcast** bütün cihazlara paket yollamayı MAC hedefine **FF-FF-FF-FF-FF-FF** adresini yazarak gerçekleştirir.
+
+<img src="./Diagrams/1_7_5.png" alt="image" width="68%" height="68%">
