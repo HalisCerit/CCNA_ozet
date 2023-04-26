@@ -26,4 +26,20 @@ Daha detaylı inceleyecek olursak:
 ### Ethernet II Frame Yapısı
 
 <img src="./Diagrams/1_7_2.png" alt="image" width="70%" height="70%">
-kjsahkfjh
+
+- Günümüzde LLC yerine Type kullanılır.
+- **Minumum frame boyutu 6+6+2+46+4=64** byte'tır. Bu hesaplamada Preamble veya SFD dahil edilmez çünkü bu frame yapıları artık günümüzde kullanım dışı olmuşlardır.
+- **Maximum frame boyutu 6+6+2+1500+4=1518** byte'tır. 
+- 64 bytetan küçük paketler çöpe atılır, bu durumda pakete **collision frame** ya da **runt frame**. Buradaki fikir bir paket 64'ten küçük gelmişse o paket kesinlikle collision'a uğraşmıştır mantığıdır.
+- Benzer bir durum paketin 1518'den büyük gelmesi durumunda yaşanır. 1518 byte'tan büyük paketler **jumbo** ya da **baby giant fragmnet** olarak adlandırılır ve çöpe atılır. Jumbo özelliğinin açılması durumunda büyük paketler de kabul edilir hale gelir.
+
+### MAC adresleri ve Hexadecimallik
+- MAC adresleri 48 bitlik adreslerdir
+- 12 adet hexadecimallerden oluşurlar.
+- Fiziksel adresler şu şekillerde bulunabilir:
+    - 1C-5A-81-65-5C-0F
+    - 1C:5A:81:65:5C:0F
+    - 1C5A.8165.5C0F
+- Bu adresleri IEEE sağlar.
+
+<img src="./Diagrams/1_7_3.png" alt="image" width="30%" height="30%">
