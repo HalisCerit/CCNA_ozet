@@ -51,10 +51,31 @@ Daha detaylı inceleyecek olursak:
 
 ### MAC Adres Tipleri
 - Tek noktadan tek nokataya yayın yapmaya **Unicast** denir
-- Aynı ağda birlikte bulunan, IPv4 adreslerini bilinen cihazların diğer bir cihaza ping atmasına **Address Resolution Protocol/ARP** denir. ARP yerel ağda MAC adreslerinin öğrenilmesini sağlayan protokoleldir birisidir.
-- IPv6 da ARP protokolü yerine **Neighbour Discovery/ND**  protokolü vardır.
-- İçerisinde ara cihaz bakımından yalnızca Hub olan ağlarda MAC adreslerinin pek işe yaradığını söyleyemeyiz. Bunun sebebi hublar sürekli broadcast yapar, paketler tüm cihazlara sürekli ilerilir, her cihaz gelen her broadcasti okumak zorunda kalır. Cihazlar sürekli gelen paketlerin MAC adreslerine bakıp bana mı gelmiş diye kontrol etmek zorunda kalır.
+- Aynı ağda birlikte bulunan,  IPv4 adreslerini bilinen cihazın bir diğer cihaza ping atmasına **Address Resolution Protocol/ARP** denir. ARP yerel ağda MAC adreslerinin öğrenilmesini sağlayan protokoleldir birisidir.
+- IPv6 da ARP protokolü yerine aynı işlemi yapan **Neighbour Discovery/ND**  protokolü vardır.
 - Ağda bulunan bütün cihazlara koşulsuz şartsız paket yollanmasına **broadcast**  denir. 
 - **Broadcast** bütün cihazlara paket yollamayı MAC hedefine **FF-FF-FF-FF-FF-FF** adresini yazarak gerçekleştirir.
+- İçerisinde ara cihaz bakımından yalnızca Hub olan ağlarda MAC adreslerinin pek işe yaradığını söyleyemeyiz. Bunun sebebi hublar sürekli broadcast yapar, paketler tüm cihazlara sürekli ilerilir, her cihaz gelen her broadcasti okumak zorunda kalır. Cihazlar sürekli gelen paketlerin MAC adreslerine bakıp bana mı gelmiş diye kontrol etmek zorunda kalır.
+
 
 <img src="./Diagrams/1_7_5.png" alt="image" width="68%" height="68%">
+<img src="./Diagrams/1_7_6.png" alt="image" width="55%" height="55%">
+
+- Bir cihazdan birden çok cihaza paket gönderilmesine ise **Multicast** denir.
+- IPv4'te multicast gerçekleştirmek için hedef MAC adresine **01-00-SE** yazılır ve IPv4 destination adresi **224-239**'la bitirilirken, IPv6'da destination MAC adresi 33-33 olarak değiştirilirken, IPv6 destination kısmına FF00 yazılır.
+- .Yalnızca Multicasti dinlemek isteyen cihazlarlar multicast'e erişebilir.
+
+### Switchler Nasıl Çalışır?
+**MAC Adresi Tablosu**
+- OSI modelini hatırlayacaksak:
+    - L7 Application,
+    - L6 Presentation,
+    - L5 Session katmanlarında PDU ismi **Data**dır.
+    - L4 Transport katmanında dataya source port, destination port ve sequence numarasının eklenemesiyle **segment** oluşur.
+    - L3 Network katmanında segemente source ve destination IP eklenmesiyle oluşan PDU'ya **IP packeti** denir.
+    - L2 Data Link katmanında pakete frame header ve trailer eklenmesiyle **ethernet frame** oluşur.
+    - L1 Pyhsical katmanda ise veriler **bitlere** dönüştürülür ve aktarılır. 1011010101110101010...
+- Şimdi bir cihazın sırasıyla ağada nasıl davranış sergilediğine bakalım bakalım:
+<img src="./Diagrams/1_7_7.png" alt="image" width="50%" height="50%">
+
+
