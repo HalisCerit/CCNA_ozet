@@ -67,6 +67,8 @@ Daha detaylı inceleyecek olursak:
 
 ### Switchler Nasıl Çalışır?
 **MAC Adresi Tablosu**
+- Hub sinyali kuvvetlendirip iletimi diğer tüm portlara iletir. 10 Mbps hızla 1. katmanda çalışır maksimum 4 hub ard arad bağlanabilir ve yalnızca bir cihaz paket alabilir ya da gönderebilir, çünkü hublar half dublex cihazlardır.
+- Switch 2. katmanda çalışan bir ara cihazdır. Temel işlevi MAC adresleme tablosunu tutmaktır. Verilere yönlendirme yapar. Hub cihazlarına göre switch cihazları devrim niteliğindedir, paket gönderme paket alma portları birbirinden farklıdır. Aynı anda aynı porttan  1Gbps alıp verebilir. Bu çalışmaya full duplex çalışma denir.
 - OSI modelini hatırlayacaksak:
     - L7 Application,
     - L6 Presentation,
@@ -76,6 +78,7 @@ Daha detaylı inceleyecek olursak:
     - L2 Data Link katmanında pakete frame header ve trailer eklenmesiyle **ethernet frame** oluşur.
     - L1 Pyhsical katmanda ise veriler **bitlere** dönüştürülür ve aktarılır. 1011010101110101010...
 - Şimdi bir cihazın sırasıyla ağada nasıl davranış sergilediğine bakalım bakalım:
-<img src="./Diagrams/1_7_7.png" alt="image" width="50%" height="50%">
+<img src="./Diagrams/1_7_7.png" alt="image" width="35%" height="35%">
+
 
 
