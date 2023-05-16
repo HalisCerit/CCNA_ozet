@@ -32,7 +32,7 @@
 
 *Ancak Peer-to-Peer sorumluluk almaktır:*<br />*+: Kolaydır, karmaşıklığı azdır, maliyeti düşüktür ve basit görevler için kullanışlıdır.*<br />*-:Merkezi yönetimi yoktur, güvenli ve ölçeklenebilir değildir ve performans düşüklüğü yaratır.*<br />*Serverların 7/24 açık olması ve cevap verebilir olması beklenir.*
 
-- Switch, Router, Wireless Router, ve Firewall etc. gibi ağ cihazlarına **intermediary devices** (ara cihazlar) denir. Temelinde 2 intermediary cihaz vardır, bunlar router ve switch'tir.
+- Switch, Router, Wireless Router, ve Firewall etc. gibi ağ cihazlarına **intermediary devices** (ara cihazlar) denir. Intermediary device'ların temel görevleri host cihazlarını ağa bağlamak ve ağ içerisinde yönlendirmektir. Temelinde 2 intermediary cihaz vardır, bunlar router ve switch'tir.
 
 -  **Switch:** Hostları **kablolu** şekilde yerel (local) networke dahil eden cihazdır. Kablosuz cihazlar ise önce **Access Point** adlı cihaza kablosuz şekilde hava aracılığıyla (air) bağlanır, bağlantıdan sonra access point bu bağlantıyı switche kablolu şekilde aktarır.
 
@@ -47,9 +47,18 @@
 
 *Burada bahsettiğimiz device olan Firewall'dır, ağdaki cihazların içersinde bulunan yazılımsal Firewall faklıdır.*
 
-- Ağlarda iletişimin gerçekleştiği ortama **Media** ya da **Network Media** denir. Bazı media tipleri şunlardır: 
+- Ağlarda iletişimin gerçekleştiği ortama **Medium, Media** ya da **Network Media** denir. Bir Network Associate medium tasarlarken gözönüne bulundurduğu şeyler şunlardır:
 
-*I. **Copper Wire**, elektirik ile veri iletmi yapar, **UTP (Untwisted Shielded Pair)** kablo kullanır.* <br /> *II. **Fiber Optic**, ışıkla veri iletim yapar. Single Mode ve Multi Mode gibi alternatifleri vardır.* <br /> *III. **Wireless İletim**,hava yoluyla iletim yapar. Elektromanyetik dalgalar kullanır.*
+Kurulum **maliyeti** gereksiz yere yüksek olmamalıdır.
+Kurulumda kullanılacak **kabloların** maksimum **uzaklık** kapasiteleri göz önüne alınmalıdır.
+Kurulumun gerçekleştirileceği ağın maksimum  data taşıma **kapasitesine** dikkat edilmedilir.
+Kurulumun gerçekleştirileceği **environment** (çevresel özellikler) dikkata alınmalıdır, örneğin kablosuz access point cihazının duvarların arkasına gelecek şekilde konulmaması gibi.
+
+Ayrıca azı media tipleri  ise şunlardır: 
+
+**Copper Wire**, elektirik ile veri iletmi yapar, **UTP (Untwisted Shielded Pair)** kablo kullanır.
+**Fiber Optic**, ışıkla veri iletim yapar. Single Mode ve Multi Mode gibi alternatifleri vardır.
+**Wireless İletim**,hava yoluyla iletim yapar. Elektromanyetik dalgalar kullanır.
 ***
 
 ### **Sınava Özel Bazı Notlar:**   
@@ -92,6 +101,9 @@ Bir networkü güvenilir yapan 4 temel kavram vardır bunlar:
 - Bazı durumlarda bazı cihazlara öncelik verilmelidir.
 - Reliable delivery gerçekleştirilmelidir.
 - Low latency olmalıdır, yani gecikme olmamalıdır.
+- Ağ üzerindeki data isteme durmunun data tahsilinden yüksek olmasından kaynaklı trafiğe ya da sıkışmaya network **congestion** denmektedir.
+
+*Not: Converged network kavramı ile congestion karıştırılabilir. **Converged network** aynı network üzerinden farklı tipte iletişim bilgilerinin geçebildiği (video, data, sound vb.) networklere denmektedir*
 
 ### 4 - Network Security
 Ağ güvenliğinde temel 3 durum korunmalıdır, bunlar:
@@ -102,25 +114,20 @@ Ağ güvenliğinde temel 3 durum korunmalıdır, bunlar:
 ***
 
 ### **İnternet Erişim Teknolojileri**
+- Bandwidth, bantu genişliği bir ağ üzerinden belli bir zaman aralığında aktarılabilecek veri miktarıdır, birimi datadır.
 - ISP (Internet Sevice Provider): Internet Servis Sağlayıcı olarak çevrilir. 
-
 - **Homeplug**: Bakır (copper) elektrik kablolar kullanan, evdeki priz üzerinden ağ sağlanması teknolojisidir. Kablo kalabalığını engeller. Veriyi evdeki bütün pluglara yollar.
-
 - **WISP** (Wireless Internet Service Provider): **Rural** (kırsal), alanlarda kullanılması daha uygun olan, DSL veya kablo internetin olmadığı yerlerde kullanılan, kablolama gerektirmeyen bir bağlantı teknolojisidir, **802.11 Wireless LAN** standartını kullanır.
-
 - Broadband **Cable**: **TV** hatlarında kullanılan coaxiel TV kablosu ile internet bağlantısının sağlanması teknolojisidir.
-
 - Broadband **Digital Subscriber Line** (DSL): **Telefon** hatlarından aktarılan, elektiriksel yolla iletilen, yüksek hızlı çalışan bağlantı teknolojisi. Bazen "Business DSL" olarak da geçer. Bazı çeşitleri vardır, bunlar:
 1 - **Asymmetrical** Digital Subscriber Line (A-DSL): Genelde daha popüler olan, evlerde kullanılan, yükleme hızı indirme hızından çok daha düşük olan cinsteki DSL aboneliğidir.
 2 - **Symmetrical** Digital Subscriber Line (S-DSL): Genelde kurumlarda kullanılan hem yüksek indirme hem yüksek yükleme hızına sahip olan DSL aboneliğidir.
-
 - Wireless WANS: Mobile Broadcast olarak da bilinir. 3G, 4G, LTE, 5G gibi teknolojileri içerir.
-
 - Leased Lines (private line): Kurumların, telekomünikasyon şirketleri aracılığıyla kiraladığı hususi, özel ağlardır.
-
 - Metro Ethernet: Metropolitan Area Network (MAN) olarak da bilinir.
-
-- Dail Up Telephone: Türkiyede 146 nuamralı hattın aranıp bağlanmasıyla çalışan eski bir telefon teknolojisidir.
+- Dail Up Telephone: Türkiyede 146 nuamralı hattın aranıp bağlanmasıyla çalışan eski bir telefon teknolojisidir, bu hatta internet erişimi çok yavaş ve sıkıntılıdır.
+- Satellite genellikle fiziksel kablolamanın yapılamadığı yerlerde kullanılır. Ancak ormanlık bölgelerde kullanılması önerilmez.
+- Cellular cep telefonlarınında bulunan, 2G, 3G, 4G ve 5G gibi teknolojilerin kullanıldığı kablosuz iletişim teknolojisidir.
 
 ***
 ### ADSL Modemin İçeriği:
@@ -147,12 +154,12 @@ Bir ADSL modem aşağıda verilen 4 cihazın birleşmesiyle oluşmuş bir cihazd
 ***
 
 ## Yeni Trendler:
-- BYOD (Bring Your Own Device): Cihazların, kullanıcının yanında kolayca taşınabilir hale gelmesidir. Şirketlerde ve kurumsal ofislerde kişisel cihazların kullanılması teknolojisidir.
+- BYOD (Bring Your Own Device): Cihazların, kullanıcının yanında kolayca taşınabilir hale gelmesiyle şirketlerde ve kurumsal ofislerde kişisel cihazların kullanılması teknolojisidir.
 -Güvenlik riskleri artmıştır.
 -Ağ yöneticilerine yeni yük binmiştir.
 - Collabration: Online iş birliği aplikasyonları ve teknolojilerinin geneli collabration uygulamlarını oluşturur. Toplantıların artık online gerçekleşmesi bu trendin gelişmesinde etkili olmuştur.
 - Video İletişim: Video dosya tipler günümüzde networklere yüklenen yüklerin büyük bir kısmını oluşturmaktadır. 
-- Cloud Computing: Sunucu kurma ve işletmenin yüksek maliyeti olduğundan kullanıcılar sunucuları kiralama yoluna gitmektedir. (Google Drive, Gmail, AWS, etc...) 
+- Cloud Computing: Dünya üzerinden herhangi bir kişinin, kurumun ya da cihazın uzaktaki bir cihaza internet üzerinden bağlanarak aplikasyonlarına erişme teknolojisidir. Sunucu kurma ve işletmenin yüksek maliyeti olduğundan kullanıcılar sunucuları kiralama yoluna gitmektedir. (Google Drive, Gmail, AWS, etc...) 
 
 ***
 
@@ -187,6 +194,7 @@ Bir ADSL modem aşağıda verilen 4 cihazın birleşmesiyle oluşmuş bir cihazd
 - **ADSL** routerler NAT yapar. NAT varsa dışarıdan içeriye erişim yapılamaz.
 *Statik IP de olsa NAT'a erişilmez.*
 *Evdeki akıllı ampüle aynı hatta bağlı cihazla yapılamaz. Sebebi NAT'dır. Cihazdan servera, serverdan da ampüle bağlantı sağlanır. **Doğrudan erişim yoktur**.*
+- Evlerde ve küçük ofislerde minimum güvenlik önlemi sağlamak adına firewall, anti-malware ve anti-virus kullanımı  yeterliyken, büyük kurumlarda bunlara ek olarak IPS (Intrusion Prevention System) ve IDS'ler (Intrusion Detection System) eklenebilir.
 
 
 
