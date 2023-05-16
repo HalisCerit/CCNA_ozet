@@ -1,7 +1,7 @@
-# 3-Protokoller ve Modeller
+# 3 Protokoller ve Modeller
 
-**TCP/IP**: Günümüzdeki internette kulanılan, 4 katmandan oluşan, protokol kümesidir.
-**OSI**: Data haberleşmesinin anlatılması ve açıklanması için tasarlanmış 7 katmandan oluşan modeldir.
+**TCP/IP**: Günümüzdeki internette kulanılan, **4** katmandan oluşan, protokol kümesidir. Bu katmanlar Application, Transport, Internet ve Data Link katmanlarıdır.  
+**OSI**: Data haberleşmesinin anlatılması ve açıklanması için tasarlanmış **7** katmandan oluşan modeldir. Bu katmanlar Application, Presentation, Session, Transport, Network, Data Link ve Fiziksel katmanlardır.
 
 
 ## MAC Adresleri ve IPv4 Adresleri
@@ -9,26 +9,28 @@
 
 #### **MAC Adresleri:**
 - **48 bitten** oluşurlar.
-- NIC üzerinde bulunurlar, fiziksel adres olarak da geçerler, eşsizdirler.
-- MAC adresleri *9C-35-5B-5F-AA-BB* tazrındadırlar (*0000=0, 0001=1, 0010=2, ..., 1110=E, 1111=F*) (4x2x6=48 bitten oluşmaktadır).
+- NIC üzerinde bulunurlar, fiziksel adres olarak da geçerler, eşsizdirler. Ancak linux tabanlı işletim sistemlerinde MAC adresi kolayca değiştirilebilir.
+- MAC adresleri *9C-35-5B-5F-AA-BB* tarzındadırlar (*0000=0, 0001=1, 0010=2, ..., 1110=E, 1111=F*) (4x2x6=48 bitten oluşmaktadır).
 - Ethernet Kartı üzerinde **Bured-in adres**lerdir.
-- NIC üzerinde çalışan internet protokolleri cihaz içerisine yüklü gelir ancak istenirse değiştirilebilir, bunlar TCP/IPv4 veya TCP/IPv6'dır.
+- NIC üzerinde çalışan internet protokolleri cihaz içerisine yüklü gelir ancak istenirse değiştirilebilir, mesela TCP/IPv4 veya TCP/IPv6 gibi.
 
 *Wifi kartı da bir NIC kartıdır.*
 #### **IPv4 Adresleri:**
 - **32 bit** / 4 kısımdan oluşurlar.
-- IP adresleri 192.168.1.5 tazrındadır, alabileceği sayılar (0-255) aralığında olmalıdır, 0 ya da 255 alamazlar. 
+- IP adresleri 192.168.1.5 tazrındadır, alabileceği sayılar (0-255) aralığında olmalıdır, 0 ya da 255 alamazlar. Bunun sebebi bu rakamların bazı işlemler için saklanmalarıdır.
 - IP adresleri, MAC adreslerindeki kalıcı adreslerin tersine **mantıksal** adreslerdir. "Dynamic addresses" yani dinamik adresler olarak tanımlanırlar.
-- IP adresi "192.168.5.1" olan bir cihazın "192.168.5" kısmı "Network" bilgilerini ifade ederken, ".1"  kısmı ise yerel ağdaki "Host" numarasıdır.
+- IP adresi "192.168.5.1" ve subnet adresi "255.255.255.0" olan bir cihazın IP adresinin "192.168.5" kısmı "Network" bilgilerini ifade ederken, ".1"  kısmı ise yerel ağdaki "Host" kısmıdır.
 
 ### Hatırlatma:
-*Router networkleri birbirine bağlayan  ağ cihazıdır, router uçları (interfaceleri) farklı ağlara bakar. Yani bir port 192.168.5 ağına bakıyorsa diğer port 192.168.6 ağına bakar.*
-
-*Switch ise son kullnıcıları ağa dahil eden cihazdır. NIC'leri bulunmaz, bu sebepten MAC'leri de yoktur.*
+- Router networkleri birbirine bağlayan  ağ cihazıdır, router uçları (interfaceleri) farklı ağlara bakar. Yani bir port 192.168.5 ağına bakıyorsa diğer port 192.168.6 ağına bakar.
+- Switch ise son kullnıcıları ağa dahil eden cihazdır. NIC'leri bulunmaz, bu sebepten MAC'leri de yoktur.
+- Source (Kaynak), Destination (Hedef) ve Media (Ortam) iletişim temellerini oluşturan 3 temel unsurdur.
+- Ağlar "scale" ve "complexity" olarak değişebilir, yalnızca bağlantı olması yetmez.
+- Mesajların ağlar içerisindeki hareketi şu şekildedir: Message Source > Transmitter > Transmission Medium > Reciever > Message Destination
 
 <img src="./Diagrams/1_3_1.png" alt="image">
 
-Bu şekilde **8 adet NIC** ve **7 adet ağ** bulunmaktadır. Bu ağlar:
+Bu şekilde **8 adet NIC** adresi ve **7 adet ağ** bulunmaktadır. Bu ağlar:
 1- 1.1 & switch
 2- 1.2 & switch
 3- Switch & 1.3 portlu router 
@@ -37,58 +39,45 @@ Bu şekilde **8 adet NIC** ve **7 adet ağ** bulunmaktadır. Bu ağlar:
 6- 3.1 & switch
 7- 3.2 & switch
 
-
-***
-
-### İletişim Temelleri Oluşturan Temel Unsurları:
-- Source (Kaynak).
-- Destination (Hedef).
-- Media (Ortam).
-
-*Ağlar "scale" ve "complexity" olarak değişebilir, yalnızca bağlantı olması yetmez.*
-***
-### Mesajların Ağ'daki Hareketi:
-
-*Message Source > Transmitter > Transmission Medium > Reciever > Message Destination*
-***
 ## İletişim Protokolleri:
 - Tüm iletişim protokoller çerçevesinde gerçekleşir.
 - Protokoller iletişimin izleyeceği kurallardır.
 - Kurallar protokollere bağlıdır. Kurallar dizisine ise protokol denir.
 
+
 5 temel iletişim protokolü vardır, bunlar:
 
 ### 1- Encoding:
 
-- Mesajın fiziksel ortamda iletilmesi için uygun hale getirilme işlemidir.
+- Mesajın **fiziksel ortam**da iletilmesi için uygun hale getirilme işlemidir.
 - Encoding işleminin tersi **decoding**'tir, mesajın yorumlanması için çözümlenmesidir.
 - Hostlar arası kodlama ortama uygun olmalıdır. Bitler ışık, ses veya elektriksel darbe modeline dönüştürülür, hedef (destination) bunu decoding yardımıyla çözümler.
+- Encoding fiziksel katmana özgü bir durumdur.
 
 ### 2- Formatting and Encapsulation:
 
 - Bir mesajın gönderilirken belli bir formatta ya da yapıda olması gerekmektedir. Bu format mesajın türüne ve mesaj iletmek için kullanan kaynaklara bağlıdır.
+- Encoding fiziksel katmana özgü bir durumken, encapsulation bütün katmanları kapsar.
 
-*Data'nın içerisinde version, traffic class, flow control, payload lenght etc. olması bir formatlamdır.*
-
-*Foreshadowing: Encoding fiziksel katmana özgü bir durumken, encapsulation bütün katmanları kapsar.*
+*Data'nın içerisinde version, traffic class, flow control, payload lenght etc. olması bir formatlamadır.*
 
 ### 3- Message Size:
 
 - 500 MB'lık bir dosyayı istersek tek parça halinde gönderebiliriz, ancak iletim sırasında bir sorun sonucu yalnızca bir bit bile yanlış aktarılırsa bütün veri kullanılmaz hale gelir. Bu ölçeklendirilebilir ve kullanışlı değildir. 
-- Datayı, küçük parçalar halinde yollamak istersek bu parçaların doğru aktarılması için bir takım kontrol bilgileri gerekmektedir. Adres bilgisi burada devreye girer, bu adres bilgisi verinin kaçıncı dosya olduğunun çözümlenmesinde kullanılır.
+- Datayı, küçük parçalar halinde yollamak istersek bu parçaların doğru şekilde aktarılması için bir takım kontrol bilgileri gerekmektedir. Segment numarası bilgileri burada devreye girer, bu segment numarası verinin kaçıncı dosya olduğunun çözümlenmesinde kullanılır.
 
 ### 4- Message Timing:
 
 - Akış kontrolü, iletim hızının yönetiminden sorumludur.
 - Connection Timeout, ağdaki cihazların birbirinden yanıt almaması durumunda cihazların ne kadar bekleyecekleri belirler.
-- **Flow control** dataların çarpışmaması durumunu İngilizcesiyle **collision** durumunun oluşmasını engeller.
+- ⚠️ **Flow control** bir çok cihazın aynı ağı paylaştığı durumlarda oluşan dataların çarpışmamasını yani **collision** durumunun oluşmasını engeller. **Media Arbitration**, medya tahkimi, bu durumu önlemekte kullanılan veri düzenleme yöntemlerinden birisidir, örnedğin CSMA/CA algoritması bir media arbitration uygulamsıdır.
 - Collision durumu, ağdaki iletilerin elektiriksel olarak üst üste binmesidir. 
 
-*Foreshadowing: İletim sırasında ağ içerisinde +5V olarak iletilen bitlerin üst üst gelmesiyle collision oluşur.*
+*İletim sırasında ağ içerisinde +5 volt olarak iletilen bitlerin üst üst gelmesiyle collision oluşur.*
 
 ### 5- Message Delivery Options:
 - **Unicast:** Tek bir kaynak cihazının, tek bir hedef cihazla doğrudan iletişim kurduğu bir mesaj teslimat türüdür. (One-to-One)
-- **Multicast:** Bir cihazın birden fazla cihazla yaptığı iletişimdir. Multicast MAC adresiyle çalışır, iletiyle **ilgilenen** cihazlar paketi alır. (One-to-Many)
+- **Multicast:** Bir cihazın birden fazla cihazla yaptığı iletişimdir. Multicast MAC adresiyle broadcast gibi çalışır, iletiyle **ilgilenen** cihazlar paketi alır. (One-to-Many)
 - **Broadcast:** Bir cihazın ağdaki her cihaza teslimat yapmasıdır. Broadcast IPv4'e özel bir teslimat seçeneğidir. (One-to-All)
 
 *Foreshadowing: Anycast IPv6'ya özel bir teslimat seçeneğidir.*
@@ -102,20 +91,17 @@ Bu şekilde **8 adet NIC** ve **7 adet ağ** bulunmaktadır. Bu ağlar:
 Ağ İletişim Protokolleri, iki ya da daha fazla cihazın bir veya birden çok ağ üzerinden iletişim kurmasını sağlar, bu protokollerden bazıları şunlardır:
 
 - Ethernet: MAC'lerin kullanıldığı yerel iletişim protokolüdür. 802.3 IEEE protokolü ile temsil edilir.
-
 - IP (Internet Protocol): Global olarak mesajların iletilmesini sağlayan protokoldür. Adresleme işlemini IPv4 ya da IPv6 protokolü tarafından yapılır.
-
 - TCP: Ağda iletilen mesajların güvenli, eksiksiz, akış hızının kontrollü bir şekilde iletilmesini sağlayan protokoldür. Paket sırasını kontrol eder, oluşan hataları tespit eder ve iletiminde sorun çıkan, hatalı paketi göndericiden tekrar ister. TCP **connection oriented** (bağlantı esaslı) bir protokoldür. Bu sebepten dolayı eksiksiz iletim sağlar.
-
 - UDP: UDP, TCP'nin aksine bağlantı gerektirmeyen, kaybolan paketleri geri istemeyen, hata toleransı olmayan, yani kaybolan paketin yok olduğu **connectionless** (bağlantısız) bir iletim protokolüdür. 
-
 - HTTP (Hyper Text Transfer Protocol): Web sayfalarının görüntülenmesinde kullanılan protokoldür. Web sayfalarının içeriğini ve biçimini tanımlar. Web sunucusu ile Web istemcisi arasında iletişimi sağlar. 
 
 ### 2- Ağ Güvenlik Protokolleri:
 
 Ağ güvenlik protokolleri kimlik doğrulama (authentication), veri bütünlüğünün korunması (integrity) ve veri şifrelenmesini (data encryption) sağlamak için verileri güvenli hale getirme protokolleridir, bu protokollerden bazıları:
 
-- SSH: Orta adam saldılarının (man-in-the-middle-attack) mümkün olduğu internet ağı üzerinden mesajların güvenli ve şifreli geçmesini sağlayan, bunu da public key kullanarak yapan güvenlik protokolüdür. 
+- SSH (Secure Socket Shell): Orta adam saldılarının (man-in-the-middle-attack) mümkün olduğu güvenli olmayan internet ağları üzerinden mesajların güvenli ve şifrelenmiş şekilde geçmesini sağlayan, bunu da public key kullanarak yapan güvenlik protokolüdür.
+- Telnet (Telecommunications and Networks): UNIX platformlarında kullanılmak üzere tasarlanmış, bir internet protokolüdür.  
 - SSL: TSL'in çıkmasıyla kullanımı azalan, internet güvenlik protokolüdür. Genellikle bankacılık, transaction işlemlerinde kullanılan bir protokoldür. Client ile server arasında, serverın **sertifika** yollaması ile çalışır.
 - TSL: SSL'in geliştirilmiş halidir. Temel olarak SSL ile aynı özellikleri taşır.
 
@@ -148,11 +134,8 @@ Cihazların veya servislerin kolayca algılanması için kullanılır. Bu protok
 ## Protokol Kümelerinin Evrimi
 
 - TCP/IP: Amerikan Savunma Bakanlığı tarafından geliştirilmiş en yaygın protokol paketidir. Günümüzde IETF tarafından geliştirilir ve korunur.
-
 - OSI (Open Systems Interconnection): Geliştiricisi ISO (International Standardization Organization) ve ITU (International Telecommunication Union)'dır.
-
 - Apple Talk.
-
 - Nowell Network.
 
 
@@ -170,10 +153,9 @@ Cihazların veya servislerin kolayca algılanması için kullanılır. Bu protok
 
 ***
 ## Standart Organizasyonları:
+
 Açık standartların olması birlikte çalışma, rekabet ve yenilik teşvik eder.
-
 - Internet Society (ISOC): İnternetin açık gelişimini ve evrimini destekler.
-
 - Internet Architecture Board (IAB): Standart yönetiminden sorumlulardır. İnternet mimarisnin korunmasını sağlarlar.
 
 - **Internet Engineerring Task Froce (IETF)**: Internet ve TCP/IP protokollerini geliştiren, bu protokollerin bakımını yapan ve güncelleyen kurumdur. Çalışma gruplarında **RFC (Request for Comments)** denilen çalışma dökümanları üretilir.
@@ -231,10 +213,10 @@ OSI modeli kısaca şu şekilde özeltlenebilir:
 7-Application: Son kullanıcı katmanıdır, kullanıcı ara yüzleri bu katmanda oluşturulur. Uygulamaların ağ üzerinden çalışması sağlanır.
 6-Presentation: Verilerin formatının ve yapısının belirlendiği katmandır. Gönderilen verilerin anlaşılabilmesini bu katman sağlar.
 5-Session: Uygulamalar arası bağlantının kurulması, yönetilmesi ve sonlandırılmasını yönetir.
-4-Transport: Üst katmandan gelen "data"nın segmentlere bölünerek alt katmanlara iletiminden ya da alt katmandan gelen segmentelere ayrılmış datanın birleştirilmesinden sorumludur. Alt ve üst katmanlar arasındaki mantıksal geçişten sorumludur.
+4-Transport: Üst katmandan gelen "data"nın segmentlere bölünerek alt katmanlara iletiminden ya da alt katmandan gelen segmentelere ayrılmış datanın akışının kontrolünden ve birleştirilmesinden sorumludur. Alt ve üst katmanlar arasındaki mantıksal geçişten sorumludur.
 3-Network: Ağlar arasında iletişimin sağlandığı katmandır. Segmentlere adres bilgisinin eklendiği katmandır. Verilerin takip edeceği yol belirlenir.
 2-Data Link: İç networkte datanın taşınmasını sağlayan katmandır. Fiziksel katmanla iletişimin kurulmasını sağlar. Akış kontrolünü ve pakette oluşacak hata durumunda bozulan paketlerin erkenden, yani yukarı katmana çıkmadan önce kontrol edilmesini  sağlar.
-1-Physical: Donanım katmanıdır. 1 ve 0 bitlerinin iletilmesini kontrol edilidği katmandır.
+1-Physical: Fiziksel donanım katmanıdır. 1 ve 0 bitlerinin iletilmesinin kontrol edilidği katmandır.
 
 <img src="./Diagrams/1_3_5.png" alt="image" width="70%" height="70%">
 
@@ -295,10 +277,8 @@ Data'nın bulunduğu katmanda aldığı isime PDU denir. 4. katman için segment
 - Datagram Transport katmanında görülür eklenti kısmı 8 bytedır. Datanın UDP başlığı alması durumunda oluşur.
 - Segment  Transport katmanında görülür eklenti kısmı 20 bytedır. Datanın TCP başlığı alması sonucu oluşur.
 - Packet Network katmanında görülür eklenti kısmı 20 bytedır. IP bilgileri taşınır.
-- Frame Data Link katmanında görülür eklenti kısmının başı 18 bytedır. Ethernet bilgileri taşınır. Kuyruğunda CRC adında kontrol kısmı bulunur.
+- Frame Data Link katmanında görülür eklenti kısmının başı 14, kuyruk kısmı 4 byte, toplamda ise 18 bytedır. Ethernet bilgileri taşınır. Kuyruğunda CRC adında kontrol kısmı bulunur.
 
-
-***
 ### **Sınava Özel Notlar:**
 
 - MAC adresleri aynı ağda iletişim yaparken kullanılır.

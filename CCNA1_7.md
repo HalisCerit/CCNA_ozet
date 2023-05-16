@@ -12,7 +12,7 @@ Daha detaylı inceleyecek olursak:
 
 <img src="./Diagrams/1_6_1.png" alt="image" width="45%" height="45%">
 
-- LLC Sublayer Türkçe'siyle LLC alt katmanı, Data Link katmanından Network katmanına geçişi kontrol eder. Üstteki katmanda kullanılan protokol IPv4 mü IPv6 mı bu bilgiyi tanımlar.
+- LLC Sublayer, LLC alt katmanı, Data Link katmanından Network katmanına geçişi kontrol eder. Üstteki katmanda kullanılan protokol IPv4 mü IPv6 mı bu bilgiyi tanımlar.
 - LLC'nin de bulunduğu ethernet frame yapısı, frame'in oluşma sıraısyla beraber şu şekilde gösterilebilir:
 
 <img src="./Diagrams/1_7_1.png" alt="image" width="55%" height="55%">
@@ -27,7 +27,7 @@ Daha detaylı inceleyecek olursak:
 
 <img src="./Diagrams/1_7_2.png" alt="image" width="70%" height="70%">
 
-- Günümüzde LLC yerine Type kullanılır.
+- Ethernet çerçevelerinde LLC sublayer kısmının yerine Type kullanılır, bu durum LLC'nin kullanılmadığını göstermez .
 - **Minumum frame boyutu 6+6+2+46+4=64** byte'tır. Bu hesaplamada Preamble veya SFD dahil edilmez çünkü bu frame yapıları artık günümüzde kullanım dışı olmuşlardır.
 - **Maximum frame boyutu 6+6+2+1500+4=1518** byte'tır. 
 - 64 bytetan küçük paketler çöpe atılır, bu durumda pakete **collision frame** ya da **runt frame**. Buradaki fikir bir paket 64'ten küçük gelmişse o paket kesinlikle collision'a uğraşmıştır mantığıdır.
@@ -63,7 +63,9 @@ Daha detaylı inceleyecek olursak:
 
 - Bir cihazdan birden çok cihaza paket gönderilmesine ise **Multicast** denir.
 - IPv4'te multicast gerçekleştirmek için hedef MAC adresine **01-00-SE** yazılır ve IPv4 destination adresi **224-239**'la bitirilirken, IPv6'da destination MAC adresi 33-33 olarak değiştirilirken, IPv6 destination kısmına FF00 yazılır.
-- .Yalnızca Multicasti dinlemek isteyen cihazlarlar multicast'e erişebilir.
+- Multicast ağ içerisine broadcast gibi dağıtılır , paketin gelidği port hariç paket her porta iletilir. Ancak yalnızca multicasti dinlemek isteyen cihazlarlar multicast'e erişebilir. 
+- If a switch receives a frame with the destination MAC address 01:00:5E:00:00:D9 switch forwards it out all ports except the ingress port.
+
 
 ### Switchler Nasıl Çalışır?
 **MAC Adresi Tablosu**

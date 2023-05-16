@@ -18,8 +18,8 @@
 
 <img src="./Diagrams/1_6_1.png" alt="image" width="40%" height="40%">
 
-- LLC Sublayer (Logical Link Layer): Encapsulation  sırasında PDU'nun layer 2'den layer 3'e geçerken üst katmandaki IP'yi kontrol eder.
-- MAC Sublayer (Media Access Control): Decapsulation sırasında layer 2'den layer 1'e geçişi kontrol eder, ayrıca:
+- LLC Sublayer (Logical Link Layer): Decapsulation  sırasında PDU'nun layer 2'den layer 3'e geçerken üst katmandaki IP'yi kontrol eder.
+- MAC Sublayer (Media Access Control): Encapsulation sırasında layer 2'den layer 1'e geçişi kontrol eder, ayrıca:
     - Framing yapısını tasarlar.
     - MAC ile geçiş kontrolü yapar.
     - Ethernet Protokolü hem 1 hem 2 katmanda çalışır.

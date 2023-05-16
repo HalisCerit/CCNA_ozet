@@ -1,4 +1,4 @@
-## Physical Layer (Fiziksel Katman) 
+# 4 Physical Layer (Fiziksel Katman) 
 
 ### Fiziksel Katman Amacı:
 - Yerel ağda kablolu ya da kablosuz bağlantıyı sağlar. Bu iş NIC ile yapılır. Kablolu, kablosuz  ve bluetooth ile haberleşen cihazların içerisinde NIC bulunur.
@@ -7,13 +7,7 @@
 - Bu katman, 6. katman PDU'su olan frame'i bitlere dönüştürür ve bu bitleri diğer cihazlara iletilmesini sağlar.
 - Encapsulation'ın son adımıdır.
 ***
-### ADSL Modemin İçeriği:
-Bir ADSL modem aşağıda verilen 4 cihazın birleşmesiyle oluşmuş bir cihazdır:
-- Router: Routerın bir interface'i yerel ağa bakarken diğer interface'i WAN'a bağlıdır.
-- Switch: Routerın LAN'a bağlı olan interface'i switchin portuna bağlıdır.
-- DHCP Sunucusu: Yerel ağda IP atamasından sorumludur, switche bağlıdır.
-- Access Point: Kablosuz yerel haberleşmede kullanılan bileşendir, switche kablosuz bağlanmak isteyen cihazlar switche access point cihazı aracılığıyla bağlanır.
-***
+
 ### Fiziksel Katman Standart Kurumları
 - ISO
 - ⚠️EIA/TIA (kablolama)
@@ -41,18 +35,22 @@ Manchester kodlamada aktarılan veriyi 5 Volt ve 0 Volt değerlerinin hareketler
 - NIC kartını kullanarak elektiriksel sinyallerin kodlama yöntemine göre üretilmesine **sinyallme** denir. Sinyalleme bakır kabloda elektirikle, fiber kabloda ışıkla, kablosuz iletimde ise dalgalarla iletim yapar.
 
     ### Bandwidth (Bant genişliği)
-    - Saniyede iletilen bit miktarınıdır. 
+    - Bir ağın belli bir sürede iletebileceği bit miktarınıdır. Bandwidth ağın genişliğini ve kapasitesini belirler.
 
     Örnek: 100 MB boyutunda olan bir dosya, indirme hızı 100 Mbps olan bir networkte kaç saniyede indirilir ?
     1 MB = 8 Mbit'tir yani dosya 800 Mbitdir. Bu durunda dosya 8 saniyede iner.
 
     ### Latency (Gecikme)
-    - Data'nın karşıya iletime süresidir.
+    - Data'nın bir noktadan diğer nokataya iletimesi için geçen süredir, başka bir değişle gecikmedir.
+    - Latency'i etkiliyen bazı durumlar cihazlar arasındaki mesafe, mevcut ağ üzerindeki yoğunluk/trafik, protokollerden kaynaklanan gecikme ya da cihazarın/kaboların işlem/iletim gücü olabilir.
     *Extra: Ses iletimi 150 ping'in altındaysa gerçekleşir.*
     ### Throughput (Verim)
-    - Ağın gerçekte alabilceği verimdir. Örneğin, ağın sağlayabilceği maksimum internet beklentisi 100 Mbps olsada son kullanıcının aldığı internet 50 Mbps olabilir bu duruma throughput denir. 
+    - Ağın üzerinden belirli bir zamanda aktarılabilinen veri miktarıdır.
+    - Ağın gerçekte aldığı verimdir. Örneğin, ağın sağlayabilceği maksimum internet beklentisi 100 Mbps olsada son kullanıcının aldığı internet 50 Mbps olabilir bu duruma throughput denir. 
+    - Throughtput Latency ve Bandwidth'den etkilenir.
+    - Throughput (Mb)= Bandwidth (Mb/s)* Latency(s) şeklinde hesaplanır.
     ### Goodput
-    - Frame'lerden bağımsız saf datanın aktarılma süresidir.
+    - Throughtput'la temel anlamda ayndıır ancak goodput frame'lerden bağımsız saf datanın aktarılma süresidir.
 
 ## 3- Media Bileşenleri
 ### **Bakır Kablolalar:**
@@ -61,12 +59,12 @@ Bakır Kablo Çeşitleri:
 - UTP (Unshielded Twisted Pair): İçi bükümlü dışı korunasız bakır kablodur.
 - STP (Shielded Twisted Pair): UTP kablonun korumalı halidir. 
 - SFTP (Shielded Foiled Twisted Pair): STP kablonun daha korumalı halidir. Folyolanmış bükümlü kablolaların kendi aralarında da bükümlenmesiyle oluşur.
-*Önemli: Shield kullanılan kablolarda topraklama yapılması gereklidir. SFTP'de ve STP'de topraklama yapılmalıdır.* 
+*Önemli: Shield kullanılan kablolarda **topraklama (ground)** yapılması gereklidir. SFTP'de ve STP'de topraklama yapılmalıdır.* 
 - Bakır kablolama düşük üretim maliyeti, yaygınlık ve güvenilirliği nedeniyle en yaygın olarak kullanılan kablo türüdür.
-- Bakır kablo kullanılan ağlarda görünen sinyal zayıflamasına **Attentuation (Zayıflama)** denir. Genelde bu durum 100m'den sonra oluşur. Attentuation durumunun oluşmasının engellenmesi için kablolamalar 100 meterenin altında tutulmaktadır, bu kuralları TIA/EIA belirlemektedir.Bununla birlikte **flöresan lambalar**, E.M.I. (Electro Magnetic Interface) ya da R.F.I. (Radio Frequency Interference), bakır kabloda iletimi bozan parazitlenmelere sebep olurlar. Bu pazaritlenmeleri engellemek adına kablolarda mesafe kurallarına uyulmalıdır, çapraz kablolama yapılmalıdır (**twisted**) ve shielded kablo kullanılmalıdır.
+- Bakır kablo kullanılan ağlarda görünen sinyal zayıflamasına **Attenuation  (Zayıflama)** denir. Genelde bu durum 100m'den sonra oluşur. Attenuation  durumunun oluşmasının engellenmesi için kablolamalar 100 meterenin altında tutulmaktadır, bu kuralları TIA/EIA belirlemektedir.Bununla birlikte **flöresan lambalar**, E.M.I. (Electro Magnetic Interface) ya da R.F.I. (Radio Frequency Interference), bakır kabloda iletimi bozan parazitlenmelere sebep olurlar. Bu pazaritlenmeleri engellemek adına kablolarda mesafe kurallarına uyulmalıdır, çapraz kablolama yapılmalıdır (**twisted**) ve shielded kablo kullanılmalıdır.
 - İletim sırasında kablo içerisindeki elektiriksel hareketten kaynaklı elektromanyetik dalgalar oluşur.Bu etkiyi azaltmak için kablonun içerisindeki bakır teller birbirine sarılır (**twisted** hale getirilir) bu sayede elektromanyetik dalga oluşması azaltılır.
 - Bu etkiye **cancellation** denmektedir.
-    UTP (Unshielded Twisted Pair)-STP (Shielded Twisted Pair) Kabloların içerisinde sırasıyla:
+    UTP (Unshielded Twisted Pair)-STP (Shielded Twisted Pair) Kabloların içerisinde:
     - Turuncu,
     - Turuncu-beyaz,
     - Mavi,
@@ -75,21 +73,19 @@ Bakır Kablo Çeşitleri:
     - Yeşil-beyaz,
     - Kahve rengi, 
     - Kahve rengi-beyaz kabloları bulunur. 
-- UTP ve STP 305 metre olarak satılan, ucundan RJ-45 connector bağlanabilen bakır kablolardır. Bu kablolar **Flöresan** lambalar, diğer kablolar ve  yüksek enerjili kablolar tarafından etkilmemek için"kalkan" kullanılır. **Bu kalkanın kullanılması durumunda topraklama gereklidir**.
+- UTP ve STP 305 metre olarak satılan, ucundan RJ-45 connector bağlanabilen bakır kablolardır. Bu kablolar **Fluorescent (Flöresan)** lambalar, diğer kablolar ve  yüksek enerjili kablolar tarafından etkilmemek için"kalkan" kullanılır. **Bu kalkanın kullanılması durumunda topraklama gereklidir**.
 
 Önemli terimler: 
 
-- ***Attentuation**: Bakır kablo kullanan ağlarda gözlemlenen sinyal zayıflamasıdır.*
-
+- ***Attenuation**: Bakır kablo kullanan ağlarda gözlemlenen sinyal zayıflamasıdır.*
 - ***Cancellation**: Kablo içerisindeki elektiriksel haraketten dolayı bir elektromanyetik dalga oluşur. Kabloların birbirine sarılarak iletim yapması (twisted olması) oluşacak elektro manyetik alanın oluşmasını engeller. Bu etkiye cancellation denmektedir.*
-
 - ***Crosstalk**: İki adet twisted kablonun birbirini manyetik olarak etkilemesine crosstalk denir.*
 
 IEEE kabloların elektiriksel özelikelerini belirlerken EIA/TIA kablosal özellikleri belirler. 
 TIA/EIA-568 şu unsurları standartlaştırır:
 - Kablo Tipleri
 - Kablo Uzunlukları
-- Könektörler
+- Connectors 
 - Kablo Sonlardırma
 - Test Yöntemleri
 
