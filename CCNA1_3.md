@@ -50,9 +50,10 @@ Bu şekilde **8 adet NIC** adresi ve **7 adet ağ** bulunmaktadır. Bu ağlar:
 ### 1- Encoding:
 
 - Mesajın **fiziksel ortam**da iletilmesi için uygun hale getirilme işlemidir.
+- Encoding, Data Link katmanında oluşan framelerin ağ iletimi sırasında fark edilebilmesi için özel başlıklar eklenmesini sağlar.
 - Encoding işleminin tersi **decoding**'tir, mesajın yorumlanması için çözümlenmesidir.
 - Hostlar arası kodlama ortama uygun olmalıdır. Bitler ışık, ses veya elektriksel darbe modeline dönüştürülür, hedef (destination) bunu decoding yardımıyla çözümler.
-- Encoding fiziksel katmana özgü bir durumdur.
+- Encoding fiziksel katmana geçişte gözlenen bir durumdur.
 
 ### 2- Formatting and Encapsulation:
 
@@ -133,7 +134,8 @@ Cihazların veya servislerin kolayca algılanması için kullanılır. Bu protok
 
 ## Protokol Kümelerinin Evrimi
 
-- TCP/IP: Amerikan Savunma Bakanlığı tarafından geliştirilmiş en yaygın protokol paketidir. Günümüzde IETF tarafından geliştirilir ve korunur.
+- TCP/IP: Amerikan Savunma Bakanlığı tarafından geliştirilmiş açık kaynaklı en yaygın protokol paketidir. Günümüzde IETF tarafından geliştirilir ve korunur.
+*Not: Açık kaynaklı protokolün tersi proprietary protokoldür*
 - OSI (Open Systems Interconnection): Geliştiricisi ISO (International Standardization Organization) ve ITU (International Telecommunication Union)'dır.
 - Apple Talk.
 - Nowell Network.
@@ -147,9 +149,9 @@ Cihazların veya servislerin kolayca algılanması için kullanılır. Bu protok
 | Network Access 	|    Ethernet ARP WLAN    	|  Ethernet ARP WLAN  	|  Ethernet ARP WLAN 	|   Ethernet ARP WLAN  	|
 
 
-*Apple sistemler yalnızca diğer Apple sistemlerle, Nowell sistemler ise yalnızca nowell sistemlerle haberleşebilmiştir.*
-
+*Apple sistemler yalnızca diğer Apple sistemlerle, Nowell sistemler ise yalnızca nowell sistemlerle haberleşebilmiştir, çünkü bu protokoller **propritary protokollerdir**.*
 ***Evrensel protokol mücadelesini TCP/IP esnek yapısı sayesinde kazanmıştır.***
+Bu sayede farklı operating system'lerdeki cihazlar birbirleriyle konuşabilir/iletişim kurabilir hale gelmiştir.
 
 ***
 ## Standart Organizasyonları:
@@ -260,11 +262,12 @@ Data network üzerinden tek parça halinde iletilmez, küçük parçalara ayrıl
 
 Verinin router'a gelmesiyle network katmanına kadar çıkılmış olunur, önce hedef IP güncellenir, yani gidilecek servera bağlı olan router'ın IP'si yazılır. Ardından Data Link katmanında ISP networkündeki local ağda bulunan bir sonraki cihazının MAC aderesi yazılır.
 ***
-### Kısaca TCP/IP Protokol Paketleri
+
+### ⚠️Bazı TCP/IP Protokol Paketleri
 
 |                                             TCP/IP                                             	|                                                            Name of Protocols                                                           	|
 |:----------------------------------------------------------------------------------------------:	|:--------------------------------------------------------------------------------------------------------------------------------------:	|
-| Application Layer: <br>Kullanıcı verilerinin kodlanmasını,<br> denetiminin yapılmasını sağlar. 	| DNS: İsim Çözümlenesi<br> SLAAC/DHCPv4: IP adresleme<br> STMP/POP/IMAP: E-mail<br> FTP/SFTP/TFTP: File Transfer<br>HTTP/HTTPS/REST: Web 	|
+| ⚠️Application Layer: <br>Kullanıcı verilerinin kodlanmasını,<br> denetiminin yapılmasını sağlar. 	| DNS: İsim Çözümlenesi<br> SLAAC/DHCPv4: IP adresleme<br> STMP/POP/IMAP: E-mail<br> FTP/SFTP/TFTP: File Transfer<br>HTTP/HTTPS/REST: Web 	|
 |        Transport Layer:<br>Farklı ağlar arasındaki <br>cihazların iletişimini destekler.       	|                                             TCP: Connection Oriented<br>UDP: Connectionless                                            	|
 |                         Internet Layer:<br>Ağdaki en iyi yolu belirler.                        	|                  IPv4/IPv6/NAT: Internet Protokolleri<br>ICMPv4/ICMPv6: Mesajlaşma<br>OSPF/EIGRP/BGP: Router Protocols                 	|
 |   Network Access Layer:<br>Ağı oluşturan donanım <br>aygıtlarını ve medyayı<br> kontrol eder.  	|                                       ARP: Adres Resolution<br>Ethernet/WLAN: Data Link Protocols                                      	|
@@ -286,7 +289,7 @@ Data'nın bulunduğu katmanda aldığı isime PDU denir. 4. katman için segment
 - Source IP adresiyle destination IP adresleri değişmez.
 - Günümüzde IP adresleri yetersiz olduğundan NAT yapılır. 
 - Switchlerin IP yazılımı yoktur.
-- Default Gateway (DGW) farklı networklere çıkışı sağlayan routerın IP adresidir.
+- Default Gateway (DGW) farklı networklere çıkışı sağlayan routerın iç networke bakan mantıksal/IP adresidir.
 
 
 

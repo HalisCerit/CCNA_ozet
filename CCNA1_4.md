@@ -6,6 +6,7 @@
 *Extra: GSM kartlarında NIC bulunmaz bu cihazlar IMEI aracılığıyla baz istasyonlarına bağlanır.*
 - Bu katman, 6. katman PDU'su olan frame'i bitlere dönüştürür ve bu bitleri diğer cihazlara iletilmesini sağlar.
 - Encapsulation'ın son adımıdır.
+- Data Link katmanında kullanılacak medium ya da media'ya uygun enkapsülleme yapıldıktan sonra aktarma işlemi bu katmanda yapılır.
 ***
 
 ### Fiziksel Katman Standart Kurumları
@@ -30,13 +31,13 @@ Fiziksel katman standartlarnın 3 temel alanı:
 ## 1- Coding (Kodlama) 
 - Bit akışının ağ içerisindeki diğer cihazlar tarafından tanınabilir bir formata dönüştürülmesi **kodlama** olarak adlandırılır. Farklı iletim hızları için farklı yöntemler vardır, örneğin 10 Mbit hızlar için Mancherster kodlama kullabılırken, 100 Mbit için 4B/5B kodlamalar kullanılır.
 Manchester kodlamada aktarılan veriyi 5 Volt ve 0 Volt değerlerinin hareketlerini yönlerine göre oluşturur. Voltajın düşmesi 0'ı temsil ederken yükselmesi 1'i temsil eder.
-
+- Ağ yoluyla gelen paketin içerisinde
 ## 2- Signal Transmission (Sinyalleme)
 - NIC kartını kullanarak elektiriksel sinyallerin kodlama yöntemine göre üretilmesine **sinyallme** denir. Sinyalleme bakır kabloda elektirikle, fiber kabloda ışıkla, kablosuz iletimde ise dalgalarla iletim yapar.
 
     ### Bandwidth (Bant genişliği)
     - Bir ağın belli bir sürede iletebileceği bit miktarınıdır. Bandwidth ağın genişliğini ve kapasitesini belirler.
-
+    - Bandwidth'in ölçüm değerleri kilobit/saniye ya da megabit/saniye olabilmektedir. 
     Örnek: 100 MB boyutunda olan bir dosya, indirme hızı 100 Mbps olan bir networkte kaç saniyede indirilir ?
     1 MB = 8 Mbit'tir yani dosya 800 Mbitdir. Bu durunda dosya 8 saniyede iner.
 
@@ -45,7 +46,7 @@ Manchester kodlamada aktarılan veriyi 5 Volt ve 0 Volt değerlerinin hareketler
     - Latency'i etkiliyen bazı durumlar cihazlar arasındaki mesafe, mevcut ağ üzerindeki yoğunluk/trafik, protokollerden kaynaklanan gecikme ya da cihazarın/kaboların işlem/iletim gücü olabilir.
     *Extra: Ses iletimi 150 ping'in altındaysa gerçekleşir.*
     ### Throughput (Verim)
-    - Ağın üzerinden belirli bir zamanda aktarılabilinen veri miktarıdır.
+    - Ağın üzerinden belirli bir **zaman**da aktarılabilinen **veri miktarı**dır.
     - Ağın gerçekte aldığı verimdir. Örneğin, ağın sağlayabilceği maksimum internet beklentisi 100 Mbps olsada son kullanıcının aldığı internet 50 Mbps olabilir bu duruma throughput denir. 
     - Throughtput Latency ve Bandwidth'den etkilenir.
     - Throughput (Mb)= Bandwidth (Mb/s)* Latency(s) şeklinde hesaplanır.
@@ -61,7 +62,7 @@ Bakır Kablo Çeşitleri:
 - SFTP (Shielded Foiled Twisted Pair): STP kablonun daha korumalı halidir. Folyolanmış bükümlü kablolaların kendi aralarında da bükümlenmesiyle oluşur.
 *Önemli: Shield kullanılan kablolarda **topraklama (ground)** yapılması gereklidir. SFTP'de ve STP'de topraklama yapılmalıdır.* 
 - Bakır kablolama düşük üretim maliyeti, yaygınlık ve güvenilirliği nedeniyle en yaygın olarak kullanılan kablo türüdür.
-- Bakır kablo kullanılan ağlarda görünen sinyal zayıflamasına **Attenuation  (Zayıflama)** denir. Genelde bu durum 100m'den sonra oluşur. Attenuation  durumunun oluşmasının engellenmesi için kablolamalar 100 meterenin altında tutulmaktadır, bu kuralları TIA/EIA belirlemektedir.Bununla birlikte **flöresan lambalar**, E.M.I. (Electro Magnetic Interface) ya da R.F.I. (Radio Frequency Interference), bakır kabloda iletimi bozan parazitlenmelere sebep olurlar. Bu pazaritlenmeleri engellemek adına kablolarda mesafe kurallarına uyulmalıdır, çapraz kablolama yapılmalıdır (**twisted**) ve shielded kablo kullanılmalıdır.
+- Bakır kablo kullanılan ağlarda görünen sinyal zayıflamasına **Attenuation  (Zayıflama)** denir. Genelde bu durum 100m'den sonra oluşur. Attenuation  durumunun oluşmasının engellenmesi için kablolamalar 100 meterenin altında tutulmaktadır, bu kuralları TIA/EIA belirlemektedir.Bununla birlikte **flöresan lambalar**, **EMI** (Electro Magnetic Interface) ya da **RFI** (Radio Frequency Interference), bakır kabloda iletimi bozan parazitlenmelere sebep olurlar. Bu pazaritlenmeleri engellemek adına kablolarda mesafe kurallarına uyulmalıdır, çapraz kablolama yapılmalıdır (**twisted**) ve shielded kablo kullanılmalıdır.
 - İletim sırasında kablo içerisindeki elektiriksel hareketten kaynaklı elektromanyetik dalgalar oluşur.Bu etkiyi azaltmak için kablonun içerisindeki bakır teller birbirine sarılır (**twisted** hale getirilir) bu sayede elektromanyetik dalga oluşması azaltılır.
 - Bu etkiye **cancellation** denmektedir.
     UTP (Unshielded Twisted Pair)-STP (Shielded Twisted Pair) Kabloların içerisinde:
@@ -73,7 +74,8 @@ Bakır Kablo Çeşitleri:
     - Yeşil-beyaz,
     - Kahve rengi, 
     - Kahve rengi-beyaz kabloları bulunur. 
-- UTP ve STP 305 metre olarak satılan, ucundan RJ-45 connector bağlanabilen bakır kablolardır. Bu kablolar **Fluorescent (Flöresan)** lambalar, diğer kablolar ve  yüksek enerjili kablolar tarafından etkilmemek için"kalkan" kullanılır. **Bu kalkanın kullanılması durumunda topraklama gereklidir**.
+- UTP ve STP 305 metre olarak satılan, RJ-45 connector ile sonlandırılabilen bakır kablolardır. Bu kablolar **Fluorescent (Flöresan)** lambalar, diğer kablolar ve  yüksek enerjili kablolar tarafından etkilmemek için"kalkan" kullanılır. **Bu kalkanın kullanılması durumunda topraklama gereklidir**.
+- RJ-45 kabloları sonlandırılırken uç kısmındaki untwisted kısmının mümkün olduğunca kısa tutulması, bükümsüz kısmın RJ-45'in dışarısına çıkmaması gereklidir. 
 
 Önemli terimler: 
 
@@ -188,6 +190,7 @@ IEEE ise UTP kabloları performansa göre derecelendirir:
 - Bakır kablolara göre fiyatları çok yüksektir.
 - Ancak bakır kabloların aksine mesafesi çok yüksektir, EMI ve RFI gibi frekanslardan çok az etkilenirler.
 - Bakır kablolarda veri iletimi elektirik sayesinde sağlanırken Fiber-Optik kablolarda bu iletim **lazer** ya da **LED ışıkla** gerçekleştirilir.
+- Fiber kablolarda 2 adet tel bulunur bunun nedeni bu tellerden  birisinin transmit yaparken diğer telin recive yapmasıdır.
 
 Multimode vs Singlemode:
 
@@ -235,9 +238,9 @@ Bazı SFP özellikleri ise şunlardır:
 
 ### Wireles Media  (Kablosuz Medya)
 
-- Kablosuz medyanın mesafesi yani kapsama alanı çok kısıtlıdır.
-- Girişime çok açıktır, bir çok cihaz ağa yük yapabilir.
-- Bu durum güvenlik riskleri yaratabilir.
+- Kablosuz medyanın mesafesi yani kapsama alanı (**coverage area**) çok kısıtlıdır.
+- Girişime (**interface**) çok açıktır, bir çok cihaz ağa yük yapabilir.
+- Bu durum **güvenlik** riskleri yaratabilir.
 - Ayrıca Wireless media **half duplex** çalışır, collision oluşması mümkündür ve oluşur. Girişime açık yapısı bu duruma yardımcı olmaz.
 - Wi-Fi, IEEE 802.11 ile denetlenir, Kablosuz LAN (WLAN) teknolojisi olarak ifade edilir.
 - Bluetooth, IEEE 802.15 ile denetlenir, kablosuz kişisel alan ağı (WPAN) standartıdır.

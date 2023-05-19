@@ -1,5 +1,6 @@
 ## Data Link Katmanı
 - Data Link katmanı denilince akla gelen ilk protokol kuşkusuz **Ethernet** protokolüdür. Ancak Data Link katmanında bulunan tek protokol ethernet protokolü değildir. Wireless LAN, PPP ve HDLC gibi protokoller data link katmanında bulunan diğer protokollerdir.
+- - Data Link katmanında kullanılacak medium ya da media'ya uygun enkapsülleme bu katmanda yapılır.
 - Bu protokollerden bazıları MAC adresi kullanırken bazıları kullanmaz:
 
 
@@ -18,7 +19,7 @@
 
 <img src="./Diagrams/1_6_1.png" alt="image" width="40%" height="40%">
 
-- LLC Sublayer (Logical Link Layer): Decapsulation  sırasında PDU'nun layer 2'den layer 3'e geçerken üst katmandaki IP'yi kontrol eder.
+- LLC Sublayer (Logical Link Layer) decapsulation  sırasında PDU'nun layer 2'den layer 3'e geçerken üst katmandaki IP'yi kontrol etmesini sağlar.
 - MAC Sublayer (Media Access Control): Encapsulation sırasında layer 2'den layer 1'e geçişi kontrol eder, ayrıca:
     - Framing yapısını tasarlar.
     - MAC ile geçiş kontrolü yapar.
@@ -48,7 +49,7 @@
 
 ***
 ### Topolojiler
-Topolojiler ağların haritasıdır, bu haritalarla ağlarda oluşan problemlerin çözümü sağlanır. Topolojiler 2'ye ayrılabilir, **fziksel topolojiler** ve **logical (mantıksal) topolojiler**. Fiziksel topolojiler cihazların birbirine nasıl bağlandığı ve fiziksel bağlantıların gösterildiği ağ haritasıdır. Mantıksal topolojiler ise ağdaki IP adres planlamaları, VLAN gibi ağ yöntemleri ile ilgilidir.
+Topolojiler ağların haritasıdır, bu haritalarla ağlarda oluşan problemlerin çözümü sağlanır. Topolojiler 2'ye ayrılabilir, **fziksel topolojiler** ve **logical (mantıksal) topolojiler**. Fiziksel topolojiler cihazların birbirine nasıl bağlandığı ve fiziksel bağlantıların gösterildiği ağ haritasıdır. Mantıksal topolojiler ise ağdaki IP adres planlamaları, cihazların verileri nasıl aktardıkları ve VLAN gibi ağ yöntemleri ile ilgilidir.
 
 <img src="./Diagrams/1_6_4.png" alt="image" width="55%" height="55%">
 
@@ -99,9 +100,11 @@ Mantıksal Topolojiler de içinde 2'ye ayrılabilir:
 <img src="./Diagrams/1_6_9.png" alt="image" width="60%" height="60%">
 
 
-- **Extended Star Topoloji**
+- **Extended Star Topoloji (Hybrid Topoloji)**
 
 <img src="./Diagrams/1_6_10.png" alt="image" width="60%" height="60%">
+
+Not: Topolojilerin farklı topolojilerle birleşmesiyle oluşan yeni/farklı topoloji tiplerine hibrit (**hybrid**) topoloji denmektedir.
 
 ***
 
