@@ -1,4 +1,4 @@
-## Data Link Katmanı
+# 6 Data Link Katmanı
 - Data Link katmanı denilince akla gelen ilk protokol kuşkusuz **Ethernet** protokolüdür. Ancak Data Link katmanında bulunan tek protokol ethernet protokolü değildir. Wireless LAN, PPP ve HDLC gibi protokoller data link katmanında bulunan diğer protokollerdir.
 - - Data Link katmanında kullanılacak medium ya da media'ya uygun enkapsülleme bu katmanda yapılır.
 - Bu protokollerden bazıları MAC adresi kullanırken bazıları kullanmaz:
@@ -124,12 +124,13 @@ Switchlerde ise aynı anda farklı cihazlarla konuşup veri yollayabilir ve ağd
 *Not: Switch ile Hub arasındaki en büyük farklardan birisi bu iki cihaz arasndaki iletim kapasitesidir. Hubda çalışan cihazın 10Mbps ya da 100Mbps iletim kapasitesin varken, 24 portlu bir switchin  24 adet 1Gbps'lık recive, 24 adet 1Gbps'lık transmit, toplamda ise 48Gbps toplam anahtarlama kapasitesinin olmasıdır.*
 ***
 ### Access Point Methoods
-- MAC iletim ortamına geçişin kontrol edilemsini gerçekleştirir. 
+- MAC, iletim ortamına geçişin kontrol edilemsini gerçekleştirir, hat boşsa frame'i ilet hat doluysa sıranı bekle.
 - **Ethernette** MAC algoritması olarak **CSMA/CD** kullanılır.
 - **Wi-Fi**'de kullanılan MAC algortiması **CSMA/CA'dır**. 
 - Bu iki algoritma yarışma bazlı iletişim kurma algoritmalarıdır **(Contention Based)**.
 - İletişim hattında boşluğu ilk  bulanın paketini yollanamsıyla çalışan bir algortimadır.
 
+*Not: Geçmişte ethernet tek hat üzerindeydi o yüzden  CSMA/CD collision'la mücadele için çok önemliydi ancak  bu algortima switch ortaya çıkmasıyla günümüzde ihtiyaç olmaktan çıkmıştır.*
 *Not: Token Ring topolojisinde Token Ring algoritması kullanılır. Bu algortima contention based algortimaların aksine **Contention Free ya da Controlled Based** algoritmadır, controlled based algoritmalarda iletim sırayla gerçekleşir rekabet yoktur.*
 
 <img src="./Diagrams/1_6_16.png" alt="image" width="40%" height="40%">
@@ -181,13 +182,4 @@ Bu protokol alanları o an ağda cihazlar arasındaki iletişimde kullanılan pr
 - PDU'lar dış ağa çıkarken Layer3'e çıkarlar, MAC adresleri çöpe atılır yani MAC adresi mevcut cihazın (genellikle bu routerdır) MAC adresini alır, PDU'nun ulaştırılması planlanan cihazın MAC adresi ise destination MAC olarak yazılır.
 *Extra: PPP'de adresi boyutu 8 bittir, bunun sebebi adres numarasının 11111111 olmasıdır. Sonuçta PPP protokolünde MAC adresine gerek duyulmaz, PPP protokolü routerları birbirlerine bağlamakta kullanılan bir protokoldür.
 
-***
-## Ethernet Anahtarlandırma
-
-- Ethernet 1. ve 2. katmanda çalışan bir protokolüdür.
-- Ethernet framing yapısını oluşturur.
-- Ethernet MAC methodu olarak CSMA/CD kullanır.
-- Ethernet protokolü kablolar, fiber, UTP, STP, sinyalleşme, konnektörler, data iletim hızları gibi bir çok konuyu denetler.
-
-<img src="./Diagrams/1_6_20.png" alt="image" width="47%" height="47%">
 

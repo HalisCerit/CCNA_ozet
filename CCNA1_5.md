@@ -1,4 +1,4 @@
-## Sayı Sistemleri
+# 5 Sayı Sistemleri
 ### İkili Sayı Sistemleri:
 - Bilgisayarlardaki bütün işlemler ve veriler 1 ve 0'lardan oluşmaktadır.
 - Mesela daha önce gördüğümüz IP adresleri 32 Bitlik dizilerden oluşmaktadır.

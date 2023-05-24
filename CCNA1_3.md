@@ -102,7 +102,8 @@ Ağ İletişim Protokolleri, iki ya da daha fazla cihazın bir veya birden çok 
 Ağ güvenlik protokolleri kimlik doğrulama (authentication), veri bütünlüğünün korunması (integrity) ve veri şifrelenmesini (data encryption) sağlamak için verileri güvenli hale getirme protokolleridir, bu protokollerden bazıları:
 
 - SSH (Secure Socket Shell): Orta adam saldılarının (man-in-the-middle-attack) mümkün olduğu güvenli olmayan internet ağları üzerinden mesajların güvenli ve şifrelenmiş şekilde geçmesini sağlayan, bunu da public key kullanarak yapan güvenlik protokolüdür.
-- Telnet (Telecommunications and Networks): UNIX platformlarında kullanılmak üzere tasarlanmış, bir internet protokolüdür.  
+- Telnet (Telecommunications and Networks): UNIX platformlarında kullanılmak üzere tasarlanmış, bir internet protokolüdür.
+- SSH ve Telnet ağ üzerinde iletişimi sağlayan ve işletim sistemlerine bağlanmak için kullanılan protokollerdendir. Bu bağlantı kurulumunda SSH kullanımı tercih edilir çünkü SSH çok daha güvenldir.
 - SSL: TSL'in çıkmasıyla kullanımı azalan, internet güvenlik protokolüdür. Genellikle bankacılık, transaction işlemlerinde kullanılan bir protokoldür. Client ile server arasında, serverın **sertifika** yollaması ile çalışır.
 - TSL: SSL'in geliştirilmiş halidir. Temel olarak SSL ile aynı özellikleri taşır.
 
