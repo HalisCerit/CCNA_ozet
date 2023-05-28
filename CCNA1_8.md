@@ -35,6 +35,7 @@
 - IP yalnızca pakete hedef ve kaynak adresini yazar ve yollar.
 - Kontrolü de TCP'ye bırakır.
 **3- Medyadan bağımsız (Media Independent)** 
+
 <img src="./Diagrams/1_8_3.png" alt="image" width="80%" height="80%">
 - IP fiziksel katmandaki kablo türünü ya da data link katmanındaki frame'in türünü önemsemez ve ilgilenmez.
 - IP herhangi bir ortam üzerinden gönderilebilen medium'dan bağımsız farklı (bakır/fiber/kablosuz) ağlarda çalışabilen bir protokoldür.
@@ -115,7 +116,7 @@ Hedefler:
 - NAT ihtiyacına gerek kalmamıştır. Uçtan uca bu sayede kullanılabilir.
 - IPv6 paketi toplamda 40 bytetır.
 
-<img src="./Diagrams/1_8_6.png" alt="image" width="55%" height="55%">
+<img src="./Diagrams/1_8_6.png" alt="image" width="50%" height="50%">
 
 - Verison: IPv6 da 4 bitlik alan 0110 olacaktır.
 - Traffic Class: Önceliklendirmenin yapıldığı kısımdır.
@@ -142,6 +143,75 @@ Bir cihazın internete çıkması için 4 adrese ihtiyaç vardır. Bu adresler:
 - Bir web sunucusunda sunucu hizmeti çalışıyor mu çalışmıyor mu bunun kontrolü için http://127.0.0.1 kullanılır. Paket kendine ulaşır ve web sayfası açılır.
 - Çok basit bir kontrol yöntemdir.
 
-2- Local Host:
+2- Local Host
+- İç network iletişiminde IP adresi ve subnet maskesi yeterlidir default gateway'e ihtiyaç yoktur çünkü ağ dışana çıkmaya gereklilik söz konusu değildir. 
+- Cihazlar yerel ağlarda IP'leri ARP sorgusuyla MAC öğrenmek için kullanırlar.
+
+3- Remote Hosts
+- Uzak networklere erişmek için bu yöntem kullanılır.
+- Default Gateway adresi faklı networklere gitmek için gereklidir.
+
+⚠️ Not: Aynı networklerde IP ve Subnet Maskesi yeterliyken, farklı networklerede IP, Subnet ve Default Gatewaye ihtiyaç vardır
+⚠️ Not: Bazen IP adresleri 192.168.10.1/16 şeklinde gösterilir bu gösterime **Prefix** gösterim denmektedir. /16, 255.255.0.0 subnet maksesiyle denktir, ilk 16 bit host kısmını temsil etmektedir.
+***
+**Default Gateway**
+- Dış ağa çıkan router cihazının iç ağa bakan IP adresidir (Zaten bütün routerlar dış networke çıkmaya yarar). 
+- Başka networklere çıkarken kullanılır, frame içerisinde hedef MAC adresi kısmına default gateway'in MAC adresi yazılır.
+- IPv4'te ağda bulunan cihazlar DHCP sunucusunu broadcastle uyarırlar ardından **cihazlar DHCP sunucusundan IPv4 alır**lar.
+- IPv6 ise RS denilen Router Solicitation aracılığyla bu işlem gerçekleştirilir ya da manual olarak bu işlem yapılır.
+
+<img src="./Diagrams/1_8_7.png" alt="image" width="60%" height="60%">
+
+***
+<img src="./Diagrams/1_8_8.png" alt="image" width="60%" height="60%">
+
+PC'nin Routing Table'ı aşağıda verilmiştir:
+
+| **Network Destination** 	|   **Netmask**   	|  **Gateway** 	| **Interface** 	|
+|:-----------------------:	|:---------------:	|:------------:	|:-------------:	|
+|         0.0.0.0         	|     0.0.0.0     	| 192.168.10.1 	| 192.168.10.10 	|
+|        127.0.0.0        	|    255.0.0.0    	|    On-Link   	|   127.0.0.1   	|
+|        127.0.0.1        	| 255.255.255.255 	|    On-Link   	|   127.0.0.1   	|
+|     127.255.255.255     	| 255.255.255.255 	|    On-Link   	|   127.0.0.1   	|
+|       192.168.10.0      	|  255.255.255.0  	|    On-Link   	| 192.168.10.10 	|
+|      192.168.10.10      	| 255.255.255.255 	|    On-Link   	| 192.168.10.10 	|
+|      192.168.10.255     	| 255.255.255.255 	|    On-Link   	| 192.168.10.10 	|
+
+Buradan 3 temel çıkarım yapabiliriz:
+1- 0.0.0.0/0 adresi tabloda bulunan network adreslerinin dışındaki tüm adreslerin adresidir.
+2- 127.0.0.0/8 cihazın kendisiyle konuşmasını temsil eden network adresleridir.
+3- 192.168.10.0/24 adresinde tüm cihahzlar aynı networkte olduğundan framelerin direkt ulaşması mümkündür.
+
+⚠️PC'de yönledirme tablsonu görmek için **route print** ya da **netstat -r** yazılır.
+Bu kodun yazılmasıyla network interface kartlarının listesi verilir.
+
+| **Kaç Nolu NIC** 	|   **MAC adresi**  	| **İsmi / Markası** 	|
+|:---------------:	|:-----------------:	|:------------------:	|
+|        16       	| A4 B7 56 45 6F 0A 	|   Realtek Wifi 6   	|
+
+Ardından IPv4 ve IPv6 routing tablosu verilir.
+
+| **Network Destination** 	|   **Netmask**   	|  **Gateway** 	| **Interface** 	|
+|:-----------------------:	|:---------------:	|:------------:	|:-------------:	|
+|         0.0.0.0         	|     0.0.0.0     	| 192.168.10.1 	| 192.168.10.10 	|
+
+***
+Routerlarda routing 2 farklı şekilde yapılabilir:
+1- Statik Routerlama,
+2- Dynamic Routerlama.
+
+**1- Statik Routerlamayla Routing Table**
+<img src="./Diagrams/1_8_9.png" alt="image" width="40%" height="40%">
+| Routing <br>Sırası 	|             Type            	| IP<br>Adresi 	| Subnet<br>Maskesi 	| Port 	|                               Yorum                               	|
+|:------------------:	|:---------------------------:	|:------------:	|:-----------------:	|:----:	|:-----------------------------------------------------------------:	|
+|          1         	| C<br>Directly <br>Connected 	|   10.0.0.0   	|     255.0.0.0     	|  Fa0 	| Önce bulunduğu ağı doğru subnet maskesiyle routing table'a ekler. 	|
+|          2         	|      L<br>Link<br>Local     	|   10.0.0.1   	|  255.255.255.255  	|  Fa0 	| Ardından kendi portu eklenir.                                     	|
+|          3         	| C<br>Directly <br>Connected 	|   20.0.0.0   	|     255.0.0.0     	|  Fa1 	| Önce bulunduğu ağı doğru subnet maskesiyle routing table'a ekler. 	|
+|          4         	|      L<br>Link<br>Local     	|   20.0.0.1   	|  255.255.255.255  	|  Fa1 	| Ardından kendi portu eklenir.                                     	|
+
+Peki biz Network 3'e erişmek için nasıl bir yol izleyeceğiz?
+Ya elle statik olarak yazacağız ya da routerlar dinamik olarak konuşacaklar.
+
+
 
 

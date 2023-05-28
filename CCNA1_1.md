@@ -69,14 +69,14 @@ Ayrıca azı media tipleri  ise şunlardır:
 *Port ve Interface birbirinin yerine kullanılan terimlerdir ancak TCP/UDP protokollerindeki portlarla karıştırılmamalıdır.*
 -  End device'ları networke bağlayan fiziksel porta **NIC** denir.
 -  İki farklı ağı birbirine bağlanmayacaksa router alınmamalıdır.
-- Eskiden telefon ve internet ağları ayrıydı. Günümüzde  ise bu ağlar birleşik şekildedir bu duruma **Converged Networks** denmektedir. Converged Networks siber güvenlikçilerin işini zorlaştırmaktadır.
+- Eskiden telefon ve internet ağları ayrıydı. Günümüzde  ise bu ağlar birleşik şekildedir, bu duruma **Converged Networks** denmektedir. Converged Networks siber güvenlikçilerin işini zorlaştırmaktadır.
 ***
 ### **Ağ Tipleri:** 
 
 - LAN (Local Area Network): Yerel ağlardır.
 - WAN (Wide Area Network): Uzak ağları birbirine bağlamak için kullanılır. LAN'ların ISP kullanılarak bağlanmasıyla WAN oluşur.
 - Internet: Temelinde bir WAN'dır. Dünya üzerindeki WAN'ların birleşmesiyle oluşan bir ağdır. 
-- Intranet: Kurum içi ağdır. Kurumun bütün içi LAN'lar WAN kullanılarak bağlanmıştır.
+- Intranet: Kurum içi ağdır. Kurumun bütün iç LAN'ları WAN kullanılarak bağlanmıştır.
 - Extranet: Kurum içerisindeki özel ağların diğer kurumların ağlarına bağlanmasıyla oluşturulmuş kısıtlı, kontrollü ağdır.
 - MAN (Metropolitan Area Network): LAN'lardan büyük, WAN'lardan küçük, kentlerde ya da Universitelerde bulunan hatlara verilen genel isimdir.
 - WLAN (Wireless LAN).
@@ -114,7 +114,7 @@ Ağ güvenliğinde temel 3 durum korunmalıdır, bunlar:
 ***
 
 ### **İnternet Erişim Teknolojileri**
-- Bandwidth, bantu genişliği bir ağ üzerinden belli bir zaman aralığında aktarılabilecek veri miktarıdır, birimi datadır.
+- Bandwidth, bant genişliği bir ağ üzerinden belli bir zaman aralığında aktarılabilecek veri miktarıdır, birimi datadır.
 - ISP (Internet Sevice Provider): Internet Servis Sağlayıcı olarak çevrilir. 
 - **Homeplug**: Bakır (copper) elektrik kablolar kullanan, evdeki priz üzerinden ağ sağlanması teknolojisidir. Kablo kalabalığını engeller. Veriyi evdeki bütün pluglara yollar.
 - **WISP** (Wireless Internet Service Provider): **Rural** (kırsal), alanlarda kullanılması daha uygun olan, DSL veya kablo internetin olmadığı yerlerde kullanılan, kablolama gerektirmeyen bir bağlantı teknolojisidir, **802.11 Wireless LAN** standartını kullanır.
