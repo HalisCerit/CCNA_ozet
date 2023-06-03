@@ -200,17 +200,108 @@ Routerlarda routing 2 farklı şekilde yapılabilir:
 1- Statik Routerlama,
 2- Dynamic Routerlama.
 
-**1- Statik Routerlamayla Routing Table**
-<img src="./Diagrams/1_8_9.png" alt="image" width="40%" height="40%">
+**1- Statik Routing Table**
+
+<img src="./Diagrams/1_8_10.png" alt="image" width="50%" height="50%">
 | Routing <br>Sırası 	|             Type            	| IP<br>Adresi 	| Subnet<br>Maskesi 	| Port 	|                               Yorum                               	|
 |:------------------:	|:---------------------------:	|:------------:	|:-----------------:	|:----:	|:-----------------------------------------------------------------:	|
-|          1         	| C<br>Directly <br>Connected 	|   10.0.0.0   	|     255.0.0.0     	|  Fa0 	| Önce bulunduğu ağı doğru subnet maskesiyle routing table'a ekler. 	|
+|          1         	| C<br>Directly <br>Connected 	|   10.0.0.0   	|     255.0.0.0     	|  Fa0 	| Önce bulunduğu ağı, doğru subnet maskesiyle, routing table'a ekler. 	|
 |          2         	|      L<br>Link<br>Local     	|   10.0.0.1   	|  255.255.255.255  	|  Fa0 	| Ardından kendi portu eklenir.                                     	|
-|          3         	| C<br>Directly <br>Connected 	|   20.0.0.0   	|     255.0.0.0     	|  Fa1 	| Önce bulunduğu ağı doğru subnet maskesiyle routing table'a ekler. 	|
+|          3         	| C<br>Directly <br>Connected 	|   20.0.0.0   	|     255.0.0.0     	|  Fa1 	| Önce bulunduğu ağı, doğru subnet maskesiyle, routing table'a ekler. 	|
 |          4         	|      L<br>Link<br>Local     	|   20.0.0.1   	|  255.255.255.255  	|  Fa1 	| Ardından kendi portu eklenir.                                     	|
 
 Peki biz Network 3'e erişmek için nasıl bir yol izleyeceğiz?
-Ya elle statik olarak yazacağız ya da routerlar dinamik olarak konuşacaklar.
+Ya elle statik olarak yazacağız ya da routerlar dinamik olarak konuşacaklar. Statik yazmak istersek:
+
+        ip router 30.0.0.0 255.0.0.0 20.0.0.2
+Bu kodun yazılmasıyla yeni router tablom şu şekili alır:
+| Routing <br>Sırası 	|             Type            	| IP<br>Adresi 	| Subnet<br>Maskesi 	|   Port   	|
+|:------------------:	|:---------------------------:	|:------------:	|:-----------------:	|:--------:	|
+|          1         	| C<br>Directly <br>Connected 	|   10.0.0.0   	|     255.0.0.0     	|    Fa0   	|
+|          2         	|      L<br>Link<br>Local     	|   10.0.0.1   	|  255.255.255.255  	|    Fa0   	|
+|          3         	| C<br>Directly <br>Connected 	|   20.0.0.0   	|     255.0.0.0     	|    Fa1   	|
+|          4         	|      L<br>Link<br>Local     	|   20.0.0.1   	|  255.255.255.255  	|    Fa1   	|
+|          5         	|     S<br>Statik<br>Rota     	|   30.0.0.0   	|     255.0.0.0     	| 20.0.0.2 	|
+
+Kalan tüm networkleri eklemekk için 0.0.0.0 IP adresi kullanılır. 0.0.0.0 adresi table'da bulunmayan bütün IP adreslerini temsilen kullanılmaktadır.
+
+        ip router 0.0.0.0 0.0.0.0 40.0.0.2
+Bu kodun yazılmasıyla router tablomuz son olarak şu şekili alır:
+| Routing <br>Sırası 	|             Type            	| IP<br>Adresi 	| Subnet<br>Maskesi 	|   Port   	|
+|:------------------:	|:---------------------------:	|:------------:	|:-----------------:	|:--------:	|
+|          1         	| C<br>Directly <br>Connected 	|   10.0.0.0   	|     255.0.0.0     	|    Fa0   	|
+|          2         	|      L<br>Link<br>Local     	|   10.0.0.1   	|  255.255.255.255  	|    Fa0   	|
+|          3         	| C<br>Directly <br>Connected 	|   20.0.0.0   	|     255.0.0.0     	|    Fa1   	|
+|          4         	|      L<br>Link<br>Local     	|   20.0.0.1   	|  255.255.255.255  	|    Fa1   	|
+|          5         	|     S<br>Statik<br>Rota     	|   30.0.0.0   	|     255.0.0.0     	| 20.0.0.2 	|
+|          6         	|    S*<br>Default<br>Rota    	|    0.0.0.0   	|      0.0.0.0      	| 40.0.0.2 	|
+***
+**2- Dinamik Routing Table**
+Statik rotaların bazı dezajantajları vardır. Örneğin networkler çok büyükse statik rotalar yazılmaz.
+Statik routing de uzak adresler elle eklenir.Ancak Dinamik routingde routerlar RIP kullanarak networkleri öğrenir.
+<img src="./Diagrams/1_8_9.png" alt="image" width="50%" height="50%">
+Başlangıçta buna benzer bir routing tablosu oluşur:
+| Routing <br>Sırası 	|             Type            	| IP<br>Adresi 	| Subnet<br>Maskesi 	|   Port   	|
+|:------------------:	|:---------------------------:	|:------------:	|:-----------------:	|:--------:	|
+|          1         	| C<br>Directly <br>Connected 	|   10.0.0.0   	|     255.0.0.0     	|    Fa0   	|
+|          2         	|      L<br>Link<br>Local     	|   10.0.0.1   	|  255.255.255.255  	|    Fa0   	|
+|          3         	| C<br>Directly <br>Connected 	|   20.0.0.0   	|     255.0.0.0     	|    Fa1   	|
+|          4         	|      L<br>Link<br>Local     	|   20.0.0.1   	|  255.255.255.255  	|    Fa1   	|
+
+30 saniyede bir RIP anonsunun yollanmasıyla uzak routerlar birbirlerine hattı öğretiler.
+RIP anonsu şu şekildedir:
+
+        30.0.0.0 255.0.0.0 20.0.0.2
+
+R2'den R1'e yapılan bu anons "30.0.0.0/8 e ulaşmak istersen 20.0.0.2 (Ben) üzerinden ulaşabilirsin!" şeklindedir.
+Bu tarz RIP anonslar sonucu routing tablelar şu şekli alır:
+| Routing <br>Sırası 	|                                     Type                                     	| IP<br>Adresi 	| Subnet<br>Maskesi 	|   Port   	|
+|:------------------:	|:----------------------------------------------------------------------------:	|:------------:	|:-----------------:	|:--------:	|
+|          1         	|                          C<br>Directly <br>Connected                         	|   10.0.0.0   	|     255.0.0.0     	|    Fa0   	|
+|          2         	|                              L<br>Link<br>Local                              	|   10.0.0.1   	|  255.255.255.255  	|    Fa0   	|
+|          3         	|                          C<br>Directly <br>Connected                         	|   20.0.0.0   	|     255.0.0.0     	|    Fa1   	|
+|          4         	|                              L<br>Link<br>Local                              	|   20.0.0.1   	|  255.255.255.255  	|    Fa1   	|
+|          5         	| R<br>Dynamically from<br>another router<br>using the RIP<br>routing protocol 	|   30.0.0.0   	|     255.0.0.0     	| 20.0.0.2 	|
+|          6         	|                             S*<br>Default<br>Rota                            	|    0.0.0.0   	|      0.0.0.0      	| 40.0.0.2 	|
+
+⚠️ Uzak networklere ya statik şekilde ya da OSPF, EIGRP, RIP gibi dinamik yöntemlerle gidilir.
+***
+Statik rotalar birden çok rota olsa dahi yedek yola geçemezler.
+<img src="./Diagrams/1_8_11.png" alt="image" width="45%" height="45%">
+Statik hat koparsa iletişim kesilir, yedek hatlara geçiş yapılmaz.
+Statik olarak düzeltilecekse R1-R2-R3 elle yazılır.
+Statik rotanın yönetimi çok zordur.
+Yeni bir cihaz eklemek ağın tamamında değişikliğe ve sorunlara sebep olabilir.
+Statik IP'ler günümüzde kullanılmaz. Kullanımı sabotaj için yapılır.
+Dinamik routerlar komşu routerlara kendi networklerini öğretirler. Öğretme şu şekilde gerçekleşir:
+<img src="./Diagrams/1_8_12.png" alt="image" width="60%" height="60%">
+***
+0.0.0.0 networkleri ağda bulunmayan bütün networkler anlamına gelmektedir. Bu adrese default rota denmektedir.
+<img src="./Diagrams/1_8_13.png" alt="image" width="45%" height="45%">
+R1'in router tablosunu görebilmek için gerekli komutu yazarıp sonuca bakalım:
+
+        R1# show ip route
+
+| Routing <br>Sırası 	| Type 	|   IP<br>Adresi  	| Subnet<br>Maskesi 	|          Port          	|
+|:------------------:	|:----:	|:---------------:	|:-----------------:	|:----------------------:	|
+|          1         	|  S*  	|     0.0.0.0     	|      0.0.0.0      	|     209.165.200.226    	|
+|          2         	|   O  	|    10.1.10.0    	|   255.255.255.0   	|     209.165.200.226    	|
+|          3         	|   C  	|   192.168.10.0  	|   255.255.255.0   	| Directly <br>Connected 	|
+|          4         	|   L  	|   192.168.10.1  	|  255.255.255.255  	| Directly <br>Connected 	|
+|          5         	|   C  	| 209.165.200.224 	|  255.255.255.252  	| Directly <br>Connected 	|
+|          6         	|   L  	| 209.165.200.225 	|  255.255.255.255  	| Directly <br>Connected 	|
+
+L (Local Linked): Doğrudan bağlı yerel interface IP adresi.
+C (Connected): Doğrudan bağlı ağ adresi.
+S (Statik).
+O (OSFP).
+D (EIGRP).
+R: RIP dinamik routing.
+S* (Default Route): Varsayılan Rota.
+
+⚠️ show ip route: Router tablosunu gösterir.
+⚠️ show MAC address -table: MAC adres tablosunu gösterir.
+
 
 
 
