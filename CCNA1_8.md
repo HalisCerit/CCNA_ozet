@@ -37,6 +37,7 @@
 **3- Medyadan bağımsız (Media Independent)** 
 
 <img src="./Diagrams/1_8_3.png" alt="image" width="80%" height="80%">
+
 - IP fiziksel katmandaki kablo türünü ya da data link katmanındaki frame'in türünü önemsemez ve ilgilenmez.
 - IP herhangi bir ortam üzerinden gönderilebilen medium'dan bağımsız farklı (bakır/fiber/kablosuz) ağlarda çalışabilen bir protokoldür.
 
@@ -91,6 +92,7 @@ Hedefler:
 
 ***
 **TTL**
+
 <img src="./Diagrams/1_8_5.png" alt="image" width="75%" height="75%">
 
 - Her atlama noktasına **hop** denir.
@@ -163,6 +165,7 @@ Bir cihazın internete çıkması için 4 adrese ihtiyaç vardır. Bu adresler:
 <img src="./Diagrams/1_8_7.png" alt="image" width="60%" height="60%">
 
 ***
+
 <img src="./Diagrams/1_8_8.png" alt="image" width="60%" height="60%">
 
 PC'nin Routing Table'ı aşağıda verilmiştir:
@@ -203,6 +206,7 @@ Routerlarda routing 2 farklı şekilde yapılabilir:
 **1- Statik Routing Table**
 
 <img src="./Diagrams/1_8_10.png" alt="image" width="50%" height="50%">
+
 | Routing <br>Sırası 	|             Type            	| IP<br>Adresi 	| Subnet<br>Maskesi 	| Port 	|                               Yorum                               	|
 |:------------------:	|:---------------------------:	|:------------:	|:-----------------:	|:----:	|:-----------------------------------------------------------------:	|
 |          1         	| C<br>Directly <br>Connected 	|   10.0.0.0   	|     255.0.0.0     	|  Fa0 	| Önce bulunduğu ağı, doğru subnet maskesiyle, routing table'a ekler. 	|
@@ -239,7 +243,9 @@ Bu kodun yazılmasıyla router tablomuz son olarak şu şekili alır:
 **2- Dinamik Routing Table**
 Statik rotaların bazı dezajantajları vardır. Örneğin networkler çok büyükse statik rotalar yazılmaz.
 Statik routing de uzak adresler elle eklenir.Ancak Dinamik routingde routerlar RIP kullanarak networkleri öğrenir.
+
 <img src="./Diagrams/1_8_9.png" alt="image" width="50%" height="50%">
+
 Başlangıçta buna benzer bir routing tablosu oluşur:
 | Routing <br>Sırası 	|             Type            	| IP<br>Adresi 	| Subnet<br>Maskesi 	|   Port   	|
 |:------------------:	|:---------------------------:	|:------------:	|:-----------------:	|:--------:	|
@@ -267,17 +273,23 @@ Bu tarz RIP anonslar sonucu routing tablelar şu şekli alır:
 ⚠️ Uzak networklere ya statik şekilde ya da OSPF, EIGRP, RIP gibi dinamik yöntemlerle gidilir.
 ***
 Statik rotalar birden çok rota olsa dahi yedek yola geçemezler.
+
 <img src="./Diagrams/1_8_11.png" alt="image" width="45%" height="45%">
+
 Statik hat koparsa iletişim kesilir, yedek hatlara geçiş yapılmaz.
 Statik olarak düzeltilecekse R1-R2-R3 elle yazılır.
 Statik rotanın yönetimi çok zordur.
 Yeni bir cihaz eklemek ağın tamamında değişikliğe ve sorunlara sebep olabilir.
 Statik IP'ler günümüzde kullanılmaz. Kullanımı sabotaj için yapılır.
 Dinamik routerlar komşu routerlara kendi networklerini öğretirler. Öğretme şu şekilde gerçekleşir:
+
 <img src="./Diagrams/1_8_12.png" alt="image" width="60%" height="60%">
+
 ***
 0.0.0.0 networkleri ağda bulunmayan bütün networkler anlamına gelmektedir. Bu adrese default rota denmektedir.
+
 <img src="./Diagrams/1_8_13.png" alt="image" width="45%" height="45%">
+
 R1'in router tablosunu görebilmek için gerekli komutu yazarıp sonuca bakalım:
 
         R1# show ip route
