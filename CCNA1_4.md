@@ -1,34 +1,35 @@
 # 4 Physical Layer (Fiziksel Katman) 
 
-### Fiziksel Katman Amacı:
-- Yerel ağda kablolu ya da kablosuz bağlantıyı sağlar. Bu iş NIC ile yapılır. Kablolu, kablosuz  ve bluetooth ile haberleşen cihazların içerisinde NIC bulunur.
-*Hatırlatma: NIC'ler MAC adreslerini tutarlar.*
-*Extra: GSM kartlarında NIC bulunmaz bu cihazlar IMEI aracılığıyla baz istasyonlarına bağlanır.*
-- Bu katman, 6. katman PDU'su olan frame'i bitlere dönüştürür ve bu bitleri diğer cihazlara iletilmesini sağlar.
+**Fiziksel Katman:**
+- Fiziksel katmanın amacı yerel ağda kablolu ya da kablosuz bağlantıyı sağlamaktır. Bu iş NIC ile yapılır. Kablolu, kablosuz  ve bluetooth ile haberleşen cihazların içerisinde NIC bulunur.
+- NIC'ler MAC adreslerini tutarlar.
+- Fiziksel katman, 6. katman PDU'su olan frame'i bitlere dönüştürür ve bu bitlerin diğer cihazlara iletilmesini sağlar.
 - Encapsulation'ın son adımıdır.
 - Data Link katmanında kullanılacak medium ya da media'ya uygun enkapsülleme yapıldıktan sonra aktarma işlemi bu katmanda yapılır.
+
+##### *Extra: GSM kartlarında NIC bulunmaz bu cihazlar IMEI aracılığıyla baz istasyonlarına bağlanır.*
 ***
 
-### Fiziksel Katman Standart Kurumları
+**Fiziksel Katman Standart Kurumları**
 - ISO
 - ⚠️EIA/TIA (kablolama)
 - ITU-T (kablolama)
 - ANSI (ADSL)
 - IEEE 
 
-TCP/IP standartlarının tamamını IETF denetler, ancak IETF fiziksel katmanı doğrudan denetlemez.
-##### *Hatırlatma: RFC dökümanları IETF tarafından yayınlanır.*
+*Hatırlatma: TCP/IP standartlarının tamamını IETF denetler, ancak IETF fiziksel katmanı doğrudan denetlemez.*
+*Hatırlatma: RFC dökümanları IETF tarafından yayınlanır.*
 
 ***
+**Fiziksel Katman Bileşenleri**
 
-## Fiziksel Katman Bileşenleri
 Fiziksel katman standartlarnın 3 temel alanı:
-**Coding**,
-**Signal Transmission**, 
-**Media bileşenleri** (kablolar, connectorler)'dir.
-***
+- **Coding**,
+- **Signal Transmission**, 
+- **Media bileşenleri** (kablolar, connectorler)'dir.
 
-## 1- Coding (Kodlama) 
+**1- Coding (Kodlama)**
+
 - Bit akışının ağ içerisindeki diğer cihazlar tarafından tanınabilir bir formata dönüştürülmesi **kodlama** olarak adlandırılır. Farklı iletim hızları için farklı yöntemler vardır, örneğin 10 Mbit hızlar için Mancherster kodlama kullabılırken, 100 Mbit için 4B/5B kodlamalar kullanılır.
 Manchester kodlamada aktarılan veriyi 5 Volt ve 0 Volt değerlerinin hareketlerini yönlerine göre oluşturur. Voltajın düşmesi 0'ı temsil ederken yükselmesi 1'i temsil eder.
 - Ağ yoluyla gelen paketin içerisinde
